@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* RoomViewModel.swift */; };
+		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* ButtonModalView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				4648E4D22861DA8C003AECAC /* Room.swift */,
+				4648E4E12862D071003AECAC /* Enum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
+				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

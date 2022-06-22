@@ -7,13 +7,20 @@
 
 import SwiftUI
 
+//extension ForEach where Data.Element: Hashable, ID == Data.Element, Content: View {
+//    init(values: Data, content: @escaping (Data.Element) -> Content) {
+//        self.init(values, id: \.self, content: content)
+//    }
+//}
+
 struct ButtonModalView: View {
     var textLabel = "Halo"
     var showModalButton = false
     var showIcon = false
     var iconName = "mappin"
+    var type = ""
     @State var isPresented = false
-    
+
     var body: some View {
         ZStack {
             Color(.systemBackground)
@@ -25,22 +32,12 @@ struct ButtonModalView: View {
                         }) {
                             Image(systemName: iconName)
                                 .font(.body)
-                        }.sheetWithDetents(
-                            isPresented: $isPresented,
-                            detents: [.medium(),.large()]
+                        }.sheet(
+                            isPresented: $isPresented
                         ) {
                             print("The sheet has been dismissed")
                         } content: {
-                            Group {
-                                Text("Create")
-                                    .bold()
-                                +
-                                Text("with")
-                                +
-                                Text("Swift")
-                                    .bold()
-                            }
-                            .font(.title)
+                            Text("halo")
                         }
                     }
                     Text(textLabel)
@@ -57,16 +54,26 @@ struct ButtonModalView: View {
                         ) {
                             print("The sheet has been dismissed")
                         } content: {
-                            Group {
-                                Text("Create")
-                                    .bold()
-                                +
-                                Text("with")
-                                +
-                                Text("Swift")
-                                    .bold()
+                            if(type == "sport"){
+                                ForEach(SPORT.allCases, id: \.rawValue) { item in
+                                    Text(item.rawValue)
+                                }
                             }
-                            .font(.title)
+                            else if(type == "sex"){
+                                ForEach(SEX.allCases, id: \.rawValue) { item in
+                                    Text(item.rawValue)
+                                }
+                            }
+                            else if(type == "age"){
+                                ForEach(AGE.allCases, id: \.rawValue) { item in
+                                    Text(item.rawValue)
+                                }
+                            }
+                            else if(type == "level"){
+                                ForEach(LEVEL.allCases, id: \.rawValue) { item in
+                                    Text(item.rawValue)
+                                }
+                            }
                         }
                     }
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))

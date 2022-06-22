@@ -40,7 +40,7 @@ struct CreateRoomView: View {
                 
                 List {
                     Section{
-                        ButtonModalView(textLabel: "Type of Sport", showModalButton: true)
+                        ButtonModalView(textLabel: "Type of Sport", showModalButton: true, type: PREFERENCETYPE.sport.rawValue)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                         
                         ButtonModalView(textLabel: "Choose Location", showIcon: true, iconName: "mappin")
@@ -67,9 +67,9 @@ struct CreateRoomView: View {
                         .font(.title3)
                         .bold()
                         .foregroundColor(.primary)) {
-                            ButtonModalView(textLabel: "Sex", showModalButton: true)
-                            ButtonModalView(textLabel: "Level of Play", showModalButton: true)
-                            ButtonModalView(textLabel: "Age", showModalButton: true)
+                            ButtonModalView(textLabel: "Sex", showModalButton: true, type: PREFERENCETYPE.sex.rawValue)
+                            ButtonModalView(textLabel: "Level of Play", showModalButton: true, type: PREFERENCETYPE.level.rawValue)
+                            ButtonModalView(textLabel: "Age", showModalButton: true, type: PREFERENCETYPE.age.rawValue)
                     }
                     .listRowSeparator(.hidden)
                     
