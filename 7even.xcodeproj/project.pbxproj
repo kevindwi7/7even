@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
+		4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* RoomViewModel.swift */; };
+		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
+		46BA40022861AA89007A7EBF /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* ButtonModalView.swift */; };
+		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
+		46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */; };
+		46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BA400A2861BC6A007A7EBF /* CloudKit.framework */; };
 		C90D4A0528602E5800677561 /* _evenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0428602E5800677561 /* _evenApp.swift */; };
 		C90D4A0728602E5800677561 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0628602E5800677561 /* ContentView.swift */; };
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
@@ -14,6 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		4648E4D82861EF38003AECAC /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		46BA40012861AA89007A7EBF /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
+		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationForSwiftUI.swift; sourceTree = "<group>"; };
+		46BA40082861BC52007A7EBF /* 7even.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 7even.entitlements; sourceTree = "<group>"; };
+		46BA400A2861BC6A007A7EBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C90D4A0128602E5800677561 /* 7even.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7even.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90D4A0428602E5800677561 /* _evenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _evenApp.swift; sourceTree = "<group>"; };
 		C90D4A0628602E5800677561 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,17 +41,69 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46BA3FFB2861A89B007A7EBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4648E4D22861DA8C003AECAC /* Room.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46BA3FFC2861A8A1007A7EBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46BA3FFE2861A8EE007A7EBF /* RoomView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46BA3FFD2861A8A7007A7EBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4648E4D82861EF38003AECAC /* RoomViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46BA3FFE2861A8EE007A7EBF /* RoomView */ = {
+			isa = PBXGroup;
+			children = (
+				46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */,
+				46BA40012861AA89007A7EBF /* ButtonModalView.swift */,
+				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
+			);
+			path = RoomView;
+			sourceTree = "<group>";
+		};
+		46BA40052861BA4B007A7EBF /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		46BA40092861BC6A007A7EBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46BA400A2861BC6A007A7EBF /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C90D49F828602E5800677561 = {
 			isa = PBXGroup;
 			children = (
 				C90D4A0328602E5800677561 /* 7even */,
 				C90D4A0228602E5800677561 /* Products */,
+				46BA40092861BC6A007A7EBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +118,11 @@
 		C90D4A0328602E5800677561 /* 7even */ = {
 			isa = PBXGroup;
 			children = (
+				46BA40082861BC52007A7EBF /* 7even.entitlements */,
+				46BA3FFB2861A89B007A7EBF /* Model */,
+				46BA3FFC2861A8A1007A7EBF /* View */,
+				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
+				46BA40052861BA4B007A7EBF /* Modifier */,
 				C90D4A0428602E5800677561 /* _evenApp.swift */,
 				C90D4A0628602E5800677561 /* ContentView.swift */,
 				C90D4A0828602E5900677561 /* Assets.xcassets */,
@@ -137,8 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BA40022861AA89007A7EBF /* ButtonModalView.swift in Sources */,
+				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
+				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
+				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
+				4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
+				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,10 +342,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -280,7 +359,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -293,10 +372,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -309,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
