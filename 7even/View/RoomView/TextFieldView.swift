@@ -10,6 +10,7 @@ import SwiftUI
 struct TextFieldView: View {
     var textLabel = "Halo"
     @Binding var inputNumber: String
+    @FocusState.Binding var inputIsFocused: Bool
     
     var body: some View {
         ZStack {
@@ -18,6 +19,7 @@ struct TextFieldView: View {
                 HStack {
                     TextField(textLabel, text: $inputNumber)
                         .keyboardType(.decimalPad)
+                        .focused($inputIsFocused)
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
             }.padding(5)
         }

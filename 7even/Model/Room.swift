@@ -9,21 +9,21 @@ import Foundation
 import CloudKit
 
 struct Room {
-    var id: CKRecord.ID?
-    let sport: [String]
-    let location: String
-    let minimumParticipant: Int
-    let maximumParticipant: Int
-    let price: Decimal
-    let isPrivateRoom: Bool
-    let startTime: Date
-    let endTime: Date
-    let sex: String
-    let age: String
-    let levelOfPlay: String
-//    let participant: [User.name]
+    let id: CKRecord.ID?
+    var sport: String
+    var location: String
+    var minimumParticipant: Int
+    var maximumParticipant: Int
+    var price: Decimal
+    var isPrivateRoom: Bool
+    var startTime: Date
+    var endTime: Date
+    var sex: String
+    var age: String
+    var levelOfPlay: String
+//    let participant: [User]
     
-    init(id: CKRecord.ID? = nil, sport: [String], location: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: String, levelOfPlay: String) {
+    init(id: CKRecord.ID? = nil, sport: String, location: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: String, levelOfPlay: String) {
         self.id = id
         self.sport = sport
         self.location = location

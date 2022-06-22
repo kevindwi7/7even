@@ -7,33 +7,42 @@
 
 import Foundation
 
-enum PREFERENCETYPE: String {
-    case sport = "sport"
-    case sex = "sex"
-    case age = "age"
-    case level = "level"
-}
+enum PREFERENCETYPE: String, CaseIterable, Identifiable {
+    var id: PREFERENCETYPE { self }
 
-enum SPORT: String, CaseIterable {
+    static func getPreferenceFromType(type: String) -> [PREFERENCETYPE] {
+        switch type {
+            case "sport":
+                return PREFERENCETYPE.sport
+            case "sex":
+                return PREFERENCETYPE.sex
+            case "age":
+                return PREFERENCETYPE.age
+            case "levelOfPlay":
+                return PREFERENCETYPE.levelOfPlay
+            default:
+                return PREFERENCETYPE.sport
+        }
+    }
+    
     case tennis = "Tennis"
     case badminton = "Badminton"
     case yoga = "Yoga"
     case basketball = "Basketball"
-}
-
-enum AGE: String, CaseIterable {
+    
     case first = "18-20"
     case second = "20-25"
     case third = "25-30"
     case fourth = "35-40"
-}
-
-enum SEX: String, CaseIterable {
+    
     case male = "Male Only"
     case female = "Female Only"
-}
-
-enum LEVEL: String, CaseIterable {
+    
     case recreational = "Recreational"
     case competitive = "Competitive"
+    
+    static let sport: [PREFERENCETYPE] = [.tennis, .badminton, .yoga, .basketball]
+    static let sex: [PREFERENCETYPE] = [.male, .female]
+    static let age: [PREFERENCETYPE] = [.first, .second, .third, .fourth]
+    static let levelOfPlay: [PREFERENCETYPE] = [.recreational, .competitive]
 }

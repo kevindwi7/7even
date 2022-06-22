@@ -10,8 +10,12 @@
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* RoomViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
+		4648E4E42862FE58003AECAC /* LocationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E32862FE58003AECAC /* LocationSheetView.swift */; };
+		4648E4E628632275003AECAC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E528632275003AECAC /* Location.swift */; };
+		4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E728633334003AECAC /* LocationButtonView.swift */; };
+		4648E4EA28633632003AECAC /* SportPreferenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
-		46BA40022861AA89007A7EBF /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* ButtonModalView.swift */; };
+		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
 		46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */; };
 		46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BA400A2861BC6A007A7EBF /* CloudKit.framework */; };
@@ -25,8 +29,12 @@
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		4648E4E32862FE58003AECAC /* LocationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSheetView.swift; sourceTree = "<group>"; };
+		4648E4E528632275003AECAC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4648E4E728633334003AECAC /* LocationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButtonView.swift; sourceTree = "<group>"; };
+		4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportPreferenceSheetView.swift; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
-		46BA40012861AA89007A7EBF /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
+		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationForSwiftUI.swift; sourceTree = "<group>"; };
 		46BA40082861BC52007A7EBF /* 7even.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 7even.entitlements; sourceTree = "<group>"; };
@@ -55,6 +63,7 @@
 			children = (
 				4648E4D22861DA8C003AECAC /* Room.swift */,
 				4648E4E12862D071003AECAC /* Enum.swift */,
+				4648E4E528632275003AECAC /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,8 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */,
-				46BA40012861AA89007A7EBF /* ButtonModalView.swift */,
 				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
+				4648E4E728633334003AECAC /* LocationButtonView.swift */,
+				4648E4E32862FE58003AECAC /* LocationSheetView.swift */,
+				46BA40012861AA89007A7EBF /* SheetButtonView.swift */,
+				4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */,
 			);
 			path = RoomView;
 			sourceTree = "<group>";
@@ -212,7 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46BA40022861AA89007A7EBF /* ButtonModalView.swift in Sources */,
+				4648E4EA28633632003AECAC /* SportPreferenceSheetView.swift in Sources */,
+				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
+				4648E4E628632275003AECAC /* Location.swift in Sources */,
+				4648E4E42862FE58003AECAC /* LocationSheetView.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
 				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
@@ -221,6 +236,7 @@
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
+				4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

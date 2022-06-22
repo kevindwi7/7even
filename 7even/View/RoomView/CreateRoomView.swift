@@ -18,15 +18,13 @@ struct CreateRoomView: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State var isPresented = false
-    
-    var sportList = [
-        "Tennis",
-        "Badminton",
-        "Football",
-        "Yoga",
-        "Basketball",
-        "Volleyball"
-    ]
+    @State var location = Location(name: "", address: "")
+    @State var age = ""
+    @State var sex = ""
+    @State var levelOfPlay = ""
+    @State var sportName = ""
+
+    @FocusState private var inputIsFocused: Bool
     
     init(roomViewModel: RoomViewModel) {
         _roomViewModel = StateObject(wrappedValue: roomViewModel)
@@ -40,17 +38,17 @@ struct CreateRoomView: View {
                 
                 List {
                     Section{
-                        ButtonModalView(textLabel: "Type of Sport", showModalButton: true, type: PREFERENCETYPE.sport.rawValue)
+                        SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                        
-                        ButtonModalView(textLabel: "Choose Location", showIcon: true, iconName: "mappin")
+
+                        LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location)
                         
                         HStack {
-                            TextFieldView(textLabel: "Minimum Participant", inputNumber: $minimumParticipant)
-                            TextFieldView(textLabel: "Maximum Participant", inputNumber: $maximumParticipant)
+                            TextFieldView(textLabel: "Minimum Participant", inputNumber: $minimumParticipant, inputIsFocused: $inputIsFocused)
+                            TextFieldView(textLabel: "Maximum Participant", inputNumber: $maximumParticipant, inputIsFocused: $inputIsFocused)
                         }
                         
-                        TextFieldView(textLabel: "Price", inputNumber: $price)
+                        TextFieldView(textLabel: "Price", inputNumber: $price, inputIsFocused: $inputIsFocused)
                         
                         Toggle("Private Room", isOn: $isPrivateRoom)
                             .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
@@ -67,16 +65,16 @@ struct CreateRoomView: View {
                         .font(.title3)
                         .bold()
                         .foregroundColor(.primary)) {
-                            ButtonModalView(textLabel: "Sex", showModalButton: true, type: PREFERENCETYPE.sex.rawValue)
-                            ButtonModalView(textLabel: "Level of Play", showModalButton: true, type: PREFERENCETYPE.level.rawValue)
-                            ButtonModalView(textLabel: "Age", showModalButton: true, type: PREFERENCETYPE.age.rawValue)
+                            SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
+                            SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
+                            SheetButtonView(showModalButton: true, type: "age", textLabel: $age)
                     }
                     .listRowSeparator(.hidden)
                     
                     HStack {
                         Spacer()
                         Button(action: {
-                            roomViewModel.createRoom(sport: sportList, location: "location", minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: "Male Only", age: "20-25", levelOfPlay: "Recreational")
+                            roomViewModel.createRoom(sport: sportName, location: location.name, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
                             
                             self.minimumParticipant = ""
                             self.maximumParticipant = ""
@@ -86,6 +84,11 @@ struct CreateRoomView: View {
                             }
                             self.startTime = Date()
                             self.endTime = Date()
+                            self.sex = ""
+                            self.location = Location(name: "", address: "")
+                            self.age = ""
+                            self.sportName = ""
+                            self.levelOfPlay = ""
                         }) {
                             Text("Create")
                                 .padding(5)
@@ -95,6 +98,16 @@ struct CreateRoomView: View {
                         Spacer()
                     }
                     .listRowSeparator(.hidden)
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                                    
+                        Button("Done") {
+                            inputIsFocused = false
+                        }
+                        .accessibilityAddTraits(.isKeyboardKey)
+                    }
                 }
                 .listStyle(.plain)
                 .navigationTitle("Create Room")
