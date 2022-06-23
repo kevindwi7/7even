@@ -11,7 +11,7 @@ import SwiftUI
 struct _evenApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }
