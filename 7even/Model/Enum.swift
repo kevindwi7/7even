@@ -7,42 +7,34 @@
 
 import Foundation
 
-enum PREFERENCETYPE: String, CaseIterable, Identifiable {
-    var id: PREFERENCETYPE { self }
-
-    static func getPreferenceFromType(type: String) -> [PREFERENCETYPE] {
-        switch type {
-            case "sport":
-                return PREFERENCETYPE.sport
-            case "sex":
-                return PREFERENCETYPE.sex
-            case "age":
-                return PREFERENCETYPE.age
-            case "levelOfPlay":
-                return PREFERENCETYPE.levelOfPlay
-            default:
-                return PREFERENCETYPE.sport
-        }
-    }
-    
-    case tennis = "Tennis"
-    case badminton = "Badminton"
-    case yoga = "Yoga"
-    case basketball = "Basketball"
-    
-    case first = "18-20"
-    case second = "20-25"
-    case third = "25-30"
-    case fourth = "35-40"
-    
-    case male = "Male Only"
-    case female = "Female Only"
-    
-    case recreational = "Recreational"
-    case competitive = "Competitive"
-    
-    static let sport: [PREFERENCETYPE] = [.tennis, .badminton, .yoga, .basketball]
-    static let sex: [PREFERENCETYPE] = [.male, .female]
-    static let age: [PREFERENCETYPE] = [.first, .second, .third, .fourth]
-    static let levelOfPlay: [PREFERENCETYPE] = [.recreational, .competitive]
+enum REGION: String, CaseIterable, Identifiable {
+    var id: Self {self}
+    case sbyBarat = "Surabaya Barat"
+    case sbyPusat = "Surabaya Pusat"
+    case sbySelatan = "Surabaya Selatan"
+    case sbyTimur = "Surabaya Timur"
+    case sbyUtara = "Surabaya Utara"
 }
+
+
+//enum PREFERENCETYPE: String, CaseIterable, Identifiable {
+//    var id: PREFERENCETYPE { self }
+//
+//    static func getPreferenceFromType(type: String) -> [PREFERENCETYPE] {
+//        switch type {
+//            case "region":
+//                return PREFERENCETYPE.region
+//            default:
+//                return PREFERENCETYPE.region
+//        }
+//    }
+//
+//    
+//    case sbyBarat = "Surabaya Barat"
+//    case sbyPusat = "Surabaya Pusat"
+//    case sbySelatan = "Surabaya Selatan"
+//    case sbyTimur = "Surabaya Timur"
+//    case sbyUtara = "Surabaya Utara"
+//
+//    static let region: [PREFERENCETYPE] = [.sbyBarat, .sbyPusat, .sbySelatan, .sbyTimur, .sbyUtara]
+//}

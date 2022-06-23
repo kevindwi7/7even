@@ -17,6 +17,7 @@ struct LocationButtonView: View {
     @Binding var textLabel: String
     @State var isPresented = false
     @Binding var location: Location
+    @Binding var region: String
 
     var body: some View {
         ZStack {
@@ -35,7 +36,7 @@ struct LocationButtonView: View {
                             print("The sheet has been dismissed")
                             print(location)
                         } content: {
-                            LocationSheetView(isPresented: self.$isPresented, location: self.$location)
+                            LocationSheetView(isPresented: self.$isPresented, location: self.$location, region: self.$region)
                         }
                         
                         if(textLabel == "") {

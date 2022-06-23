@@ -9,8 +9,9 @@ import SwiftUI
 import CloudKit
 
 struct CreateRoomView: View {
-    @StateObject private var roomViewModel: RoomViewModel
     
+    var isEnabled = false
+    @StateObject private var roomViewModel: RoomViewModel
     @State private var minimumParticipant = ""
     @State private var maximumParticipant = ""
     @State private var price = ""
@@ -18,7 +19,8 @@ struct CreateRoomView: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State var isPresented = false
-    @State var location = Location(name: "", address: "")
+    @State var location = Location(name: "", address: "", region: "")
+    @State var region = ""
     @State var age = ""
     @State var sex = ""
     @State var levelOfPlay = ""
@@ -40,8 +42,12 @@ struct CreateRoomView: View {
                     Section{
                         SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-
-                        LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location)
+                        
+                        SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
+                        
+                        if(region != "") {
+                            LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
+                        }
                         
                         HStack {
                             TextFieldView(textLabel: "Minimum Participant", inputNumber: $minimumParticipant, inputIsFocused: $inputIsFocused)
@@ -65,6 +71,7 @@ struct CreateRoomView: View {
                         .font(.title3)
                         .bold()
                         .foregroundColor(.primary)) {
+                            
                             SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
                             SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
                             SheetButtonView(showModalButton: true, type: "age", textLabel: $age)
@@ -74,8 +81,11 @@ struct CreateRoomView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            roomViewModel.createRoom(sport: sportName, location: location.name, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
+                            roomViewModel.createRoom(host: "SDFSF", sport: sportName, location: location.name, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
                             
+                            self.sportName = ""
+                            self.region = ""
+                            self.location = Location(name: "", address: "", region: "")
                             self.minimumParticipant = ""
                             self.maximumParticipant = ""
                             self.price = ""
@@ -85,10 +95,8 @@ struct CreateRoomView: View {
                             self.startTime = Date()
                             self.endTime = Date()
                             self.sex = ""
-                            self.location = Location(name: "", address: "")
-                            self.age = ""
-                            self.sportName = ""
                             self.levelOfPlay = ""
+                            self.age = ""
                         }) {
                             Text("Create")
                                 .padding(5)

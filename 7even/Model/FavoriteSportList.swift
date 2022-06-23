@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Sport: Identifiable {
+struct Sport: Identifiable, Hashable {
     var id = UUID().uuidString
     var name: String
     var image:String

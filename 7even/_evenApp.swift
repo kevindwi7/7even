@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import CloudKit
 
 @main
 struct _evenApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+//            LoginView()
+            CreateRoomView(roomViewModel: RoomViewModel(container: CKContainer.default()))
         }
     }
 }

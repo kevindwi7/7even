@@ -12,10 +12,11 @@ struct LocationSheetView: View {
     @State private var searchText = ""
     @Binding var isPresented: Bool
     @Binding var location: Location
+    @Binding var region: String
     
     var body: some View {
         NavigationView {
-            List (Location.locationList, id: \.self){ item in
+            List (Location.locationList.filter { $0.region == region }, id: \.self){ item in
                 Button(action: {
                     location = item
                     self.isPresented = false

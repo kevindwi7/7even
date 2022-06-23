@@ -13,7 +13,10 @@
 		4648E4E42862FE58003AECAC /* LocationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E32862FE58003AECAC /* LocationSheetView.swift */; };
 		4648E4E628632275003AECAC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E528632275003AECAC /* Location.swift */; };
 		4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E728633334003AECAC /* LocationButtonView.swift */; };
-		4648E4EA28633632003AECAC /* SportPreferenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */; };
+		4648E4EE28641993003AECAC /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4ED28641993003AECAC /* Age.swift */; };
+		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
+		4648E4F4286420BB003AECAC /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F3286420BB003AECAC /* Sex.swift */; };
+		467ABA8D2864511000FC7631 /* RoomPreferenceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* RoomPreferenceSheetView.swift */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
@@ -36,7 +39,10 @@
 		4648E4E32862FE58003AECAC /* LocationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSheetView.swift; sourceTree = "<group>"; };
 		4648E4E528632275003AECAC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4648E4E728633334003AECAC /* LocationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButtonView.swift; sourceTree = "<group>"; };
-		4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportPreferenceSheetView.swift; sourceTree = "<group>"; };
+		4648E4ED28641993003AECAC /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
+		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
+		4648E4F3286420BB003AECAC /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
+		467ABA8C2864511000FC7631 /* RoomPreferenceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPreferenceSheetView.swift; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -73,6 +79,9 @@
 				4648E4E12862D071003AECAC /* Enum.swift */,
 				4648E4E528632275003AECAC /* Location.swift */,
 				C9B659432863FCCC0074961A /* FavoriteSportList.swift */,
+				4648E4ED28641993003AECAC /* Age.swift */,
+				4648E4F1286419E1003AECAC /* LevelOfPlay.swift */,
+				4648E4F3286420BB003AECAC /* Sex.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,7 +112,7 @@
 				4648E4E728633334003AECAC /* LocationButtonView.swift */,
 				4648E4E32862FE58003AECAC /* LocationSheetView.swift */,
 				46BA40012861AA89007A7EBF /* SheetButtonView.swift */,
-				4648E4E928633632003AECAC /* SportPreferenceSheetView.swift */,
+				467ABA8C2864511000FC7631 /* RoomPreferenceSheetView.swift */,
 			);
 			path = RoomView;
 			sourceTree = "<group>";
@@ -252,7 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4648E4EA28633632003AECAC /* SportPreferenceSheetView.swift in Sources */,
+				467ABA8D2864511000FC7631 /* RoomPreferenceSheetView.swift in Sources */,
+				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				4648E4E628632275003AECAC /* Location.swift in Sources */,
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
@@ -262,9 +272,11 @@
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
 				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
 				C9B6594B2863FE060074961A /* FavoriteSportCardView.swift in Sources */,
+				4648E4EE28641993003AECAC /* Age.swift in Sources */,
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
 				4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
+				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
@@ -398,7 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -411,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -428,7 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -441,7 +453,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

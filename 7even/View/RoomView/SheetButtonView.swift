@@ -29,6 +29,8 @@ struct SheetButtonView: View {
                                 Text("Age")
                             } else if (type == "levelOfPlay") {
                                 Text("Level of Play")
+                            } else if (type == "region") {
+                                Text("Region")
                             }
                         } else {
                             Text(textLabel)
@@ -44,7 +46,7 @@ struct SheetButtonView: View {
                         ) {
                             print("The sheet has been dismissed")
                         } content: {
-                            SportPreferenceSheetView(isPresented: $isPresented, preference: self.$textLabel, type: type)
+                            RoomPreferenceSheetView(isPresented: $isPresented, preference: self.$textLabel, type: type)
                         }
                     }
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
