@@ -20,6 +20,8 @@ enum PREFERENCETYPE: String, CaseIterable, Identifiable {
                 return PREFERENCETYPE.age
             case "levelOfPlay":
                 return PREFERENCETYPE.levelOfPlay
+            case "region":
+                return PREFERENCETYPE.region
             default:
                 return PREFERENCETYPE.sport
         }
@@ -41,8 +43,15 @@ enum PREFERENCETYPE: String, CaseIterable, Identifiable {
     case recreational = "Recreational"
     case competitive = "Competitive"
     
+    case sbyBarat = "Surabaya Barat"
+    case sbyPusat = "Surabaya Pusat"
+    case sbySelatan = "Surabaya Selatan"
+    case sbyTimur = "Surabaya Timur"
+    case sbyUtara = "Surabaya Utara"
+    
     static let sport: [PREFERENCETYPE] = [.tennis, .badminton, .yoga, .basketball]
     static let sex: [PREFERENCETYPE] = [.male, .female]
     static let age: [PREFERENCETYPE] = [.first, .second, .third, .fourth]
     static let levelOfPlay: [PREFERENCETYPE] = [.recreational, .competitive]
+    static let region: [PREFERENCETYPE] = [.sbyBarat, .sbyPusat, .sbySelatan, .sbyTimur, .sbyUtara]
 }
