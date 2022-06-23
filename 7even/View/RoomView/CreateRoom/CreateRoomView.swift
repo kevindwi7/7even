@@ -21,7 +21,7 @@ struct CreateRoomView: View {
     @State var isPresented = false
     @State var location = Location(name: "", address: "", region: "")
     @State var region = ""
-    @State var age = ""
+    @State var age = [""]
     @State var sex = ""
     @State var levelOfPlay = ""
     @State var sportName = ""
@@ -58,12 +58,15 @@ struct CreateRoomView: View {
                         
                         Toggle("Private Room", isOn: $isPrivateRoom)
                             .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                            .tint(.mint)
                         
                         DatePicker("Starts", selection: $startTime)
                             .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                            .accentColor(.mint)
                         
                         DatePicker("Ends", selection: $endTime)
                             .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                            .accentColor(.mint)
                     }
                     .listRowSeparator(.hidden)
                     
@@ -73,8 +76,12 @@ struct CreateRoomView: View {
                         .foregroundColor(.primary)) {
                             
                             SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
+                            
                             SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
-                            SheetButtonView(showModalButton: true, type: "age", textLabel: $age)
+                            
+                            ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
+                            
+                            
                     }
                     .listRowSeparator(.hidden)
                     
@@ -96,12 +103,13 @@ struct CreateRoomView: View {
                             self.endTime = Date()
                             self.sex = ""
                             self.levelOfPlay = ""
-                            self.age = ""
+                            self.age = [""]
                         }) {
                             Text("Create")
                                 .padding(5)
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(.mint)
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                         Spacer()
                     }

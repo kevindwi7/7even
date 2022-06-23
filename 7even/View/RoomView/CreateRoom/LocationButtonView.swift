@@ -7,47 +7,44 @@
 
 import SwiftUI
 
-struct SheetButtonView: View {
+struct LocationButtonView: View {
     
     var showModalButton = false
-    @State var type = ""
+    var showIcon = false
+    var iconName = "mappin"
+    var type = ""
+    
     @Binding var textLabel: String
     @State var isPresented = false
+    @Binding var location: Location
+    @Binding var region: String
 
     var body: some View {
         ZStack {
             Color(.systemBackground)
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    if showModalButton {
-                        if(textLabel == "") {
-                            if(type == "sport"){
-                                Text("Sport's Name")
-                            } else if (type == "sex") {
-                                Text("Sex")
-                            } else if (type == "age") {
-                                Text("Age")
-                            } else if (type == "levelOfPlay") {
-                                Text("Level of Play")
-                            } else if (type == "region") {
-                                Text("Region")
-                            }
-                        } else {
-                            Text(textLabel)
-                        }
-                        Spacer()
+                    if showIcon {
                         Button(action: {
                             self.isPresented.toggle()
                         }) {
-                            Image(systemName: "chevron.right")
-                            .font(.body)
+                            Image(systemName: iconName)
+                                .font(.body)
                         }.sheet(
                             isPresented: $isPresented
                         ) {
                             print("The sheet has been dismissed")
+                            print(location)
                         } content: {
-                            RoomPreferenceSheetView(isPresented: $isPresented, preference: self.$textLabel, type: type)
+                            LocationListView(isPresented: self.$isPresented, location: self.$location, region: self.$region)
                         }
+                        
+                        if(textLabel == "") {
+                            Text("Choose Location")
+                        } else {
+                            Text(textLabel)
+                        }
+                        Spacer()
                     }
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
             }.padding(5)
@@ -58,3 +55,4 @@ struct SheetButtonView: View {
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }
+

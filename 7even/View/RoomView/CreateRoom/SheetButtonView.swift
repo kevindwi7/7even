@@ -7,44 +7,46 @@
 
 import SwiftUI
 
-struct LocationButtonView: View {
+struct SheetButtonView: View {
     
     var showModalButton = false
-    var showIcon = false
-    var iconName = "mappin"
-    var type = ""
-    
+    @State var type = ""
     @Binding var textLabel: String
     @State var isPresented = false
-    @Binding var location: Location
-    @Binding var region: String
 
     var body: some View {
         ZStack {
             Color(.systemBackground)
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    if showIcon {
-                        Button(action: {
-                            self.isPresented.toggle()
-                        }) {
-                            Image(systemName: iconName)
-                                .font(.body)
-                        }.sheet(
-                            isPresented: $isPresented
-                        ) {
-                            print("The sheet has been dismissed")
-                            print(location)
-                        } content: {
-                            LocationSheetView(isPresented: self.$isPresented, location: self.$location, region: self.$region)
-                        }
-                        
+                    if showModalButton {
                         if(textLabel == "") {
-                            Text("Choose Location")
+                            if(type == "sport"){
+                                Text("Sport's Name")
+                            } else if (type == "sex") {
+                                Text("Sex")
+                            } else if (type == "levelOfPlay") {
+                                Text("Level of Play")
+                            } else if (type == "region") {
+                                Text("Region")
+                            }
                         } else {
                             Text(textLabel)
                         }
                         Spacer()
+                        Button(action: {
+                            self.isPresented.toggle()
+                        }) {
+                            Image(systemName: "chevron.right")
+                            .font(.headline)
+                            .foregroundColor(Color.mint)
+                        }.sheet(
+                            isPresented: $isPresented
+                        ) {
+                            print("The sheet has been dismissed")
+                        } content: {
+                            SingleSelectPreferenceListView(isPresented: $isPresented, preference: self.$textLabel, type: type)
+                        }
                     }
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
             }.padding(5)
@@ -55,4 +57,3 @@ struct LocationButtonView: View {
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }
-

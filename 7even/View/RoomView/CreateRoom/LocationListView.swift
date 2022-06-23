@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LocationSheetView: View {
+struct LocationListView: View {
     
     @State private var searchText = ""
     @Binding var isPresented: Bool
@@ -22,13 +22,18 @@ struct LocationSheetView: View {
                     self.isPresented = false
                 }) {
                     HStack {
-                        Image(systemName: "mappin")
-                        VStack(alignment: .leading, spacing: 8) {
+                        Image(systemName: "mappin.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 37)
+                            .foregroundColor(Color.mint)
+                            
+                        VStack(alignment: .leading, spacing: 5) {
                             Text(item.name)
-                                .bold()
-                                .font(.title3)
+                                .font(.subheadline)
                             Text(item.address.uppercased())
-                                .font(.footnote)
+                                .font(.caption)
+                                .foregroundColor(Color(UIColor.systemGray))
                         }.padding(5)
                     }
                 }

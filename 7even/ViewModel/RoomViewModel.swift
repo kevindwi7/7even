@@ -22,7 +22,7 @@ class RoomViewModel: ObservableObject {
         self.database = self.container.publicCloudDatabase
     }
     
-    func createRoom(host: String, sport: String, location: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: String, levelOfPlay: String){
+    func createRoom(host: String, sport: String, location: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String){
         let record = CKRecord(recordType: RecordType.room.rawValue)
         let room = Room(host: host, sport: sport, location: location, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
         record.setValuesForKeys(room.toDictionary())

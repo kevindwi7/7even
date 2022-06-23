@@ -21,11 +21,11 @@ struct Room {
     var startTime: Date
     var endTime: Date
     var sex: String
-    var age: String
+    var age: [String]
     var levelOfPlay: String
 //    let participant: [User]
     
-    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: String, levelOfPlay: String) {
+    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String) {
         self.id = id
         self.host = host
         self.sport = sport
