@@ -34,6 +34,12 @@
 		C9B659462863FCF10074961A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659452863FCF10074961A /* LoginView.swift */; };
 		C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */; };
 		C9B6594B2863FE060074961A /* FavoriteSportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B6594A2863FE060074961A /* FavoriteSportCardView.swift */; };
+		C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */; };
+		C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */; };
+		C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F932865834100B7E6FE /* TabBarView.swift */; };
+		C9ED0F982865835900B7E6FE /* SharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F972865835900B7E6FE /* SharingView.swift */; };
+		C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F992865836300B7E6FE /* ProfileView.swift */; };
+		C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +72,12 @@
 		C9B659452863FCF10074961A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportSurveyView.swift; sourceTree = "<group>"; };
 		C9B6594A2863FE060074961A /* FavoriteSportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportCardView.swift; sourceTree = "<group>"; };
+		C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsSurveyView.swift; sourceTree = "<group>"; };
+		C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyPhotoPicker.swift; sourceTree = "<group>"; };
+		C9ED0F932865834100B7E6FE /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		C9ED0F972865835900B7E6FE /* SharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingView.swift; sourceTree = "<group>"; };
+		C9ED0F992865836300B7E6FE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +133,7 @@
 		46BA3FFC2861A8A1007A7EBF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9ED0F922865830B00B7E6FE /* TabBarView */,
 				C9B659472863FD310074961A /* SurveyView */,
 				C9B659422863FCA50074961A /* LoginView */,
 				46BA3FFE2861A8EE007A7EBF /* RoomView */,
@@ -215,8 +228,21 @@
 			children = (
 				C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */,
 				C9B6594A2863FE060074961A /* FavoriteSportCardView.swift */,
+				C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */,
+				C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */,
 			);
 			path = SurveyView;
+			sourceTree = "<group>";
+		};
+		C9ED0F922865830B00B7E6FE /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
+				C9ED0F972865835900B7E6FE /* SharingView.swift */,
+				C9ED0F992865836300B7E6FE /* ProfileView.swift */,
+				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
+			);
+			path = TabBarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,12 +316,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
+				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
+				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
+				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
+				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
 				4648E4E628632275003AECAC /* Location.swift in Sources */,
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
 				4648E4E42862FE58003AECAC /* LocationListView.swift in Sources */,
 				467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */,
+				C9ED0F982865835900B7E6FE /* SharingView.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
@@ -306,6 +337,7 @@
 				4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				467ABA8F28645EA500FC7631 /* RoomListView.swift in Sources */,
+				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
 				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
 				467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,

@@ -9,24 +9,24 @@ import SwiftUI
 
 struct TabBarView: View {
     var body: some View {
-            TabView{
-                ListRoomView()
-                    .tabItem{
-                        Label("Room", systemImage: "person.3")
-                    }
-                SharingView()
-                    .tabItem{
-                        Label("Sharing", systemImage: "star")
-                        
-                    }
-                ProfileView()
-                    .tabItem{
-                        Label("Profile", systemImage: "person")
-                        
-                    }
-            }
-    
-            .navigationBarBackButtonHidden(true)
+        TabView{
+            ListRoomView()
+                .tabItem{
+                    Label("Room", systemImage: "person.3")
+                }
+            SharingView()
+                .tabItem{
+                    Label("Sharing", systemImage: "star")
+                    
+                }
+            ProfileView()
+                .tabItem{
+                    Label("Profile", systemImage: "person")
+                    
+                }
+        }
+        
+        .navigationBarBackButtonHidden(true)
         
     }
 }
@@ -36,3 +36,4 @@ struct TabBarView_Previews: PreviewProvider {
         TabBarView()
     }
 }
+

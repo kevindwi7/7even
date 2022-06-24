@@ -2,7 +2,7 @@
 //  MoreDetailsSurveyView.swift
 //  7even
 //
-//  Created by Kevin  Dwi on 23/06/22.
+//  Created by Kevin  Dwi on 24/06/22.
 //
 
 import SwiftUI
