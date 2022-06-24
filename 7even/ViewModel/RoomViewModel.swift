@@ -10,6 +10,7 @@ import CloudKit
 
 enum RecordType: String {
     case room = "Room"
+    case survey = "Survey"
 }
 
 class RoomViewModel: ObservableObject {
@@ -32,6 +33,17 @@ class RoomViewModel: ObservableObject {
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
             
+        }
+    }
+    
+    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: String){
+        let record = CKRecord(recordType: RecordType.survey.rawValue)
+        let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport)
+        record.setValuesForKeys(survey.toDictionary())
+        
+        self.database.save(record){ returnedRecord, returnedError in
+            print("Record: \(returnedRecord)")
+            print("Error: \(returnedError)")
         }
     }
     

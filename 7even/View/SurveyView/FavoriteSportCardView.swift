@@ -9,22 +9,54 @@ import SwiftUI
 
 struct FavoriteSportCardView: View {
     var sport: Sport
+    
+    @Binding var selectedName: String
+    
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 10).fill(.white)
-                .shadow(radius: 5)
-            VStack{
-                HStack{
-                    Text(sport.name)
-                    Spacer()
-                    Image(sport.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 32)
-                }
-                
-            }.padding()
-        }.padding(.horizontal)
+        Button(action: {
+            print("Tab")
+            selectedName = sport.name
+        }) {
+            if selectedName == sport.name{
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10).fill(.gray)
+                        .shadow(radius: 5)
+                    VStack{
+                        HStack{
+                            Text(sport.name)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(sport.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 32)
+                        }
+                        
+                    }.padding()
+                }.padding(.horizontal)
+                   
+            }else{
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10).fill(.white)
+                        .shadow(radius: 5)
+                    VStack{
+                        HStack{
+                            Text(sport.name)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(sport.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 32)
+                        }
+                        
+                    }.padding()
+                }.padding(.horizontal)
+                    
+            }
+           
+        }
+        
         
     }
 }
