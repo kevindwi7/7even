@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D262866DDF70028F71E /* ListRoomCardView.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* RoomViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
@@ -17,7 +18,6 @@
 		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
 		4648E4F4286420BB003AECAC /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F3286420BB003AECAC /* Sex.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
-		467ABA8F28645EA500FC7631 /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8E28645EA500FC7631 /* RoomListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
 		467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
@@ -43,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46108D262866DDF70028F71E /* ListRoomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomCardView.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
 		4648E4F3286420BB003AECAC /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
-		467ABA8E28645EA500FC7631 /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
 		467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
@@ -92,29 +92,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		467ABA92286494A900FC7631 /* CreateRoom */ = {
-			isa = PBXGroup;
-			children = (
-				46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */,
-				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
-				4648E4E728633334003AECAC /* LocationButtonView.swift */,
-				4648E4E32862FE58003AECAC /* LocationListView.swift */,
-				46BA40012861AA89007A7EBF /* SheetButtonView.swift */,
-				467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */,
-				467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */,
-				467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */,
-			);
-			path = CreateRoom;
-			sourceTree = "<group>";
-		};
-		467ABA93286494CD00FC7631 /* RoomList */ = {
-			isa = PBXGroup;
-			children = (
-				467ABA8E28645EA500FC7631 /* RoomListView.swift */,
-			);
-			path = RoomList;
-			sourceTree = "<group>";
-		};
 		46BA3FFB2861A89B007A7EBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,8 +129,14 @@
 		46BA3FFE2861A8EE007A7EBF /* RoomView */ = {
 			isa = PBXGroup;
 			children = (
-				467ABA93286494CD00FC7631 /* RoomList */,
-				467ABA92286494A900FC7631 /* CreateRoom */,
+				46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */,
+				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
+				4648E4E728633334003AECAC /* LocationButtonView.swift */,
+				4648E4E32862FE58003AECAC /* LocationListView.swift */,
+				46BA40012861AA89007A7EBF /* SheetButtonView.swift */,
+				467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */,
+				467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */,
+				467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */,
 			);
 			path = RoomView;
 			sourceTree = "<group>";
@@ -241,6 +224,7 @@
 				C9ED0F972865835900B7E6FE /* SharingView.swift */,
 				C9ED0F992865836300B7E6FE /* ProfileView.swift */,
 				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
+				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
@@ -316,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
+				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
@@ -336,7 +321,6 @@
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
 				4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
-				467ABA8F28645EA500FC7631 /* RoomListView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
 				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
 				467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */,
