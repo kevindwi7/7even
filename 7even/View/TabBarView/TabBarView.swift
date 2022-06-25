@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct TabBarView: View {
     var body: some View {
         TabView{
-            ListRoomView()
+            ListRoomView(vm: MainViewModel(container: CKContainer.default()))
                 .tabItem{
                     Label("Room", systemImage: "person.3")
                 }
+            
             SharingView()
                 .tabItem{
                     Label("Sharing", systemImage: "star")

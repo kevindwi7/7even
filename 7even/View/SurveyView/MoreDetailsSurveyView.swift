@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct MoreDetailsSurveyView: View {
-    @StateObject private var roomViewModel: RoomViewModel
+    @StateObject private var roomViewModel: MainViewModel
     @State private var isShowingPhotoPicker = false
     @State private var avatarImage = UIImage(named: "apple")!
     
@@ -23,7 +23,7 @@ struct MoreDetailsSurveyView: View {
     var sportsWith = ["Strangers","Partners","Both"]
     var sport = Sport(id: "", name: "", image: "")
     
-    init(roomViewModel: RoomViewModel) {
+    init(roomViewModel: MainViewModel) {
         _roomViewModel = StateObject(wrappedValue: roomViewModel)
     }
     
@@ -119,6 +119,6 @@ struct MoreDetailsSurveyView: View {
 
 struct MoreDetailsSurveyView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreDetailsSurveyView(roomViewModel: RoomViewModel(container: CKContainer.default()))
+        MoreDetailsSurveyView(roomViewModel: MainViewModel(container: CKContainer.default()))
     }
 }

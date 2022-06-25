@@ -26,9 +26,14 @@ struct ListRoomView: View {
         "Other Rooms"
     ]
     
+    @StateObject var vm: MainViewModel
     @State var selectedRoom: String?
     let defaults = UserDefaults.standard
     
+    init(vm: MainViewModel) {
+        _vm = StateObject(wrappedValue: vm)
+    }
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -108,21 +113,26 @@ struct ListRoomView: View {
                                     }.padding(.vertical, 25)
                                 } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
-                                        ForEach(sports, id: \.self) { index in
-                                            ListRoomCardView(sport: index)
-                                            
-                                            if (index == sports.last) {
-                                                ListRoomCardView(sport: index, isAddRoomButton: true)
+                                        if(vm.rooms.isEmpty) {
+                                            Text("Add Data")
+                                        } else {
+                                            ForEach($vm.rooms, id: \.id) { $index in
+                                                ListRoomCardView(room: $index)
+                                                
+    //                                            if ( $index == $vm.rooms.last ) {
+    //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
+    //                                            }
                                             }
                                         }
+                                        
                                     }
                                     .frame(maxWidth: .infinity)
                                     .padding(.horizontal)
                                 }
                             } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
-                                        ForEach(sports, id: \.self) { index in
-                                            ListRoomCardView(sport: index)
+                                        ForEach($vm.rooms, id: \.id) { $index in
+                                            ListRoomCardView(room: $index)
                                         }
                                     }
                                     .frame(maxWidth: .infinity)
@@ -133,12 +143,15 @@ struct ListRoomView: View {
                     }
                 } // SCROLLVIEW
             } //VSTACK
+            .onAppear {
+                vm.fetchRoom()
+            }
         } //NAVIGATIONVIEW
     }
 }
 
 struct ListRoomView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRoomView()
+        ContentView()
     }
 }
