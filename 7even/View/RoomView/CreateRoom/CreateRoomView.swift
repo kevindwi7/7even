@@ -34,7 +34,7 @@ struct CreateRoomView: View {
     
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             
             GeometryReader { geometry in
                 
@@ -129,7 +129,7 @@ struct CreateRoomView: View {
                 .navigationTitle("Create Room")
                 .navigationBarTitleDisplayMode(.inline)
             }
-        }
+//        }
     }
 }
 

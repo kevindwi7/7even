@@ -13,8 +13,8 @@ struct _evenApp: App {
     var body: some Scene {
         WindowGroup {
 //            LoginView()
-            CreateRoomView(roomViewModel: RoomViewModel(container: CKContainer.default()))
-//            RoomListView()
+//            CreateRoomView(roomViewModel: RoomViewModel(container: CKContainer.default()))
+            RoomListView()
         }
     }
 }

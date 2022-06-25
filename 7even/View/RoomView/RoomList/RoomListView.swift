@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct RoomListView: View {
+    
+    private let adaptiveColumns = [
+        GridItem(.adaptive(minimum: 75)),
+        GridItem(.adaptive(minimum: 75)),
+        GridItem(.adaptive(minimum: 75))
+    ]
+    
+    private let adaptiveColumns2 = [
+        GridItem(.adaptive(minimum: 142)),
+        GridItem(.adaptive(minimum: 142))
+    ]
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
+        TabView {
+            NavigationView {
+                VStack(alignment: .leading) {
+                    // TITLE
                     LazyVStack(alignment: .leading) {
                         Text("Find a Room").bold()
                         Group {
@@ -19,36 +32,114 @@ struct RoomListView: View {
                             +
                             Text("FITS").bold().foregroundColor(.mint)
                             +
-                            Text("Your").bold()
+                            Text(" Your").bold()
                         }
                         Text("Sporting Preference").bold()
                     }
-                    .font(.largeTitle)
-//                    .padding(EdgeInsets(top: -50, leading: -10, bottom: 0, trailing: 0))
-                }
-                
-                .background(Color.red)
-                Spacer()
-            }
-            
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar { // <2>
-                ToolbarItem(placement: .navigationBarLeading) { //
-                    VStack {
-                        Text("Find a Room")
-                            .font(.largeTitle)
-                            .bold()
-//                        Text("that") + Text("Fits")
-//                            .font(.largeTitle)
-//                            .bold()
-//                        Text("Find a Room")
-//                            .font(.largeTitle)
-//                            .bold()
-                    }
-                }
-            }
-        }
-    }
+                    .font(.title)
+                    .padding(EdgeInsets(top: -94, leading: 16, bottom: 20, trailing: 0))
+                    
+                    // FILTER
+                    ScrollView(.vertical) {
+                        LazyVStack(alignment: .leading){
+                            HStack {
+                                LazyVGrid(columns: adaptiveColumns, spacing: 10) {
+                                    ForEach(sports, id: \.self) { sport in
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(Color(UIColor.systemGray6))
+                                                .frame(width: 80, height: 22)
+                                            
+                                            Text(sport.name)
+                                                .font(.caption2)
+                                        }
+                                        .onTapGesture {
+                                            print("Tap \(sport.name)")
+                                        }
+                                    }
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal)
+                                
+                                Group {
+                                    VStack{
+                                        Text("See All Filters")
+                                            .font(.caption)
+                                        Image(systemName: "globe")
+                                            .resizable()
+        //                                    .scaledToFit()
+                                            .frame(width: 20)
+                                    }
+                                    .frame(width: 80)
+                                    .onTapGesture {
+                                        print("Open Filter Sheet")
+                                    }
+                                }.padding(.horizontal)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    
+                        VStack(alignment: .leading) {
+                            Text("Rooms You Might Like")
+                                .bold()
+                                .font(.title2)
+                                .padding(.horizontal)
+                             
+                            LazyVGrid(columns: adaptiveColumns2, alignment: .center, spacing: 5) {
+                                ForEach(sports, id: \.self) { index in
+                                    NavigationLink(destination: Text("Detail Room"), label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(Color(UIColor.systemGray6))
+                                                .frame(width: 168, height: 127)
+                                                
+                                            Text("Room \(index.name)")
+                                        }
+                                        .onTapGesture {
+                                            print("Tap \(index.name)")
+                                        }
+                                    })
+                                    .padding(.vertical, 5)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal)
+                            
+                        } //VSTACK
+                         
+                        VStack(alignment: .leading) {
+                            Text("Other Rooms")
+                                .bold()
+                                .font(.title2)
+                                .padding(.horizontal)
+                             
+                            LazyVGrid(columns: adaptiveColumns2, alignment: .center, spacing: 5) {
+                                ForEach(sports, id: \.self) { index in
+                                    NavigationLink(destination: Text("Detail Room"), label: {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color(UIColor.systemGray6))
+                                                    .frame(width: 168, height: 127)
+                                                    
+                                                Text("Room \(index.name)")
+                                            }
+                                            .onTapGesture {
+                                                print("Tap \(index.name)")
+                                            }
+                                    })
+                                    .padding(.vertical, 5)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal)
+                            
+                        } //VSTACK
+                    } // SCROLLVIEW
+                } //VSTACK
+            } //NAVIGATIONVIEW
+        } //TABVIEW
+    } //BODY
 }
 
 struct RoomListView_Previews: PreviewProvider {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46108D23286542770028F71E /* Tes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D22286542770028F71E /* Tes.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* RoomViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46108D22286542770028F71E /* Tes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tes.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				467ABA8E28645EA500FC7631 /* RoomListView.swift */,
+				46108D22286542770028F71E /* Tes.swift */,
 			);
 			path = RoomList;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46108D23286542770028F71E /* Tes.swift in Sources */,
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
