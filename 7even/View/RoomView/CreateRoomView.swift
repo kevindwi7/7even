@@ -11,7 +11,7 @@ import CloudKit
 struct CreateRoomView: View {
     
     var isEnabled = false
-    @StateObject private var roomViewModel: RoomViewModel
+    @StateObject private var vm: MainViewModel
     @State private var minimumParticipant = ""
     @State private var maximumParticipant = ""
     @State private var price = ""
@@ -30,8 +30,8 @@ struct CreateRoomView: View {
 
     @FocusState private var inputIsFocused: Bool
     
-    init(roomViewModel: RoomViewModel) {
-        _roomViewModel = StateObject(wrappedValue: roomViewModel)
+    init(vm: MainViewModel) {
+        _vm = StateObject(wrappedValue: vm)
     }
     
     var body: some View {
@@ -85,8 +85,9 @@ struct CreateRoomView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    roomViewModel.createRoom(host: "SDFSF", sport: sportName, location: location.name, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
-                    self.presentationMode.wrappedValue.dismiss()
+                    print(vm.rooms)
+                    vm.createRoom(host: "SDFSF", sport: sportName, location: location.name, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
+//                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Create")
                         .padding(5)
@@ -116,7 +117,7 @@ struct CreateRoomView: View {
 
 struct CreateRoomView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateRoomView(roomViewModel: RoomViewModel(container: CKContainer.default()))
+        CreateRoomView(vm: MainViewModel(container: CKContainer.default()))
             .previewDevice("iPhone 13")
     }
 }

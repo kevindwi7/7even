@@ -85,7 +85,7 @@ struct FavoriteSportSurveyView: View {
         .navigationTitle("What do you want to play?")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
-            NavigationLink(destination: MoreDetailsSurveyView(roomViewModel: RoomViewModel(container: CKContainer.default()))){
+            NavigationLink(destination: MoreDetailsSurveyView(roomViewModel: MainViewModel(container: CKContainer.default()))){
                 Text("Next")
                 
             }

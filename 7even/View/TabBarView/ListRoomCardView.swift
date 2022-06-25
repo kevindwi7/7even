@@ -10,14 +10,20 @@ import CloudKit
 
 struct ListRoomCardView: View {
     
-    var sport: Sport
+    @Binding var room: RoomViewModel
     var isAddRoomButton = false
     @State var isActive = false
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }
     
     var body: some View {
         if(!isAddRoomButton) {
             Button(action: {
-                print("Tap \(sport.name)")
+                print("Tap \(room.sport)")
                 self.isActive = true
             }) {
                 ZStack {
@@ -28,11 +34,11 @@ struct ListRoomCardView: View {
                     
                     VStack {
                         VStack(alignment: .leading, spacing: 5){
-                            Text("\(sport.name)")
+                            Text(room.sport)
                                 .bold()
-                            Text("Surabaya Barat")
+                            Text(room.region)
                                 .font(.subheadline)
-                            Text("20 Jul 2022")
+                            Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
                             
                             
@@ -45,7 +51,7 @@ struct ListRoomCardView: View {
                                     .fill(Color(UIColor.systemGreen))
                                     .frame(width: 9, height: 9)
                                 
-                                Text("Recreational")
+                                Text(room.levelOfPlay)
                                     .font(.caption)
                             }
                             
@@ -54,7 +60,7 @@ struct ListRoomCardView: View {
                                 Circle()
                                     .strokeBorder(.mint)
                                     .frame(width: 30, height: 30)
-                                Text("10/12")
+                                Text("\(room.minimumParticipant)/\(room.maximumParticipant)")
                                     .font(.caption2)
                                     .foregroundColor(.mint)
                             }
@@ -65,7 +71,7 @@ struct ListRoomCardView: View {
                 } //ZSTACK
             } //BUTTON
             .background(
-                NavigationLink(destination: Text(sport.name), isActive: $isActive, label: {
+                NavigationLink(destination: Text(room.sport), isActive: $isActive, label: {
                     EmptyView()
                 })
             )
@@ -73,7 +79,7 @@ struct ListRoomCardView: View {
         }
         else {
             Button(action: {
-                print("Tap \(sport.name)")
+                print("Tap \(room.sport)")
                 self.isActive = true
             }) {
                 ZStack {
@@ -88,7 +94,7 @@ struct ListRoomCardView: View {
                 } //ZSTACK
             } //BUTTON
             .background(
-                NavigationLink(destination: CreateRoomView(roomViewModel: RoomViewModel(container: CKContainer.default())), isActive: $isActive, label: {
+                NavigationLink(destination: CreateRoomView(vm: MainViewModel(container: CKContainer.default())), isActive: $isActive, label: {
                     EmptyView()
                 })
             )
@@ -100,6 +106,6 @@ struct ListRoomCardView: View {
 
 struct ListRoomCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRoomView()
+        ContentView()
     }
 }
