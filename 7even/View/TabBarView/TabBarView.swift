@@ -21,13 +21,13 @@ struct TabBarView: View {
                     Label("Sharing", systemImage: "star")
                     
                 }
-            ProfileView()
+            ProfileView(vm: MainViewModel(container: CKContainer.default()))
                 .tabItem{
                     Label("Profile", systemImage: "person")
                     
                 }
         }
-        
+        .accentColor(.mint)
         .navigationBarBackButtonHidden(true)
         
     }

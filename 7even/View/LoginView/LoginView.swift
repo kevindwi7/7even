@@ -13,6 +13,7 @@ import CloudKit
 
 struct LoginView: View {
     @AppStorage("login") private var login = false
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -98,7 +99,8 @@ struct LoginView: View {
                     .frame(width:250,height:50)         // Set Button Size (Read iOS 14 beta 7 release note)
                     Spacer()
                 }else{
-                    NavigationLink(destination: FavoriteSportSurveyView()){
+                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()))
+                    ){
                         Text("SignIn")
                     }
                 }

@@ -9,43 +9,17 @@ import SwiftUI
 import CloudKit
 
 struct FavoriteSportSurveyView: View {
-    @State var searchText = ""
+    @Binding var isPresented: Bool
+    @Binding var selectedSport: [String]
     @State var sportName = ""
-    @State var selectedFavoriteSportCard: String = ""
+    @State var searchText = ""
+    //    @State var selectedFavoriteSportCard: [String]
     
-//    @State var selectedName:String = ""
+    @State var isCheckes = false
+    
     var body: some View {
         NavigationView{
-            //            Text("").navigationBarTitleDisplayMode(.inline).toolbar{
-            //                ToolbarItem(placement: .principal){
-            //                    VStack{
-            //                        HStack{
-            //                            Spacer()
-            //                            Text("What do you want to play?").frame(alignment:.center)
-            //                            Spacer()
-            //                            NavigationLink(destination: ContentView()){
-            //                                Text("Next")
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
             VStack(alignment: .leading, spacing: 0){
-                
-                //                HStack{
-                //                    Image("search")
-                //                        .resizable()
-                //                        .scaledToFit()
-                //                        .frame(height:18)
-                //                        .font(.system(size: 23, weight: .bold))
-                //                        .foregroundColor(.gray)
-                //
-                //                    TextField("Search", text: $searchText)
-                //                }.padding(.vertical,10)
-                //                    .padding(.horizontal)
-                //                    .background(Color.primary.opacity(0.05))
-                //                    .cornerRadius(8)
-                //                    .padding(.horizontal)
                 HStack{
                     Text("Select Maximum 2 Sports")
                         .fontWeight(.bold)
@@ -55,46 +29,98 @@ struct FavoriteSportSurveyView: View {
                 Spacer()
                 
                 VStack(spacing:15){
-//                    List(selection: $selectedFavoriteSportCard){
-                        ForEach(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}){ Sport in
+                    List (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
+                        Button(action: {
+                            for index in selectedSport {
+                                if (index == sport.name){
+                                    // MARK BUTTON AS CHECKED
+                                    if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                        sports[matchingIndex].isCheckes = true
+                                    }
+                                }
+                            }
                             
-                            FavoriteSportCardView(sport: Sport, selectedName: $selectedFavoriteSportCard)
+                            if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                sports[matchingIndex].isCheckes.toggle()
+                                
+                                if(sports[matchingIndex].isCheckes == true) {
+                                    self.selectedSport.append(sport.name)
+                                } else {
+                                    let match = self.selectedSport.firstIndex(where: { $0 == sport.name})
+                                    self.selectedSport.remove(at: match ?? 0)
+                                }
+                            }
+                            print(selectedSport)
+                        }){
                             
-                        }
-//                    }.listStyle(.inset)
-                    
-                    
+                            if(sport.isCheckes == true){
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10).fill(.mint)
+                                        .shadow(radius: 5)
+                                    VStack{
+                                        HStack{
+                                            Text(sport.name)
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                            Image(sport.image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: 32)
+                                        }
+                                        
+                                    }.padding()
+                                }.padding(.horizontal)
+                            }else{
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10).fill(.white)
+                                        .shadow(radius: 5)
+                                    VStack{
+                                        HStack{
+                                            Text(sport.name)
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                            Image(sport.image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: 32)
+                                        }
+                                        
+                                    }.padding()
+                                }.padding(.horizontal)
+                            }
+                            
+                        }.listRowSeparator(.hidden)
+                        
+                            .listRowSeparator(.hidden)
+                            .listStyle(.plain)
+                        
+                        
+                        Spacer()
+                    }
+                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+                    .padding(.top,10)
                     Spacer()
-                }.padding(.top,10)
-                Spacer()
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            //
-        }
-        .padding()
-        .searchable(text: $searchText)
-        .navigationBarBackButtonHidden(true)
-        .navigationTitle("What do you want to play?")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar{
-            NavigationLink(destination: MoreDetailsSurveyView(roomViewModel: MainViewModel(container: CKContainer.default()))){
-                Text("Next")
+                }
+                
+                .padding()
+                .navigationBarBackButtonHidden(true)
+                .navigationTitle("What do you want to play?")
+                .navigationBarTitleDisplayMode(.inline)
+                //                .toolbar{
+                //                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()))){
+                //                        Text("Next")
+                //
+                //                    }
+                //                }
+                //
                 
             }
         }
+        
     }
 }
-
-struct FavoriteSportSurveyView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteSportSurveyView()
-    }
-}
+//struct FavoriteSportSurveyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FavoriteSportSurveyView()
+//    }
+//}

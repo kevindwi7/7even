@@ -11,12 +11,13 @@ struct Sport: Identifiable, Hashable {
     var id = UUID().uuidString
     var name: String
     var image:String
+    var isCheckes: Bool
 }
 
 var sports = [
-    Sport(name: "Badminton", image: "badminton"),
-    Sport(name: "Basketball",image: "basketball"),
-    Sport(name: "Tennis", image: "tennis"),
-    Sport(name: "Futsal",image: "soccer"),
-    Sport(name: "Volleyball", image: "volleyball"),
+    Sport(name: "Badminton", image: "badminton", isCheckes: false),
+    Sport(name: "Basketball",image: "basketball", isCheckes: false),
+    Sport(name: "Tennis", image: "tennis", isCheckes: false),
+    Sport(name: "Futsal",image: "soccer", isCheckes: false),
+    Sport(name: "Volleyball", image: "volleyball", isCheckes: false),
 ]

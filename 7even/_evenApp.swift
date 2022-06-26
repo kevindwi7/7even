@@ -10,10 +10,12 @@ import CloudKit
 
 @main
 struct _evenApp: App {
+
     var body: some Scene {
         WindowGroup {
-//            LoginView()
+//            FavoriteSportSurveyView()
             TabBarView()
+//            TabBarView()
 //            CreateRoomView(vm: MainViewModel(container: CKContainer.default()))
             
         }

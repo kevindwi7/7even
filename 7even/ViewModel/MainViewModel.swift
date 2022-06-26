@@ -19,6 +19,8 @@ class MainViewModel: ObservableObject {
     private var container: CKContainer
     
     @Published var rooms: [RoomViewModel] = []
+    @Published var surveys: [SurveyViewModel] = []
+    
     
     init(container: CKContainer) {
         self.container = container
@@ -85,7 +87,7 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: String){
+    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String]){
         let record = CKRecord(recordType: RecordType.survey.rawValue)
         let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport)
         record.setValuesForKeys(survey.toDictionary())
@@ -93,6 +95,45 @@ class MainViewModel: ObservableObject {
         self.database.save(record){ returnedRecord, returnedError in
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
+        }
+    }
+    
+    func fetchSurvey(){
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: RecordType.survey.rawValue, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        
+        var returnedSurveys: [Survey] = []
+        
+
+        self.database.fetch(withQuery: query) { result in
+            switch result {
+            case .success(let result):
+
+                result.matchResults.compactMap { $0.1 }
+                    .forEach {
+                        switch $0 {
+                        case .success(let record):
+                            
+                            if let survey = Survey.fromRecord(record) {
+                                returnedSurveys.append(survey)
+                                print("GAADA KAN")
+                            }
+                            print(returnedSurveys)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                
+                DispatchQueue.main.async {
+                    self.surveys = returnedSurveys.map(SurveyViewModel.init)
+                    print("31 \(self.surveys)")
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 
