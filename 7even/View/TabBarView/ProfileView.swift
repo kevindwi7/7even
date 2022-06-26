@@ -137,8 +137,6 @@ struct ProfileView: View {
                 
                 
                 
-            }.onAppear{
-                vm.fetchSurvey()
             }
             .padding()
             Spacer()
