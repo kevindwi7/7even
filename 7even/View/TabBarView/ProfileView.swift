@@ -134,14 +134,11 @@ struct ProfileView: View {
                         
                     }
                 }
-                
-                
-                
+            }.onAppear{
+                vm.fetchSurvey()
             }
             .padding()
             Spacer()
-        }.onAppear{
-            vm.fetchSurvey()
         }
         //        }.navigationBarHidden(true)
         
