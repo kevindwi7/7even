@@ -13,9 +13,10 @@ import CloudKit
 
 struct LoginView: View {
     @AppStorage("login") private var login = false
+    @Binding var toMainPage: Bool
+    @State var isContentView = true
     
     var body: some View {
-        NavigationView{
             VStack{
                 Image("apple")
                     .resizable()
@@ -99,19 +100,19 @@ struct LoginView: View {
                     .frame(width:250,height:50)         // Set Button Size (Read iOS 14 beta 7 release note)
                     Spacer()
                 }else{
-                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()))
+                    NavigationLink(destination: FavoriteSportSurveyView( selectedSport: [], toMainPage: $toMainPage)
                     ){
                         Text("SignIn")
                     }
                 }
             }
             
-        }
+        
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
