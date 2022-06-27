@@ -10,7 +10,7 @@
 		46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D262866DDF70028F71E /* ListRoomCardView.swift */; };
 		46108D29286782130028F71E /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D28286782130028F71E /* RoomViewModel.swift */; };
 		46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D2D286943BD0028F71E /* DetailRoomView.swift */; };
-		46108D30286974CC0028F71E /* TextfieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D2F286974CC0028F71E /* TextfieldAlert.swift */; };
+		46108D3228698E560028F71E /* AlertControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D3128698E560028F71E /* AlertControl.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
@@ -52,7 +52,7 @@
 		46108D28286782130028F71E /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		46108D2C286940410028F71E /* 7even.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = 7even.entitlements; path = ../../7even.entitlements; sourceTree = "<group>"; };
 		46108D2D286943BD0028F71E /* DetailRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRoomView.swift; sourceTree = "<group>"; };
-		46108D2F286974CC0028F71E /* TextfieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldAlert.swift; sourceTree = "<group>"; };
+		46108D3128698E560028F71E /* AlertControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControl.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */,
-				46108D2F286974CC0028F71E /* TextfieldAlert.swift */,
+				46108D3128698E560028F71E /* AlertControl.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -324,6 +324,7 @@
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
 				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
+				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
 				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
 				4648E4E628632275003AECAC /* Location.swift in Sources */,
 				C9E67AF1286884EB007B63D5 /* SurveyViewModel.swift in Sources */,
@@ -346,7 +347,6 @@
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				C910EE1228657D1F00696237 /* Survey.swift in Sources */,
-				46108D30286974CC0028F71E /* TextfieldAlert.swift in Sources */,
 				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
 				4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */,
 			);

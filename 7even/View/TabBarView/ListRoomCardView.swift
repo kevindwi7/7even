@@ -12,10 +12,10 @@ struct ListRoomCardView: View {
     
     @Binding var room: RoomViewModel
     var isAddRoomButton = false
-    
     @State var isActive = false
     @State var isPresented = false
     @State var roomCode = ""
+    
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()

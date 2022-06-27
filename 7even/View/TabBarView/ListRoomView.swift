@@ -121,11 +121,12 @@ struct ListRoomView: View {
                                             Text("Add Data")
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
+                                                
                                                 ListRoomCardView(room: $index)
 
-    //                                            if ( $index == $vm.rooms.last ) {
-    //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
-    //                                            }
+                                                if ( index == vm.rooms.last ) {
+                                                    ListRoomCardView(room: $index, isAddRoomButton: true)
+                                                }
                                             }
                                         }
                                         
@@ -147,10 +148,13 @@ struct ListRoomView: View {
                     }
                 } // SCROLLVIEW
             } //VSTACK
-            .onAppear {
-                vm.fetchRoom()
-            }
         } //NAVIGATIONVIEW
+        .onAppear {
+            vm.fetchRoom()
+        }
+        .onReceive(vm.objectWillChange) { _ in
+            vm.fetchRoom()
+        }
     }
 }
 
