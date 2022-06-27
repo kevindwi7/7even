@@ -107,9 +107,9 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String]){
+    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],email: String){
         let record = CKRecord(recordType: RecordType.survey.rawValue)
-        let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport)
+        let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport,email: email)
         record.setValuesForKeys(survey.toDictionary())
         
         self.database.save(record){ returnedRecord, returnedError in
@@ -135,7 +135,6 @@ final class MainViewModel: ObservableObject {
                     .forEach {
                         switch $0 {
                         case .success(let record):
-                            
                             if let survey = Survey.fromRecord(record) {
                                 returnedSurveys.append(survey)
                             }

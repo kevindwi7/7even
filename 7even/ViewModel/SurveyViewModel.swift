@@ -34,4 +34,8 @@ struct SurveyViewModel{
     var favoriteSport: [String]{
         survey.favoriteSport
     }
+    
+    var email: String{
+        survey.email
+    }
 }

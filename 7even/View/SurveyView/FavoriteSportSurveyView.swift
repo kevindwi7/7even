@@ -14,9 +14,8 @@ struct FavoriteSportSurveyView: View {
     @State var searchText = ""
     //    @State var selectedFavoriteSportCard: [String]
     @Binding var toMainPage: Bool
-    @State var isCheckes = false
+    @State var isCheck = false
     @State var isContentView = true
-    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
@@ -29,21 +28,22 @@ struct FavoriteSportSurveyView: View {
             Spacer()
             
             VStack(spacing:15){
-                List (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
+                //                (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self)
+                List(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
                     Button(action: {
                         for index in selectedSport {
                             if (index == sport.name){
                                 // MARK BUTTON AS CHECKED
                                 if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
-                                    sports[matchingIndex].isCheckes = true
+                                    sports[matchingIndex].isCheck = true
                                 }
                             }
                         }
                         
                         if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
-                            sports[matchingIndex].isCheckes.toggle()
+                            sports[matchingIndex].isCheck.toggle()
                             
-                            if(sports[matchingIndex].isCheckes == true) {
+                            if(sports[matchingIndex].isCheck == true) {
                                 self.selectedSport.append(sport.name)
                             } else {
                                 let match = self.selectedSport.firstIndex(where: { $0 == sport.name})
@@ -53,9 +53,9 @@ struct FavoriteSportSurveyView: View {
                         print(selectedSport)
                     }){
                         
-                        if(sport.isCheckes == true){
+                        if(sport.isCheck == true){
                             ZStack{
-                                RoundedRectangle(cornerRadius: 10).fill(Color.red)
+                                RoundedRectangle(cornerRadius: 10).stroke(.mint, lineWidth: 2)
                                     .shadow(radius: 5)
                                 VStack{
                                     HStack{
@@ -66,11 +66,14 @@ struct FavoriteSportSurveyView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(height: 32)
+                                        
                                     }
                                     
                                 }.padding()
-                            }.padding(.horizontal)
-                                .listRowSeparator(.hidden)
+                            }
+                            .foregroundColor(.mint)
+                            .padding(.horizontal)
+                            .listRowSeparator(.hidden)
                         }else{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
@@ -87,32 +90,45 @@ struct FavoriteSportSurveyView: View {
                                     }
                                     
                                 }.padding()
-                            }.padding(.horizontal)
-                                .listRowSeparator(.hidden)
+                            }
+                            .padding(.horizontal)
+                            .listRowSeparator(.hidden)
+                            
+                            
                         }
                         
-                    }.listRowSeparator(.hidden)
+                    }
                     
-                        .listRowSeparator(.hidden)
-                        .listStyle(.plain)
+                    .listRowSeparator(.hidden)
                     
+                    .listRowSeparator(.hidden)
+                    .listStyle(.plain)
                     
                     Spacer()
                 }.listStyle(.plain)
                     .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
                     .padding(.top,10)
-                Spacer()
-            }.listRowSeparator(.hidden)
-            
-                .padding()
-                .navigationTitle("What do you want to play?")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar{
-                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
+                
+                
+                HStack{
+                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)
+                    ){
                         Text("Next")
                         
                     }
                 }
+                Spacer()
+            }
+            .listRowSeparator(.hidden)
+            .padding()
+            .navigationTitle("What do you want to play?")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
+                    Text("Skip").foregroundColor(.mint)
+                    
+                }
+            }
             
             
         }
