@@ -25,9 +25,16 @@ struct DetailRoomView: View {
     
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
+    @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
     
     @Environment(\.presentationMode) var presentationMode
+    
+    func deleteRoom(_ item: RoomViewModel) {
+        if let recordId = room.id {
+            vm.deleteRoom(recordId)
+        }
+    }
     
     func ageString(arr: [String]) -> String {
         var tempMin = 0
@@ -198,7 +205,7 @@ struct DetailRoomView: View {
                     .padding(5)
                     
                     Button(action: {
-                        
+                        deleteRoom(room)
                     }) {
                         Text("Delete Room")
                             .bold()

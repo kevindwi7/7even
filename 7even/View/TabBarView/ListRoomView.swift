@@ -122,10 +122,10 @@ struct ListRoomView: View {
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 
-                                                ListRoomCardView(room: $index)
+                                                ListRoomCardView(vm: self.vm, room: $index)
 
                                                 if ( index == vm.rooms.last ) {
-                                                    ListRoomCardView(room: $index, isAddRoomButton: true)
+                                                    ListRoomCardView(vm: self.vm, room: $index, isAddRoomButton: true)
                                                 }
                                             }
                                         }
@@ -137,7 +137,7 @@ struct ListRoomView: View {
                             } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
                                         ForEach($vm.rooms, id: \.id) { $index in
-                                            ListRoomCardView(room: $index)
+                                            ListRoomCardView(vm: self.vm, room: $index)
                                         }
                                     }
                                     .frame(maxWidth: .infinity)

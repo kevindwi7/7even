@@ -59,7 +59,6 @@ final class MainViewModel: ObservableObject {
         
         var returnedRooms: [Room] = []
         
-
         self.database.fetch(withQuery: query) { result in
             switch result {
             case .success(let result):
@@ -88,6 +87,22 @@ final class MainViewModel: ObservableObject {
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+//    func updateItem(room: RoomViewModel, price: Decimal){
+//        let price = room.price
+//        room["price"] = price
+//        createRoom(price: price)
+//    }
+    
+    func deleteRoom(_ recordId: CKRecord.ID){
+        database.delete(withRecordID: recordId) { deletedRecordId, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.fetchRoom()
             }
         }
     }
