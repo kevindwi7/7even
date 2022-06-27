@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct EditProfileView: View {
+    @Binding var toMainPage: Bool
     var body: some View {
         Text("Edit")
     }
 }
-
-struct EditProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditProfileView()
-    }
-}
+//
+//struct EditProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditProfileView()
+//    }
+//}

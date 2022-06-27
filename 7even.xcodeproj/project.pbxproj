@@ -33,6 +33,8 @@
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
 		C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0B28602E5900677561 /* Preview Assets.xcassets */; };
 		C910EE1228657D1F00696237 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910EE1128657D1F00696237 /* Survey.swift */; };
+		C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A3286A2CB1001BFDC6 /* SportWith.swift */; };
+		C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */; };
 		C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659432863FCCC0074961A /* FavoriteSportList.swift */; };
 		C9B659462863FCF10074961A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659452863FCF10074961A /* LoginView.swift */; };
 		C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */; };
@@ -49,7 +51,6 @@
 /* Begin PBXFileReference section */
 		46108D262866DDF70028F71E /* ListRoomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomCardView.swift; sourceTree = "<group>"; };
 		46108D28286782130028F71E /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
-		46108D2C286940410028F71E /* 7even.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = 7even.entitlements; path = ../../7even.entitlements; sourceTree = "<group>"; };
 		46108D2D286943BD0028F71E /* DetailRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRoomView.swift; sourceTree = "<group>"; };
 		46108D3128698E560028F71E /* AlertControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControl.swift; sourceTree = "<group>"; };
 		4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonField.swift; sourceTree = "<group>"; };
@@ -75,6 +76,8 @@
 		C90D4A0828602E5900677561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90D4A0B28602E5900677561 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C910EE1128657D1F00696237 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		C9A677A3286A2CB1001BFDC6 /* SportWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportWith.swift; sourceTree = "<group>"; };
+		C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreferredSportView.swift; sourceTree = "<group>"; };
 		C9B659432863FCCC0074961A /* FavoriteSportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportList.swift; sourceTree = "<group>"; };
 		C9B659452863FCF10074961A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportSurveyView.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 				4648E4F1286419E1003AECAC /* LevelOfPlay.swift */,
 				4648E4F3286420BB003AECAC /* Sex.swift */,
 				C910EE1128657D1F00696237 /* Survey.swift */,
+				C9A677A3286A2CB1001BFDC6 /* SportWith.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +213,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C9A677A5286A3243001BFDC6 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				C9E67AF428689DF9007B63D5 /* EditProfileView.swift */,
+				C9ED0F992865836300B7E6FE /* ProfileView.swift */,
+				C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		C9B659422863FCA50074961A /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,12 +244,11 @@
 		C9ED0F922865830B00B7E6FE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
+				C9A677A5286A3243001BFDC6 /* ProfileView */,
 				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
 				C9ED0F972865835900B7E6FE /* SharingView.swift */,
-				C9ED0F992865836300B7E6FE /* ProfileView.swift */,
 				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
 				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
-				C9E67AF428689DF9007B63D5 /* EditProfileView.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
@@ -313,7 +326,9 @@
 				46108D29286782130028F71E /* RoomViewModel.swift in Sources */,
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
+				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
+				C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */,
 				4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */,
 				46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
@@ -473,7 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -503,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

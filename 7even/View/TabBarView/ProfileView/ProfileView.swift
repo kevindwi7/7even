@@ -123,7 +123,16 @@ struct ProfileView: View {
                                     HStack{
                                         Text("Preferred Sports").font(.system(size: 16))
                                         Spacer()
-                                        Image(systemName: "plus").resizable().scaledToFit().frame(height: 18).foregroundColor(.mint)
+                                        NavigationLink(destination: EditProfileView(toMainPage: $isContentView), isActive: $isContentView){
+                                            EmptyView()
+                                            //
+                                        }
+                                        Button(action: {
+                                            isContentView = true
+                                        }){
+                                            Image(systemName: "plus").resizable().scaledToFit().frame(height: 18).foregroundColor(.mint)
+                                        }
+
                                     }
                                     .padding(.horizontal, 24)
                                     .padding(.vertical,5)
@@ -330,7 +339,8 @@ struct ProfileView: View {
                     Spacer()
                 }
             }
-        }
+        }.navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
         
     }
 }
