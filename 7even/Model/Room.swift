@@ -24,9 +24,10 @@ struct Room {
     var sex: String
     var age: [String]
     var levelOfPlay: String
-    let participant: [String]
+    var participant: [String]
+    let roomCode: String
     
-    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String]) {
+    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String) {
         self.id = id
         self.host = host
         self.sport = sport
@@ -43,10 +44,11 @@ struct Room {
         self.age = age
         self.levelOfPlay = levelOfPlay
         self.participant = participant
+        self.roomCode = roomCode
     }
     
     func toDictionary() -> [String: Any]{
-        return ["host": host, "sport": sport, "location": location, "address": address,"region": region, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant]
+        return ["host": host, "sport": sport, "location": location, "address": address,"region": region, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant, "roomCode": roomCode]
     }
     
     static func fromRecord(_ record: CKRecord) -> Room? {
@@ -65,13 +67,14 @@ struct Room {
             let sex = record.value(forKey: "sex") as? String,
             let age = record.value(forKey: "age") as? [String],
             let levelOfPlay = record.value(forKey: "levelOfPlay") as? String,
-            let participant = record.value(forKey: "participant") as? [String]
+            let participant = record.value(forKey: "participant") as? [String],
+            let roomCode = record.value(forKey: "roomCode") as? String
         else {
             print("Tessss")
             return nil
         }
 //        print(levelOfPlay)
         
-        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant)
+        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode)
     }
 }

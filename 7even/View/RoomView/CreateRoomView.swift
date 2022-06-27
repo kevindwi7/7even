@@ -25,6 +25,7 @@ struct CreateRoomView: View {
     @State var sex = ""
     @State var levelOfPlay = ""
     @State var sportName = ""
+    @State var roomCode = ""
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -88,7 +89,10 @@ struct CreateRoomView: View {
                 Spacer()
                 Button(action: {
                     print(vm.rooms)
-                    vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""])
+                    if isPrivateRoom {
+                        roomCode = "ABCDE"
+                    }
+                    vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""], roomCode: roomCode)
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Create")

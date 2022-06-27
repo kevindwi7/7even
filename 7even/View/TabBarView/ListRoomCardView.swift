@@ -12,7 +12,10 @@ struct ListRoomCardView: View {
     
     @Binding var room: RoomViewModel
     var isAddRoomButton = false
+    
     @State var isActive = false
+    @State var isPresented = false
+    @State var roomCode = ""
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -21,11 +24,22 @@ struct ListRoomCardView: View {
         return formatter
     }
     
+    let userID = UserDefaults.standard.object(forKey: "userID") as? String
+    
     var body: some View {
         if(!isAddRoomButton) {
             Button(action: {
-                print("Tap \(room.sport)")
-                self.isActive = true
+                print(userID)
+                print(isPresented)
+                if(room.isPrivateRoom && (room.participant.contains(userID!)) == false ){
+                    self.isPresented = true
+                    print("sini")
+                } else {
+                    print("Tap \(room.sport)")
+                    print(room.participant)
+                    self.isActive = true
+                }
+                
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -66,12 +80,17 @@ struct ListRoomCardView: View {
                         } //HSTACK
                     } //VSTACK
                     .foregroundColor(Color.primary)
+                    
                 } //ZSTACK
             } //BUTTON
             .background(
                 NavigationLink(destination: DetailRoomView(room: $room), isActive: $isActive, label: {
                     EmptyView()
                 })
+            )
+            .background(
+                AlertControl(textString: self.$roomCode, show: self.$isPresented, room: $room, isActive: $isActive,
+                             title: "Private Sports Room", message: "You can get your room's code from the host")
             )
             .padding(.vertical, 5)
         }
