@@ -28,6 +28,8 @@ struct DetailRoomView: View {
     @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
     
+    @State var hasJoined: Bool = false
+    @State var isPresented: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     func deleteRoom(_ item: RoomViewModel) {
@@ -224,8 +226,8 @@ struct DetailRoomView: View {
                 if(room.participant.contains(userID!)) {
                     HStack {
                         Button(action: {
-//                            room.participant.removeAll(where: $0 == userID)
-                            self.presentationMode.wrappedValue.dismiss()
+                            self.isPresented = true
+                            print(room.participant)
                         }) {
                             Text("Leave Room")
                                 .bold()
@@ -235,6 +237,15 @@ struct DetailRoomView: View {
                         .tint(.red)
                         .buttonStyle(.borderedProminent)
                         .padding(5)
+                        .alert("Are you sure to leave this room?", isPresented: $isPresented) {
+                            Button(role: .destructive, action: {
+//                                self.hasJoined = false
+                                vm.updateItem(room: room, participantID: userID!, command: "leave")
+                                self.presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Text("Leave")
+                            }
+                        }
                         
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 35, height: 36, alignment: .center)
@@ -244,14 +255,17 @@ struct DetailRoomView: View {
                 } else {
                     HStack {
                         Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
+                            vm.updateItem(room: room, participantID: userID!, command: "join")
+//                            self.presentationMode.wrappedValue.dismiss()
+                            print(room.participant)
+//                            self.hasJoined = true
                         }) {
                             Text("Join Room")
                                 .bold()
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 50)
                         }
-                        .tint(.mint)
+                        .tint(hasJoined == true ? .red : .mint)
                         .buttonStyle(.borderedProminent)
                         .padding(5)
                         
@@ -266,6 +280,12 @@ struct DetailRoomView: View {
         .padding(.horizontal)
         .navigationTitle(room.sport)
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            vm.fetchRoom()
+        }
+        .onReceive(vm.objectWillChange) { _ in
+            vm.fetchRoom()
+        }
     }
 }
 
