@@ -70,10 +70,8 @@ struct Room {
             let participant = record.value(forKey: "participant") as? [String],
             let roomCode = record.value(forKey: "roomCode") as? String
         else {
-            print("Tessss")
             return nil
         }
-//        print(levelOfPlay)
         
         return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode)
     }

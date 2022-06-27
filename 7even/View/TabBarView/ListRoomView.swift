@@ -129,11 +129,12 @@ struct ListRoomView: View {
                                             Text("Add Data")
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
-                                                ListRoomCardView(room: $index)
+                                                
+                                                ListRoomCardView(vm: self.vm, room: $index)
 
-    //                                            if ( $index == $vm.rooms.last ) {
-    //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
-    //                                            }
+                                                if ( index == vm.rooms.last ) {
+                                                    ListRoomCardView(vm: self.vm, room: $index, isAddRoomButton: true)
+                                                }
                                             }
                                         }
                                         
@@ -142,10 +143,10 @@ struct ListRoomView: View {
                                     .padding(.horizontal)
                                 }
                             } else {
-                                LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
-                                    ForEach($vm.rooms, id: \.id) { $index in
-                                        ListRoomCardView(room: $index)
-                                    }
+                                    LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
+                                        ForEach($vm.rooms, id: \.id) { $index in
+                                            ListRoomCardView(vm: self.vm, room: $index)
+                                        }
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal)
@@ -155,10 +156,13 @@ struct ListRoomView: View {
                     }
                 } // SCROLLVIEW
             } //VSTACK
-            .onAppear {
-                vm.fetchRoom()
-            }
         } //NAVIGATIONVIEW
+        .onAppear {
+            vm.fetchRoom()
+        }
+        .onReceive(vm.objectWillChange) { _ in
+            vm.fetchRoom()
+        }
     }
 }
 

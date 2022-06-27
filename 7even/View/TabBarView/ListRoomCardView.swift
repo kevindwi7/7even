@@ -10,12 +10,13 @@ import CloudKit
 
 struct ListRoomCardView: View {
     
+    @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
     var isAddRoomButton = false
-    
     @State var isActive = false
     @State var isPresented = false
     @State var roomCode = ""
+    
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -25,6 +26,7 @@ struct ListRoomCardView: View {
     }
     
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
+    
     
     var body: some View {
         if(!isAddRoomButton) {
@@ -84,7 +86,7 @@ struct ListRoomCardView: View {
                 } //ZSTACK
             } //BUTTON
             .background(
-                NavigationLink(destination: DetailRoomView(room: $room), isActive: $isActive, label: {
+                NavigationLink(destination: DetailRoomView(vm: self.vm, room: $room), isActive: $isActive, label: {
                     EmptyView()
                 })
             )

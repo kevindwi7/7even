@@ -7,13 +7,14 @@
 
 import Foundation
 import CloudKit
+import Combine
 
 enum RecordType: String {
     case room = "Room"
     case survey = "Survey"
 }
 
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     
     private var database: CKDatabase
     private var container: CKContainer
@@ -21,6 +22,7 @@ class MainViewModel: ObservableObject {
     @Published var rooms: [RoomViewModel] = []
     @Published var surveys: [SurveyViewModel] = []
     
+    let objectWillChange = PassthroughSubject<(), Never>()
     
     init(container: CKContainer) {
         self.container = container
@@ -30,6 +32,7 @@ class MainViewModel: ObservableObject {
     func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String){
         let record = CKRecord(recordType: RecordType.room.rawValue)
         let room = Room(host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode)
+        
         record.setValuesForKeys(room.toDictionary())
         
         // saving record in database
@@ -56,7 +59,6 @@ class MainViewModel: ObservableObject {
         
         var returnedRooms: [Room] = []
         
-
         self.database.fetch(withQuery: query) { result in
             switch result {
             case .success(let result):
@@ -68,9 +70,8 @@ class MainViewModel: ObservableObject {
                             
                             if let room = Room.fromRecord(record) {
                                 returnedRooms.append(room)
-                                print("GAADA KAN")
                             }
-                            print(returnedRooms)
+//                            print(returnedRooms)
                         case .failure(let error):
                             print(error)
                         }
@@ -78,11 +79,30 @@ class MainViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self.rooms = returnedRooms.map(RoomViewModel.init)
-                    print("31 \(self.rooms)")
+                    defer {
+                        self.objectWillChange.send()
+                    }
+//                    print("\(self.rooms)")
                 }
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+//    func updateItem(room: RoomViewModel, price: Decimal){
+//        let price = room.price
+//        room["price"] = price
+//        createRoom(price: price)
+//    }
+    
+    func deleteRoom(_ recordId: CKRecord.ID){
+        database.delete(withRecordID: recordId) { deletedRecordId, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.fetchRoom()
             }
         }
     }
