@@ -34,6 +34,8 @@ struct CreateRoomView: View {
         _vm = StateObject(wrappedValue: vm)
     }
     
+    let userID = UserDefaults.standard.object(forKey: "userID") as? String
+    
     var body: some View {
         List {
             Section{
@@ -86,8 +88,8 @@ struct CreateRoomView: View {
                 Spacer()
                 Button(action: {
                     print(vm.rooms)
-                    vm.createRoom(host: "SDFSF", sport: sportName, location: location.name, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay)
-//                    self.presentationMode.wrappedValue.dismiss()
+                    vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""])
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Create")
                         .padding(5)

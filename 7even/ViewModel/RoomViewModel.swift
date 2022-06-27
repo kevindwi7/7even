@@ -36,6 +36,10 @@ struct RoomViewModel: Hashable, Identifiable {
         room.location
     }
     
+    var address: String {
+        room.address
+    }
+    
     var region: String {
         room.region
     }
@@ -74,5 +78,9 @@ struct RoomViewModel: Hashable, Identifiable {
     
     var levelOfPlay: String {
         room.levelOfPlay
+    }
+    
+    var participant: [String] {
+        room.participant
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D262866DDF70028F71E /* ListRoomCardView.swift */; };
 		46108D29286782130028F71E /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D28286782130028F71E /* RoomViewModel.swift */; };
+		46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D2D286943BD0028F71E /* DetailRoomView.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
@@ -48,6 +49,8 @@
 /* Begin PBXFileReference section */
 		46108D262866DDF70028F71E /* ListRoomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomCardView.swift; sourceTree = "<group>"; };
 		46108D28286782130028F71E /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		46108D2C286940410028F71E /* 7even.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = 7even.entitlements; path = ../../7even.entitlements; sourceTree = "<group>"; };
+		46108D2D286943BD0028F71E /* DetailRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRoomView.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -64,7 +67,6 @@
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationForSwiftUI.swift; sourceTree = "<group>"; };
-		46BA40082861BC52007A7EBF /* 7even.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 7even.entitlements; sourceTree = "<group>"; };
 		46BA400A2861BC6A007A7EBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C90D4A0128602E5800677561 /* 7even.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7even.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90D4A0428602E5800677561 /* _evenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _evenApp.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */,
+				46108D2D286943BD0028F71E /* DetailRoomView.swift */,
 				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
 				4648E4E728633334003AECAC /* LocationButtonView.swift */,
 				4648E4E32862FE58003AECAC /* LocationListView.swift */,
@@ -185,7 +188,7 @@
 		C90D4A0328602E5800677561 /* 7even */ = {
 			isa = PBXGroup;
 			children = (
-				46BA40082861BC52007A7EBF /* 7even.entitlements */,
+				46108D2C286940410028F71E /* 7even.entitlements */,
 				46BA3FFB2861A89B007A7EBF /* Model */,
 				46BA3FFC2861A8A1007A7EBF /* View */,
 				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
@@ -312,6 +315,7 @@
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
+				46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
@@ -470,7 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -483,7 +487,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -500,7 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -513,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

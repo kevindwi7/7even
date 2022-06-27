@@ -16,7 +16,8 @@ struct ListRoomCardView: View {
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         return formatter
     }
     
@@ -40,9 +41,6 @@ struct ListRoomCardView: View {
                                 .font(.subheadline)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
-                            
-                            
-                            
                         } //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
@@ -71,7 +69,7 @@ struct ListRoomCardView: View {
                 } //ZSTACK
             } //BUTTON
             .background(
-                NavigationLink(destination: Text(room.sport), isActive: $isActive, label: {
+                NavigationLink(destination: DetailRoomView(room: $room), isActive: $isActive, label: {
                     EmptyView()
                 })
             )
