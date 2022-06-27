@@ -44,6 +44,9 @@ final class MainViewModel: ObservableObject {
                     if let room = Room.fromRecord(returnedRecord) {
                         DispatchQueue.main.async {
                             self.rooms.append(RoomViewModel(room: room))
+                            defer {
+                                self.objectWillChange.send()
+                            }
                         }
                     }
                 }
@@ -85,8 +88,25 @@ final class MainViewModel: ObservableObject {
 //                    print("\(self.rooms)")
                 }
                 
+                
+                
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func fetchDetailRoom(room: RoomViewModel){
+        
+        let recordId = room.id
+
+        database.fetch(withRecordID: recordId!) { returnedRecord, error  in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print(error)
+                }
+                guard let record = returnedRecord else { return }
+            
             }
         }
     }
@@ -133,7 +153,7 @@ final class MainViewModel: ObservableObject {
         
         print(newParticipant)
         database.fetch(withRecordID: recordId!) { returnedRecord, error in
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 if let error = error {
                     print(error)
                 }
@@ -141,14 +161,15 @@ final class MainViewModel: ObservableObject {
                 
                 record["participant"] = newParticipant as CKRecordValue
                 self.database.save(record) { record, error in
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         if let error = error {
                             print(error)
                         }
                         guard let record = returnedRecord else { return }
                         let id = record.recordID
                         guard let participant = record["participant"] as? [String] else { return }
-                        let element = RoomViewModel(room: Room(id: recordId, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode))
+                        let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode))
+//                        print(element)
                     }
                 }
             }
@@ -163,6 +184,7 @@ final class MainViewModel: ObservableObject {
                 } else {
                     self.fetchRoom()
                 }
+                print("here")
             }
         }
     }
@@ -205,7 +227,7 @@ final class MainViewModel: ObservableObject {
                         }
                     }
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.surveys = returnedSurveys.map(SurveyViewModel.init)
                     print("31 \(self.surveys)")
                 }

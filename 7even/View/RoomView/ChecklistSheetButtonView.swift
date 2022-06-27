@@ -16,48 +16,49 @@ struct ChecklistSheetButtonView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color(UIColor.systemGray5))
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.systemBackground)))
             VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    if showModalButton {
-                        if(textLabel.contains("") && textLabel.count == 1) {
-                            if (type == "age") {
-                                Text("Age")
-                            }
-                        }
-                        else {
-                            ForEach(self.textLabel, id: \.self) { item in
-                                if(!item.contains("")) {
-                                    Text(item)
+                Button(action: {
+                    self.isPresented.toggle()
+                }) {
+                    HStack {
+                        if showModalButton {
+                            if(textLabel.contains("") && textLabel.count == 1) {
+                                if (type == "age") {
+                                    Text("Age")
+                                        .foregroundColor(.primary)
                                 }
-                                
+                            }
+                            else {
+                                ForEach(self.textLabel, id: \.self) { item in
+                                    if(!item.contains("")) {
+                                        Text(item)
+                                    }
+                                    
+                                }
                             }
                         }
                         Spacer()
-                        Button(action: {
-                            self.isPresented.toggle()
-                            print("ini \(textLabel)")
-                        }) {
-                            Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.right")
                                 .font(.headline)
                                 .foregroundColor(Color.mint)
-                        }.sheet(
-                            isPresented: $isPresented
-                        ) {
-                            print("The sheet has been dismissed")
-                        } content: {
-                            Text("")
-                            MultipleSelectPreferenceListView(isPresented: $isPresented, preference: self.$textLabel, type: type)
-                        }
                     }
+                }.sheet(
+                    isPresented: $isPresented
+                ) {
+                    print("The sheet has been dismissed")
+                } content: {
+                    Text("")
+                    MultipleSelectPreferenceListView(isPresented: $isPresented, preference: self.$textLabel, type: type)
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
             }
             .padding(5)
-            
         }
-        .cornerRadius(12)
+//        .cornerRadius(12)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .fixedSize(horizontal: false, vertical: true)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
+//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }

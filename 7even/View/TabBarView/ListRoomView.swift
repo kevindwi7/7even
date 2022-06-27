@@ -31,6 +31,7 @@ struct ListRoomView: View {
     
     @State var isPresented = false
     @State var roomCode = ""
+    @State var isActive = false
     
     let defaults = UserDefaults.standard
     @State var isListRoomView = false
@@ -82,9 +83,9 @@ struct ListRoomView: View {
                                 VStack{
                                     Text("See All Filters")
                                         .font(.caption)
-                                    Image(systemName: "globe")
+                                    Image(systemName: "line.3.horizontal.decrease.circle")
                                         .resizable()
-                                    //                                    .scaledToFit()
+//                                        .scaledToFit()
                                         .frame(width: 20)
                                 }
                                 .frame(width: 80)
@@ -126,7 +127,26 @@ struct ListRoomView: View {
                                 } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
                                         if(vm.rooms.isEmpty) {
-                                            Text("Add Data")
+                                            Button(action: {
+                                                self.isActive = true
+                                            }) {
+                                                ZStack {
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .strokeBorder(.mint)
+                                //                        .shadow(radius: 1.5)
+                                                        .frame(width: 170, height: 127)
+                                                    
+                                                    Image(systemName: "plus")
+                                                        .font(.largeTitle)
+                                                        .foregroundColor(.mint)
+                                                } //ZSTACK
+                                            } //BUTTON
+                                            .background(
+                                                NavigationLink(destination: CreateRoomView(vm: MainViewModel(container: CKContainer.default())), isActive: $isActive, label: {
+                                                    EmptyView()
+                                                })
+                                            )
+                                            .padding(.vertical, 5)
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 

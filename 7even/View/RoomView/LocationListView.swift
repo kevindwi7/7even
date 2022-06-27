@@ -38,6 +38,7 @@ struct LocationListView: View {
                     }
                 }
             }
+            .listStyle(.plain)
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
             .navigationBarTitle(Text("Choose Location"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {

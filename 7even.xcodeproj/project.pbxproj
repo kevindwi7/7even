@@ -11,6 +11,7 @@
 		46108D29286782130028F71E /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D28286782130028F71E /* RoomViewModel.swift */; };
 		46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D2D286943BD0028F71E /* DetailRoomView.swift */; };
 		46108D3228698E560028F71E /* AlertControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D3128698E560028F71E /* AlertControl.swift */; };
+		4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
@@ -26,7 +27,6 @@
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
-		46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */; };
 		46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BA400A2861BC6A007A7EBF /* CloudKit.framework */; };
 		C90D4A0528602E5800677561 /* _evenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0428602E5800677561 /* _evenApp.swift */; };
 		C90D4A0728602E5800677561 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0628602E5800677561 /* ContentView.swift */; };
@@ -52,6 +52,7 @@
 		46108D2C286940410028F71E /* 7even.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = 7even.entitlements; path = ../../7even.entitlements; sourceTree = "<group>"; };
 		46108D2D286943BD0028F71E /* DetailRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRoomView.swift; sourceTree = "<group>"; };
 		46108D3128698E560028F71E /* AlertControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControl.swift; sourceTree = "<group>"; };
+		4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonField.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
-		46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationForSwiftUI.swift; sourceTree = "<group>"; };
 		46BA400A2861BC6A007A7EBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C90D4A0128602E5800677561 /* 7even.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7even.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90D4A0428602E5800677561 /* _evenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _evenApp.swift; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 		46BA40052861BA4B007A7EBF /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
-				46BA40062861BA62007A7EBF /* SheetPresentationForSwiftUI.swift */,
 				46108D3128698E560028F71E /* AlertControl.swift */,
+				4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -315,6 +315,7 @@
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
+				4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */,
 				46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
@@ -343,7 +344,6 @@
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				C910EE1228657D1F00696237 /* Survey.swift in Sources */,
-				46BA40072861BA62007A7EBF /* SheetPresentationForSwiftUI.swift in Sources */,
 				4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
