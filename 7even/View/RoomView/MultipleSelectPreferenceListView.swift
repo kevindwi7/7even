@@ -57,6 +57,7 @@ struct MultipleSelectPreferenceListView: View {
                         }
                     }
                 }
+                .listStyle(.plain)
                 .navigationBarTitle(Text("Select Age"), displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     print("The sheet has been dismissed")

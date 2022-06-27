@@ -28,11 +28,15 @@ struct DetailRoomView: View {
     @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
     
+    @State var hasJoined: Bool = false
+    @State var isFilled: Bool = false
+    @State var isPresented: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     func deleteRoom(_ item: RoomViewModel) {
         if let recordId = room.id {
             vm.deleteRoom(recordId)
+            print("hereee ")
         }
     }
     
@@ -42,7 +46,6 @@ struct DetailRoomView: View {
         for age in arr {
             if(age != "") {
                 let ageArr = age.split(separator: "-")
-                print(ageArr)
                 let minAge = Int(ageArr[0])
                 let maxAge = Int(ageArr[1])
                 if (tempMin <= minAge ?? 0){
@@ -98,10 +101,9 @@ struct DetailRoomView: View {
             
             HStack {
                 if(room.levelOfPlay != "" || room.levelOfPlay.isEmpty == false){
-                    // IF STATEMENT TO SET COMPETITIVE LEVEL COLOR
                     HStack{
                         Circle()
-                            .fill(Color(UIColor.systemGreen))
+                            .fill( room.levelOfPlay == "Recreational" ? Color(UIColor.systemGreen) : Color(UIColor.systemOrange) )
                             .frame(width: 9, height: 9)
                         
                         Text(room.levelOfPlay)
@@ -112,10 +114,20 @@ struct DetailRoomView: View {
                 
                 if(room.sex != "" || room.sex.isEmpty == false) {
                     HStack{
-                        Circle()
-                            .fill(Color(UIColor.systemGreen))
-                            .frame(width: 9, height: 9)
-                        
+                        if(room.sex == "Female") {
+                            Circle()
+                                .fill(Color(UIColor.systemPink))
+                                .frame(width: 9, height: 9)
+                        } else if(room.sex == "Male") {
+                            Circle()
+                                .fill(Color(UIColor.systemBlue))
+                                .frame(width: 9, height: 9)
+                        } else {
+                            Circle()
+                                .fill(Color(UIColor.systemTeal))
+                                .frame(width: 9, height: 9)
+                        }
+
                         Text(room.sex)
                             .font(.caption)
                     }
@@ -128,7 +140,7 @@ struct DetailRoomView: View {
                     if age != "0-0" {
                         HStack{
                             Circle()
-                                .fill(Color(UIColor.systemGreen))
+                                .fill(Color(UIColor.systemYellow))
                                 .frame(width: 9, height: 9)
                             
                             Text(age)
@@ -205,7 +217,7 @@ struct DetailRoomView: View {
                     .padding(5)
                     
                     Button(action: {
-                        deleteRoom(room)
+                        self.isPresented = true
                     }) {
                         Text("Delete Room")
                             .bold()
@@ -214,6 +226,16 @@ struct DetailRoomView: View {
                     .tint(.red)
                     .buttonStyle(.borderedProminent)
                     .padding(5)
+                    .alert("Are you sure to delete this room?", isPresented: $isPresented) {
+                        Button(role: .destructive, action: {
+//                                self.hasJoined = false
+                            deleteRoom(room)
+                            self.presentationMode.wrappedValue.dismiss()
+                            print("delete room")
+                        }) {
+                            Text("Leave")
+                        }
+                    }
                     
                     Image(systemName: "square.and.arrow.up")
                         .frame(width: 35, height: 36, alignment: .center)
@@ -224,8 +246,7 @@ struct DetailRoomView: View {
                 if(room.participant.contains(userID!)) {
                     HStack {
                         Button(action: {
-//                            room.participant.removeAll(where: $0 == userID)
-                            self.presentationMode.wrappedValue.dismiss()
+                            self.isPresented = true
                         }) {
                             Text("Leave Room")
                                 .bold()
@@ -235,6 +256,15 @@ struct DetailRoomView: View {
                         .tint(.red)
                         .buttonStyle(.borderedProminent)
                         .padding(5)
+                        .alert("Are you sure to leave this room?", isPresented: $isPresented) {
+                            Button(role: .destructive, action: {
+//                                self.hasJoined = false
+                                vm.updateItem(room: room, participantID: userID!, command: "leave")
+                                self.presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Text("Leave")
+                            }
+                        }
                         
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 35, height: 36, alignment: .center)
@@ -244,16 +274,25 @@ struct DetailRoomView: View {
                 } else {
                     HStack {
                         Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
+                            if ( room.participant.count < room.maximumParticipant ){
+                                self.isFilled = false
+                                vm.updateItem(room: room, participantID: userID!, command: "join")
+                            } else {
+                                self.isFilled = true
+                            }
+//                            self.presentationMode.wrappedValue.dismiss()
+                            print(room.participant)
+//                            self.hasJoined = true
                         }) {
                             Text("Join Room")
                                 .bold()
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 50)
                         }
-                        .tint(.mint)
+                        .tint(hasJoined == true ? .red : .mint)
                         .buttonStyle(.borderedProminent)
                         .padding(5)
+                        .disabled(isFilled)
                         
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 35, height: 36, alignment: .center)
@@ -262,6 +301,12 @@ struct DetailRoomView: View {
                     .padding(5)
                 }
             }
+        }
+        .onAppear {
+            vm.fetchDetailRoom(room: self.room )
+        }
+        .onReceive(vm.objectWillChange) { _ in
+            vm.fetchDetailRoom(room: self.room)
         }
         .padding(.horizontal)
         .navigationTitle(room.sport)

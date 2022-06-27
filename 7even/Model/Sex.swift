@@ -10,11 +10,11 @@ import Foundation
 struct Sex: Hashable, Identifiable {
     var id = UUID().uuidString
     var name: String
-    var image:String
 }
 
 var sexes = [
-    Sex(name: "Male", image: "male"),
-    Sex(name: "Female", image: "female")
+    Sex(name: "Female"),
+    Sex(name: "Male"),
+    Sex(name: "Both")
 ]
 

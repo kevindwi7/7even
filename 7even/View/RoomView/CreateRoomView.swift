@@ -22,7 +22,7 @@ struct CreateRoomView: View {
     @State var location = Location(name: "", address: "", region: "")
     @State var region = ""
     @State var age = [""]
-    @State var sex = ""
+    @State var sex = "Both"
     @State var levelOfPlay = ""
     @State var sportName = ""
     @State var roomCode = ""
@@ -38,7 +38,7 @@ struct CreateRoomView: View {
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
     var body: some View {
-        List {
+        VStack(alignment: .leading) {
             Section{
                 SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
@@ -68,43 +68,57 @@ struct CreateRoomView: View {
                     .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
                     .accentColor(.mint)
             }
-            .listRowSeparator(.hidden)
             
-            Section(header: Text("Preferences")
-                .font(.title3)
-                .bold()
-                .foregroundColor(.primary)) {
-                    
-                    SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
-                    
-                    SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
-                    
-                    ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
-                    
-                    
-            }
-            .listRowSeparator(.hidden)
-            
-            HStack {
-                Spacer()
-                Button(action: {
-                    print(vm.rooms)
-                    if isPrivateRoom {
-                        roomCode = "ABCDE"
+            Section(header: 
+                Text("Preferences")
+                    .font(.title3)
+                    .bold()
+                    .foregroundColor(.primary)
+                    .padding(.top, 10)
+            ) {
+                HStack {
+                    Text("Sex")
+                        .padding(.trailing, 30)
+//                    Spacer()
+                    ForEach(sexes, id: \.self){ item in
+                        RadioButtonField(
+                            id: item.name,
+                            label: item.name,
+                            color: .primary,
+                            bgColor: .mint,
+                            isMarked: $sex.wrappedValue == item.name ? true : false,
+                            callback: { selected in
+                                self.sex = selected
+                                print("Selected Gender is: \(selected)")
+                            }
+                        )
                     }
-                    vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""], roomCode: roomCode)
-                    vm.fetchRoom()
-                    
-                }) {
-                    Text("Create")
-                        .padding(5)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.mint)
-                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                Spacer()
+                }.padding(.vertical, 5)
+                
+                HStack {
+                    Text("Competitive Level")
+//                        .padding(.trailing, 30)
+                    ForEach(level, id: \.self){ item in
+                        RadioButtonField(
+                            id: item.name,
+                            label: item.name,
+                            color: .primary,
+                            bgColor: .mint,
+                            isMarked: $levelOfPlay.wrappedValue == item.name ? true : false,
+                            callback: { selected in
+                                self.levelOfPlay = selected
+                                print("Selected Level of Play is: \(selected)")
+                            }
+                        )
+                    }
+                }.padding(.vertical, 5)
+                
+                ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
+//                    SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
+//                    SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
             }
-            .listRowSeparator(.hidden)
+            
+            Spacer()
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
@@ -116,7 +130,7 @@ struct CreateRoomView: View {
                 .accessibilityAddTraits(.isKeyboardKey)
             }
         }
-        .listStyle(.plain)
+        .padding(.horizontal)
         .navigationTitle("Create Room")
         .navigationBarTitle("Create Room", displayMode: .inline)
         .navigationBarItems(trailing: Button("Create") {
@@ -124,7 +138,6 @@ struct CreateRoomView: View {
                 roomCode = "ABCDE"
             }
             vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""], roomCode: roomCode)
-            self.vm.fetchRoom()
             presentationMode.wrappedValue.dismiss()
         })
     }

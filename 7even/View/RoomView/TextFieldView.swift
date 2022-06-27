@@ -14,7 +14,9 @@ struct TextFieldView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color(UIColor.systemGray5))
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.systemBackground)))
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     TextField(textLabel, text: $inputNumber)
@@ -23,10 +25,10 @@ struct TextFieldView: View {
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
             }.padding(5)
         }
-        .cornerRadius(12)
+//        .cornerRadius(12)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .fixedSize(horizontal: false, vertical: true)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
+//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }
 

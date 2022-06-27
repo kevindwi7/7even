@@ -44,6 +44,9 @@ final class MainViewModel: ObservableObject {
                     if let room = Room.fromRecord(returnedRecord) {
                         DispatchQueue.main.async {
                             self.rooms.append(RoomViewModel(room: room))
+                            defer {
+                                self.objectWillChange.send()
+                            }
                         }
                     }
                 }
@@ -85,24 +88,103 @@ final class MainViewModel: ObservableObject {
 //                    print("\(self.rooms)")
                 }
                 
+                
+                
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-//    func updateItem(room: RoomViewModel, price: Decimal){
-//        let price = room.price
-//        room["price"] = price
-//        createRoom(price: price)
-//    }
+    func fetchDetailRoom(room: RoomViewModel){
+        
+        let recordId = room.id
+
+        database.fetch(withRecordID: recordId!) { returnedRecord, error  in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print(error)
+                }
+                guard let record = returnedRecord else { return }
+            
+            }
+        }
+    }
+    
+    func updateItem(room: RoomViewModel, participantID: String, command: String){
+
+        var newParticipant: [String] = [""]
+        newParticipant.insert(contentsOf: room.participant, at: 0)
+        
+        let recordId = room.id
+        let host = room.host
+        let sport = room.sport
+        let location = room.location
+        let address = room.address
+        let region = room.region
+        let minimumParticipant = room.minimumParticipant
+        let maximumParticipant = room.maximumParticipant
+        let price = room.price
+        let isPrivateRoom = room.isPrivateRoom
+        let startTime = room.startTime
+        let endTime = room.endTime
+        let sex = room.sex
+        let age = room.age
+        let levelOfPlay = room.levelOfPlay
+        let roomCode = room.roomCode
+        
+        if(command == "join") {
+            if( !(newParticipant.contains(participantID))){
+                if(participantID != "" || !(participantID.isEmpty) ){
+                    newParticipant.append(participantID)
+                    print("masukk")
+                }
+            }
+        } else if (command == "leave") {
+            if(newParticipant.contains(participantID)){
+                if let index = newParticipant.firstIndex(of: participantID) {
+                    newParticipant.remove(at: index)
+                    print(newParticipant[index])
+                }
+            }
+        }
+        
+        newParticipant.removeAll(where: { $0 == "" })
+        
+        print(newParticipant)
+        database.fetch(withRecordID: recordId!) { returnedRecord, error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                if let error = error {
+                    print(error)
+                }
+                guard let record = returnedRecord else { return }
+                
+                record["participant"] = newParticipant as CKRecordValue
+                self.database.save(record) { record, error in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        if let error = error {
+                            print(error)
+                        }
+                        guard let record = returnedRecord else { return }
+                        let id = record.recordID
+                        guard let participant = record["participant"] as? [String] else { return }
+                        let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode))
+//                        print(element)
+                    }
+                }
+            }
+        }
+    }
     
     func deleteRoom(_ recordId: CKRecord.ID){
         database.delete(withRecordID: recordId) { deletedRecordId, error in
-            if let error = error {
-                print(error)
-            } else {
-                self.fetchRoom()
+            DispatchQueue.main.async {
+                if let error = error {
+                    print(error)
+                } else {
+                    self.fetchRoom()
+                }
+                print("here")
             }
         }
     }
@@ -144,7 +226,7 @@ final class MainViewModel: ObservableObject {
                         }
                     }
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.surveys = returnedSurveys.map(SurveyViewModel.init)
                     print("31 \(self.surveys)")
                 }

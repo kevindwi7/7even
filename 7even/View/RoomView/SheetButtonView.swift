@@ -16,44 +16,46 @@ struct SheetButtonView: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color(UIColor.systemGray5))
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.systemBackground)))
             VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    if showModalButton {
-                        if(textLabel == "") {
-                            if(type == "sport"){
-                                Text("Sport's Name")
-                            } else if (type == "sex") {
-                                Text("Sex")
-                            } else if (type == "levelOfPlay") {
-                                Text("Level of Play")
-                            } else if (type == "region") {
-                                Text("Region")
+                if showModalButton {
+                    Button(action: {
+                        self.isPresented.toggle()
+                    }) {
+                        HStack {
+                            if(textLabel == "") {
+                                if(type == "sport"){
+                                    Text("Sport's Name")
+                                        .foregroundColor(.primary)
+                                } else if (type == "region") {
+                                    Text("Region")
+                                        .foregroundColor(.primary)
+                                }
+                            } else {
+                                Text(textLabel)
+                                    .foregroundColor(.primary)
                             }
-                        } else {
-                            Text(textLabel)
-                        }
-                        Spacer()
-                        Button(action: {
-                            self.isPresented.toggle()
-                        }) {
+                            Spacer()
                             Image(systemName: "chevron.right")
                             .font(.headline)
-                            .foregroundColor(Color.mint)
-                        }.sheet(
-                            isPresented: $isPresented
-                        ) {
-                            print("The sheet has been dismissed")
-                        } content: {
-                            SingleSelectPreferenceListView(isPresented: $isPresented, preference: self.$textLabel, type: type)
+                            
                         }
+                    }.sheet(
+                        isPresented: $isPresented
+                    ) {
+                        print("The sheet has been dismissed")
+                    } content: {
+                        SingleSelectPreferenceListView(isPresented: $isPresented, preference: self.$textLabel, type: type)
                     }
-                }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+                    .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+                }
             }.padding(5)
         }
-        .cornerRadius(12)
+//        .cornerRadius(12)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .fixedSize(horizontal: false, vertical: true)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
+//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }

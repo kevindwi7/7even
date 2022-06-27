@@ -31,25 +31,20 @@ struct ListRoomCardView: View {
     var body: some View {
         if(!isAddRoomButton) {
             Button(action: {
-                print(userID)
-                print(isPresented)
                 if(room.isPrivateRoom && (room.participant.contains(userID!)) == false ){
                     self.isPresented = true
-                    print("sini")
                 } else {
-                    print("Tap \(room.sport)")
-                    print(room.participant)
                     self.isActive = true
                 }
                 
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(UIColor.systemBackground))
-                        .shadow(radius: 1.5)
-                        .frame(width: 168, height: 127)
+                        .strokeBorder(Color(UIColor.systemGray2))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor.systemBackground)))
+                        .frame(width: 170, height: 127)
                     
-                    VStack {
+                    VStack() {
                         VStack(alignment: .leading, spacing: 5){
                             Text(room.sport)
                                 .bold()
@@ -60,9 +55,8 @@ struct ListRoomCardView: View {
                         } //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
-                                // IF STATEMENT TO SET COMPETITIVE LEVEL COLOR
                                 Circle()
-                                    .fill(Color(UIColor.systemGreen))
+                                    .fill( room.levelOfPlay == "Recreational" ? Color(UIColor.systemGreen) : Color(UIColor.systemOrange))
                                     .frame(width: 9, height: 9)
                                 
                                 Text(room.levelOfPlay)
@@ -70,11 +64,21 @@ struct ListRoomCardView: View {
                             }
                             
                             ZStack {
-                                // IF STATEMENT TO SET PARTICIPANT COLOR
-                                Circle()
-                                    .strokeBorder(.mint)
-                                    .frame(width: 30, height: 30)
-                                Text("\(room.minimumParticipant)/\(room.maximumParticipant)")
+                                if (room.participant.count == room.maximumParticipant) {
+                                    Circle()
+                                        .strokeBorder( .green )
+                                        .frame(width: 30, height: 30)
+                                } else if (room.participant.count >= (Int(Double(room.maximumParticipant * 2)/3))) {
+                                    Circle()
+                                        .strokeBorder( .mint )
+                                        .frame(width: 30, height: 30)
+                                } else {
+                                    Circle()
+                                        .strokeBorder( .gray )
+                                        .frame(width: 30, height: 30)
+                                }
+                                
+                                Text("\(room.participant.count)/\(room.maximumParticipant)")
                                     .font(.caption2)
                                     .foregroundColor(.mint)
                             }
@@ -98,14 +102,13 @@ struct ListRoomCardView: View {
         }
         else {
             Button(action: {
-                print("Tap \(room.sport)")
                 self.isActive = true
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(.mint)
-                        .shadow(radius: 1.5)
-                        .frame(width: 168, height: 127)
+//                        .shadow(radius: 1.5)
+                        .frame(width: 170, height: 127)
                     
                     Image(systemName: "plus")
                         .font(.largeTitle)

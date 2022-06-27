@@ -40,10 +40,8 @@ struct Survey{
               let favoriteSport = record.value(forKey: "favoriteSport") as? [String],
                 let email = record.value(forKey: "email") as? String
         else {
-            print("Tes")
             return nil
         }
-//        print(levelOfPlay)
         
         return Survey(id: record.recordID, name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport, email: email)
     }

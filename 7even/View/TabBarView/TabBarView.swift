@@ -18,7 +18,7 @@ struct TabBarView: View {
                     Label("Room", systemImage: "person.3")
                 }
             
-            CreateRoomView(vm: MainViewModel(container: CKContainer.default()))
+            SharingView()
                 .tabItem{
                     Label("Sharing", systemImage: "star")
                     

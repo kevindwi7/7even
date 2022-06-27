@@ -29,6 +29,7 @@ struct SingleSelectPreferenceListView: View {
                         }
                     }
                 }
+                .listStyle(.plain)
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
                 .navigationBarTitle(Text("Sports Name"), displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
@@ -52,6 +53,7 @@ struct SingleSelectPreferenceListView: View {
                         }
                     }
                 }
+                .listStyle(.plain)
                 .navigationBarTitle(Text("Region"), displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     print("The sheet has been dismissed")
@@ -61,101 +63,7 @@ struct SingleSelectPreferenceListView: View {
                         .font(.body)
                         .foregroundColor(Color.mint)
                 })
-            } else if (type == "sex") {
-                VStack(alignment: .center) {
-                    VStack {
-                        
-                        Text("Select gender who able to join the room")
-                            .font(.subheadline)
-                    }.padding(EdgeInsets(top: 50, leading: 0, bottom: 20, trailing: 0))
-                    
-                    
-                    HStack(spacing: 100) {
-                        ForEach (sexes, id: \.self) { item in
-                            Button(action: {
-                                self.preference = item.name
-                                print(preference)
-                                self.isPresented = false
-                            }) {
-                                VStack(spacing: 10) {
-                                    Image(systemName: item.image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40)
-                                        .background(Color.red)
-
-                                    Text(item.name)
-                                        .font(.body)
-                                        .foregroundColor(Color.primary)
-                                }
-                                .padding(5)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .strokeBorder(Color(UIColor.systemGray3), lineWidth: 1)
-                                        .frame(width: 90, height: 90)
-                                )
-                            }
-                        }
-                    }
-                    .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                .navigationBarTitle(Text("Sex"), displayMode: .inline)
-                .navigationBarItems(leading: Button(action: {
-                    print("The sheet has been dismissed")
-                    self.isPresented = false
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.body)
-                        .foregroundColor(Color.mint)
-                })
-            } else if (type == "levelOfPlay") {
-                VStack(alignment: .center) {
-                    VStack {
-                        Text("Select type of competitive level")
-                            .font(.subheadline)
-                    }.padding(EdgeInsets(top: 50, leading: 0, bottom: 20, trailing: 0))
-                    
-                    HStack(spacing: 100) {
-                        ForEach (level, id: \.self) { item in
-                            Button(action: {
-                                self.preference = item.name
-                                print(preference)
-                                self.isPresented = false
-                            }) {
-                                VStack(alignment: .center, spacing: 8) {
-                                    Image(systemName: item.image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 37)
-                                        .background(Color.red)
-
-                                    Text(item.name)
-                                        .font(.body)
-                                        .foregroundColor(Color.primary)
-                                }
-                                .padding(5)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .strokeBorder(Color(UIColor.systemGray3), lineWidth: 1)
-                                        .frame(width: 104, height: 104)
-                                )
-                            }
-                        }
-                    }
-                    .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                .navigationBarTitle(Text("Level Of Play"), displayMode: .inline)
-                .navigationBarItems(leading: Button(action: {
-                    print("The sheet has been dismissed")
-                    self.isPresented = false
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.body)
-                        .foregroundColor(Color.mint)
-                })
-            }
+            } 
         }
     }
 }
