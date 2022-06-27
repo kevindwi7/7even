@@ -83,4 +83,8 @@ struct RoomViewModel: Hashable, Identifiable {
     var participant: [String] {
         room.participant
     }
+    
+    var roomCode: String {
+        room.roomCode
+    }
 }

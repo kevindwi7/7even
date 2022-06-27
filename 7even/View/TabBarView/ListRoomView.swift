@@ -28,6 +28,10 @@ struct ListRoomView: View {
     
     @StateObject var vm: MainViewModel
     @State var selectedRoom: String?
+    
+    @State var isPresented = false
+    @State var roomCode = ""
+    
     let defaults = UserDefaults.standard
     @State var isListRoomView = false
     init(vm: MainViewModel) {
@@ -126,10 +130,10 @@ struct ListRoomView: View {
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ListRoomCardView(room: $index)
-                                                
-                                                //                                            if ( $index == $vm.rooms.last ) {
-                                                //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
-                                                //                                            }
+
+    //                                            if ( $index == $vm.rooms.last ) {
+    //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
+    //                                            }
                                             }
                                         }
                                         
