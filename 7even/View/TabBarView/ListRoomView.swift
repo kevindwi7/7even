@@ -29,11 +29,11 @@ struct ListRoomView: View {
     @StateObject var vm: MainViewModel
     @State var selectedRoom: String?
     let defaults = UserDefaults.standard
-    
+    @State var isListRoomView = false
     init(vm: MainViewModel) {
         _vm = StateObject(wrappedValue: vm)
     }
-
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -80,7 +80,7 @@ struct ListRoomView: View {
                                         .font(.caption)
                                     Image(systemName: "globe")
                                         .resizable()
-    //                                    .scaledToFit()
+                                    //                                    .scaledToFit()
                                         .frame(width: 20)
                                 }
                                 .frame(width: 80)
@@ -92,24 +92,32 @@ struct ListRoomView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                
+                    
                     ForEach(roomCategory, id: \.self){ item in
                         VStack(alignment: .leading) {
                             Text(item)
                                 .bold()
                                 .font(.title2)
                                 .padding(.horizontal)
-                             
+                            
                             if(item == "Rooms You Might Like" ) {
                                 if(!defaults.bool(forKey: "login")){
                                     LazyVStack{
                                         Text("Sign up to manage your preferences")
-                                        NavigationLink(destination: LoginView(), label: {
-                                            Text("Here")
-                                                .bold()
-                                                .foregroundColor(.mint)
-                                                .underline()
-                                        })
+                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView),isActive: $isListRoomView){
+                                            EmptyView()
+                                            //
+                                        }
+                                        Button("Here"){
+                                            isListRoomView = true
+                                        }
+                                        //                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView), label: {
+                                        //                                            Text("Here")
+                                        //                                                .bold()
+                                        //                                                .foregroundColor(.mint)
+                                        //                                                .underline()
+                                        //                                        }
+                                        //                                        )
                                     }.padding(.vertical, 25)
                                 } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
@@ -119,9 +127,9 @@ struct ListRoomView: View {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ListRoomCardView(room: $index)
                                                 
-    //                                            if ( $index == $vm.rooms.last ) {
-    //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
-    //                                            }
+                                                //                                            if ( $index == $vm.rooms.last ) {
+                                                //                                                ListRoomCardView(room: $index, isAddRoomButton: true)
+                                                //                                            }
                                             }
                                         }
                                         
@@ -130,15 +138,15 @@ struct ListRoomView: View {
                                     .padding(.horizontal)
                                 }
                             } else {
-                                    LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
-                                        ForEach($vm.rooms, id: \.id) { $index in
-                                            ListRoomCardView(room: $index)
-                                        }
+                                LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
+                                    ForEach($vm.rooms, id: \.id) { $index in
+                                        ListRoomCardView(room: $index)
                                     }
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.horizontal)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal)
                             }
-
+                            
                         } //VSTACK
                     }
                 } // SCROLLVIEW

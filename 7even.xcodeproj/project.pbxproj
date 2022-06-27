@@ -32,7 +32,6 @@
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
 		C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0B28602E5900677561 /* Preview Assets.xcassets */; };
 		C910EE1228657D1F00696237 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910EE1128657D1F00696237 /* Survey.swift */; };
-		C94204872867998200B3E0D8 /* SurveySheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94204862867998200B3E0D8 /* SurveySheetButton.swift */; };
 		C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659432863FCCC0074961A /* FavoriteSportList.swift */; };
 		C9B659462863FCF10074961A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659452863FCF10074961A /* LoginView.swift */; };
 		C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */; };
@@ -74,7 +73,6 @@
 		C90D4A0828602E5900677561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90D4A0B28602E5900677561 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C910EE1128657D1F00696237 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
-		C94204862867998200B3E0D8 /* SurveySheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveySheetButton.swift; sourceTree = "<group>"; };
 		C9B659432863FCCC0074961A /* FavoriteSportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportList.swift; sourceTree = "<group>"; };
 		C9B659452863FCF10074961A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportSurveyView.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */,
 				C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */,
 				C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */,
-				C94204862867998200B3E0D8 /* SurveySheetButton.swift */,
 			);
 			path = SurveyView;
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
 				4648E4EE28641993003AECAC /* Age.swift in Sources */,
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
-				C94204872867998200B3E0D8 /* SurveySheetButton.swift in Sources */,
 				4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
@@ -474,7 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -487,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -504,7 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -517,7 +513,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

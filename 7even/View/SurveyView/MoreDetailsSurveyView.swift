@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct MoreDetailsSurveyView: View {
-    @StateObject private var mainViewModel: MainViewModel
+    @StateObject var mainViewModel: MainViewModel
     @State private var isShowingPhotoPicker = false
     @State private var avatarImage = UIImage(named: "apple")!
     @State var action: Int? = 0
@@ -17,8 +17,9 @@ struct MoreDetailsSurveyView: View {
     @State var birthDate = Date()
     @State var gender = "Male"
     @State var sportWith: String = ""
+    @Binding var toMainPage: Bool
     
-    @State var favoriteSports  = [""]
+    @Binding var favoriteSports: [String]
     //
     
     @FocusState private var inputIsFocused: Bool
@@ -26,9 +27,9 @@ struct MoreDetailsSurveyView: View {
     var sex = ["Male", "Female"]
     var sportsWith = ["Strangers","Partners","Both"]
     
-    init(mainViewModel: MainViewModel) {
-        _mainViewModel = StateObject(wrappedValue: mainViewModel)
-    }
+//    init(mainViewModel: MainViewModel) {
+//        _mainViewModel = StateObject(wrappedValue: mainViewModel)
+//    }
     
     public var body: some View {
         List{
@@ -79,9 +80,6 @@ struct MoreDetailsSurveyView: View {
                     }.listRowSeparator(.hidden)
                     
                 }
-                
-                
-                SurveySheetButtonView(showModalButton: true, type: "favoriteSport", textLabel: $favoriteSports)
                 
                 VStack{
                     Section(header: Text("Birthdate")
@@ -145,18 +143,10 @@ struct MoreDetailsSurveyView: View {
             
             
             VStack{
-                NavigationLink(destination: TabBarView(), tag: 1, selection: $action){
-                    EmptyView()
-                    
-                    
-                }
-                Button(action: {
+                Button("Create") {
                     mainViewModel.createSurvey(name: profileName, birthDate: birthDate , sex: gender, sportWith: sportWith, favoriteSport: favoriteSports )
                     
-                    self.action = 1
-                }) {
-                    Text("Create")
-                        .padding(5)
+                    toMainPage = false
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.mint)
@@ -166,7 +156,6 @@ struct MoreDetailsSurveyView: View {
             .listRowSeparator(.hidden)
             .padding()
             .navigationTitle("Tell us more about you")
-            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $isShowingPhotoPicker, content: {
                 SurveyPhotoPicker(avatarImage: $avatarImage)
@@ -178,9 +167,9 @@ struct MoreDetailsSurveyView: View {
     }
 }
 
-struct MoreDetailsSurveyView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()))
-    }
-}
-
+//struct MoreDetailsSurveyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()))
+//    }
+//}
+//
