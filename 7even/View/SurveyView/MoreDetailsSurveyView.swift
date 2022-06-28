@@ -10,6 +10,7 @@ import CloudKit
 
 struct MoreDetailsSurveyView: View {
     @StateObject var mainViewModel: MainViewModel
+    
     @State private var isShowingPhotoPicker = false
     @State private var avatarImage = UIImage(named: "profile")!
     @State var action: Int? = 0
@@ -18,21 +19,14 @@ struct MoreDetailsSurveyView: View {
     @State var gender = "Male"
     @State var sportWith: String = ""
     @State var sportRoutine: String = ""
-    @Binding var toMainPage: Bool
+    @State private var age: DateComponents = DateComponents()
     
+    @Binding var toMainPage: Bool
     @Binding var favoriteSports: [String]
-    //
     
     @FocusState private var inputIsFocused: Bool
     
-    
-    
-    
-    var email = UserDefaults.standard.object(forKey: "email") as! String
-    
-    //    init(mainViewModel: MainViewModel) {
-    //        _mainViewModel = StateObject(wrappedValue: mainViewModel)
-    //    }
+    var usersID = UserDefaults.standard.object(forKey: "userID") as! String
     
     public var body: some View {
         VStack(alignment: .leading){
@@ -85,15 +79,17 @@ struct MoreDetailsSurveyView: View {
                     .padding(.horizontal,10)
                     .listRowSeparator(.hidden)
                     
-                    
-                    
-                    
                     Section(header: Text("Birthdate")
                         .font(.title3)
                             
                         .bold()
                         .foregroundColor(.primary)) {
                             DatePicker("", selection: $birthDate, displayedComponents: .date)
+                                .onChange(of: birthDate, perform: { value in
+                                    age = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
+                                    
+                                    
+                                })
                                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 2))
                                 .padding()
                                 .labelsHidden()
@@ -178,16 +174,14 @@ struct MoreDetailsSurveyView: View {
                 .padding(.horizontal,10)
                 .listRowSeparator(.hidden)
                 
-                
-                
-                
                 VStack{
                     HStack{
                         Spacer()
                         Button("Create") {
-                            mainViewModel.createSurvey(name: profileName, birthDate: birthDate , sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, email: email  )
+                            mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
                             
                             toMainPage = false
+                            
                         }
                         .frame(width: 150, height: 80)
                         .buttonStyle(.borderedProminent)

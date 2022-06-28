@@ -189,16 +189,22 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],email: String){
+    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],userID: String, age: Int){
         let record = CKRecord(recordType: RecordType.survey.rawValue)
-        let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport,email: email)
+        let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport,userID: userID, age: age)
         record.setValuesForKeys(survey.toDictionary())
         
         self.database.save(record){ returnedRecord, returnedError in
-            print("Record: \(returnedRecord)")
-            print("Error: \(returnedError)")
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+                print("Record: \(returnedRecord)")
+                print("Error: \(returnedError)")
+            }
+           
         }
     }
+    
+    
     
     func fetchSurvey(){
         
@@ -228,6 +234,7 @@ final class MainViewModel: ObservableObject {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.surveys = returnedSurveys.map(SurveyViewModel.init)
+                    self.objectWillChange.send()
                     print("31 \(self.surveys)")
                 }
                 
