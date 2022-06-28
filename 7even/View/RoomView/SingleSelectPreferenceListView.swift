@@ -63,7 +63,7 @@ struct SingleSelectPreferenceListView: View {
                         .font(.body)
                         .foregroundColor(Color.mint)
                 })
-            } 
+            }
         }
     }
 }
