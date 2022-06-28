@@ -37,6 +37,7 @@ struct LocationButtonView: View {
                                     .foregroundColor(Color.primary)
                             } else {
                                 Text(textLabel)
+                                    .foregroundColor(Color.primary)
                             }
                             Spacer()
                         }

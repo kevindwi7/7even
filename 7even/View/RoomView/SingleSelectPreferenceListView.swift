@@ -16,7 +16,7 @@ struct SingleSelectPreferenceListView: View {
     var body: some View {
         NavigationView {
             if (type == "sport") {
-                List (sports, id: \.self) { item in
+                List (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self) { item in
                     Button(action: {
                         self.preference = item.name
                         print(preference)
