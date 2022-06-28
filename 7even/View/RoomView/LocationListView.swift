@@ -16,7 +16,7 @@ struct LocationListView: View {
     
     var body: some View {
         NavigationView {
-            List (Location.locationList.filter { $0.region == region }, id: \.self){ item in
+            List (locationList.filter { $0.region == region }, id: \.self){ item in
                 Button(action: {
                     location = item
                     self.isPresented = false

@@ -19,7 +19,7 @@ struct CreateRoomView: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State var isPresented = false
-    @State var location = Location(name: "", address: "", region: "")
+    @State var location = Location(name: "", address: "", region: "", isChecked: false)
     @State var region = ""
     @State var age = [""]
     @State var sex = "Both"
