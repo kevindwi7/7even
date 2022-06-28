@@ -24,6 +24,9 @@ struct SingleSelectPreferenceListView: View {
                     }){
                         HStack {
                             Image(systemName: item.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 30)
                             Text(item.name)
                                 .font(.title3)
                         }

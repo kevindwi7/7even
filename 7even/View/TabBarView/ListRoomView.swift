@@ -34,6 +34,7 @@ struct ListRoomView: View {
     @State var isActive = false
     
     let defaults = UserDefaults.standard
+    let userID = UserDefaults.standard.object(forKey: "userID") as? String
     @State var isListRoomView = false
     init(vm: MainViewModel) {
         _vm = StateObject(wrappedValue: vm)
@@ -85,7 +86,7 @@ struct ListRoomView: View {
                                         .font(.caption)
                                     Image(systemName: "line.3.horizontal.decrease.circle")
                                         .resizable()
-//                                        .scaledToFit()
+                                        .scaledToFit()
                                         .frame(width: 20)
                                 }
                                 .frame(width: 80)
@@ -116,13 +117,6 @@ struct ListRoomView: View {
                                         Button("Here"){
                                             isListRoomView = true
                                         }
-                                        //                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView), label: {
-                                        //                                            Text("Here")
-                                        //                                                .bold()
-                                        //                                                .foregroundColor(.mint)
-                                        //                                                .underline()
-                                        //                                        }
-                                        //                                        )
                                     }.padding(.vertical, 25)
                                 } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
@@ -149,9 +143,14 @@ struct ListRoomView: View {
                                             .padding(.vertical, 5)
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
-                                                
-                                                ListRoomCardView(vm: self.vm, room: $index)
-
+                                                ForEach($vm.surveys, id: \.id) { $item in
+                                                    if( item.favoriteSport.contains(index.sport)) {
+//                                                        if( index.participant.contains(userID ?? "") == false){
+                                                            ListRoomCardView(vm: self.vm, room: $index)
+//                                                        }
+                                                    }
+                                                }
+            
                                                 if ( index == vm.rooms.last ) {
                                                     ListRoomCardView(vm: self.vm, room: $index, isAddRoomButton: true)
                                                 }
@@ -165,7 +164,9 @@ struct ListRoomView: View {
                             } else {
                                     LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
                                         ForEach($vm.rooms, id: \.id) { $index in
-                                            ListRoomCardView(vm: self.vm, room: $index)
+//                                            if( index.participant.contains(userID ?? "") == false){
+                                                ListRoomCardView(vm: self.vm, room: $index)
+//                                            }
                                         }
                                 }
                                 .frame(maxWidth: .infinity)

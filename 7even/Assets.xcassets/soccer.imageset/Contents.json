@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "soccer-ball-variant.png",
+      "filename" : "icons8-soccer-100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-soccer-101.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-soccer-102.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

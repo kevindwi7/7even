@@ -18,11 +18,11 @@ struct LoginView: View {
     
     var body: some View {
             VStack{
-                Image("apple")
+                Image("benefit")
                     .resizable()
                     .scaledToFit()
-                    .frame(height:120)
-                Text("Name of App")
+                    .frame(height:200)
+//                Text("beneFIT")
                 Spacer()
                 
                 let userID = UserDefaults.standard.object(forKey: "userID") as? String

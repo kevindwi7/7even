@@ -17,7 +17,7 @@ struct Sport: Identifiable, Hashable {
 var sports = [
     Sport(name: "Badminton", image: "badminton", isCheck: false),
     Sport(name: "Basketball",image: "basketball", isCheck: false),
-    Sport(name: "Tennis", image: "tennis", isCheck: false),
-    Sport(name: "Futsal",image: "soccer", isCheck: false),
-    Sport(name: "Volleyball", image: "volleyball", isCheck: false),
+//    Sport(name: "Tennis", image: "tennis", isCheck: false),
+    Sport(name: "Football",image: "soccer", isCheck: false),
+    Sport(name: "Running", image: "running", isCheck: false),
 ]

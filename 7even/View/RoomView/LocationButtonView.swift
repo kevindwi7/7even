@@ -34,6 +34,7 @@ struct LocationButtonView: View {
                                 .font(.body)
                             if(textLabel == "") {
                                 Text("Choose Location")
+                                    .foregroundColor(Color.primary)
                             } else {
                                 Text(textLabel)
                             }

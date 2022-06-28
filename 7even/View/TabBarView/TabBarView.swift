@@ -15,19 +15,17 @@ struct TabBarView: View {
         TabView{
             ListRoomView(vm: MainViewModel(container: CKContainer.default()))
                 .tabItem{
-                    Label("Room", systemImage: "person.3")
+                    Label("Rooms", systemImage: "person.3")
                 }
             
             SharingView()
                 .tabItem{
-                    Label("Sharing", systemImage: "star")
+                    Label("Events", systemImage: "calendar")
                     
                 }
-            
-           
-                
-                ProfileView(vm: MainViewModel(container: CKContainer.default()))
-                    .background(test)
+
+            ProfileView(vm: MainViewModel(container: CKContainer.default()))
+                .background(test)
             .tabItem{
                 Label("Profile", systemImage: "person")
                 

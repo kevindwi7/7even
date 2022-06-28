@@ -46,8 +46,14 @@ struct ListRoomCardView: View {
                     
                     VStack() {
                         VStack(alignment: .leading, spacing: 5){
-                            Text(room.sport)
-                                .bold()
+                            HStack {
+                                Text(room.sport)
+                                    .bold()
+                                Image(systemName: "lock.fill")
+                                    .resizable().scaledToFit().frame(height:18)
+                                    .foregroundColor(.gray)
+                            }
+                            
                             Text(room.region)
                                 .font(.subheadline)
                             Text(dateFormatter.string(from: room.endTime))

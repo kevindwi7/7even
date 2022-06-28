@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-racket-100.png",
+      "filename" : "icons8-running-100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-racket-101.png",
+      "filename" : "icons8-running-101.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-racket-102.png",
+      "filename" : "icons8-running-102.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

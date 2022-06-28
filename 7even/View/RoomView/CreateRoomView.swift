@@ -23,7 +23,7 @@ struct CreateRoomView: View {
     @State var region = ""
     @State var age = [""]
     @State var sex = "Both"
-    @State var levelOfPlay = ""
+    @State var levelOfPlay = "Recreational"
     @State var sportName = ""
     @State var roomCode = ""
     
@@ -139,7 +139,9 @@ struct CreateRoomView: View {
             }
             vm.createRoom(host: userID ?? "", sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID ?? ""], roomCode: roomCode)
             presentationMode.wrappedValue.dismiss()
-        })
+        }
+            .disabled(sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || endTime <= startTime)
+        )
     }
 }
 

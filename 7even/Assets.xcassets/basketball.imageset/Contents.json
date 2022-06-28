@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "basketball.png",
+      "filename" : "icons8-basketball-player-100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-basketball-player-101.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-basketball-player-102.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
