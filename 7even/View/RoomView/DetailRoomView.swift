@@ -31,12 +31,14 @@ struct DetailRoomView: View {
     @State var hasJoined: Bool = false
     @State var isFilled: Bool = false
     @State var isPresented: Bool = false
+    @State var roomCodeBtnText: String = "Room Code"
     @Environment(\.presentationMode) var presentationMode
+    
+    private let pasteboard = UIPasteboard.general
     
     func deleteRoom(_ item: RoomViewModel) {
         if let recordId = room.id {
             vm.deleteRoom(recordId)
-            print("hereee ")
         }
     }
     
@@ -57,6 +59,15 @@ struct DetailRoomView: View {
             }
         }
         return ("\(tempMin)-\(tempMax)")
+    }
+    
+    func copyToClipboard(){
+        pasteboard.string = self.room.roomCode
+        self.roomCodeBtnText = "Copied!"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.roomCodeBtnText = "Room Code"
+        }
     }
     
     var body: some View {
@@ -163,52 +174,94 @@ struct DetailRoomView: View {
             }
             
             HStack {
-                HStack {
-                    Circle()
+                HStack(alignment: .center) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 56.8, height: 56.8)
-                    VStack {
+//                        .padding()
+                        .foregroundColor(.mint)
+                    VStack(alignment: .leading) {
                         Text("Dwi")
-                        Text("Rate Rate")
+                        HStack{
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                        }
                     }
                 }
+                .padding(.horizontal)
                 Spacer()
-                HStack {
-                    Circle()
+                HStack(alignment: .center) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 56.8, height: 56.8)
-                    VStack {
+//                        .padding()
+                        .foregroundColor(.mint)
+                    VStack(alignment: .leading) {
                         Text("Dwi")
-                        Text("Rate Rate")
+                        HStack{
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                        }
                     }
                 }
+                .padding(.horizontal)
             }
             
             HStack {
-                HStack {
-                    Circle()
+                HStack(alignment: .center) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 56.8, height: 56.8)
-                    VStack {
+                        .foregroundColor(.mint)
+                    VStack(alignment: .leading) {
                         Text("Dwi")
-                        Text("Rate Rate")
+                        HStack{
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                        }
                     }
                 }
+                .padding(.horizontal)
                 Spacer()
-                HStack {
-                    Circle()
+                HStack(alignment: .center) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 56.8, height: 56.8)
-                    VStack {
+                        .foregroundColor(.mint)
+                    VStack(alignment: .leading) {
                         Text("Dwi")
-                        Text("Rate Rate")
+                        HStack{
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                            Image("star").resizable().scaledToFit()
+                        }
                     }
                 }
+                .padding(.horizontal)
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+//            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
             if(userID == room.host) {
                 HStack {
                     Button(action: {
-                        
+                        copyToClipboard()
                     }) {
-                        Text("Room Code")
+                        Text(roomCodeBtnText)
                             .bold()
                             .padding(5)
                     }
@@ -238,6 +291,7 @@ struct DetailRoomView: View {
                     }
                     
                     Image(systemName: "square.and.arrow.up")
+                        .resizable().scaledToFit()
                         .frame(width: 35, height: 36, alignment: .center)
                         .padding(5)
                 }
@@ -267,6 +321,7 @@ struct DetailRoomView: View {
                         }
                         
                         Image(systemName: "square.and.arrow.up")
+                            .resizable().scaledToFit()
                             .frame(width: 35, height: 36, alignment: .center)
                             .padding(5)
                     }
