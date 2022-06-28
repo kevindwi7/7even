@@ -33,6 +33,7 @@
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
 		C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0B28602E5900677561 /* Preview Assets.xcassets */; };
 		C910EE1228657D1F00696237 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910EE1128657D1F00696237 /* Survey.swift */; };
+		C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */; };
 		C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A3286A2CB1001BFDC6 /* SportWith.swift */; };
 		C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */; };
 		C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B659432863FCCC0074961A /* FavoriteSportList.swift */; };
@@ -76,6 +77,7 @@
 		C90D4A0828602E5900677561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90D4A0B28602E5900677561 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C910EE1128657D1F00696237 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportCardView.swift; sourceTree = "<group>"; };
 		C9A677A3286A2CB1001BFDC6 /* SportWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportWith.swift; sourceTree = "<group>"; };
 		C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreferredSportView.swift; sourceTree = "<group>"; };
 		C9B659432863FCCC0074961A /* FavoriteSportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportList.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				C9B659482863FD930074961A /* FavoriteSportSurveyView.swift */,
 				C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */,
 				C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */,
+				C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */,
 			);
 			path = SurveyView;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
+				C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */,
 				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
