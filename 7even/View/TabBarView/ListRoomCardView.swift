@@ -16,6 +16,7 @@ struct ListRoomCardView: View {
     @State var isActive = false
     @State var isPresented = false
     @State var roomCode = ""
+    @State var showLoginAlert = false
     
     
     var dateFormatter: DateFormatter {
@@ -31,12 +32,15 @@ struct ListRoomCardView: View {
     var body: some View {
         if(!isAddRoomButton) {
             Button(action: {
-                if(room.isPrivateRoom && (room.participant.contains(userID!)) == false ){
-                    self.isPresented = true
+                if(UserDefaults.standard.bool(forKey: "login")) {
+                    if(room.isPrivateRoom && (room.participant.contains(userID!)) == false ){
+                        self.isPresented = true
+                    } else {
+                        self.isActive = true
+                    }
                 } else {
-                    self.isActive = true
+                    self.showLoginAlert = true
                 }
-                
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -49,9 +53,11 @@ struct ListRoomCardView: View {
                             HStack {
                                 Text(room.sport)
                                     .bold()
-                                Image(systemName: "lock.fill")
-                                    .resizable().scaledToFit().frame(height:18)
-                                    .foregroundColor(.gray)
+                                if( room.isPrivateRoom ) {
+                                    Image(systemName: "lock.fill")
+                                        .resizable().scaledToFit().frame(height:18)
+                                        .foregroundColor(.gray)
+                                }
                             }
                             
                             Text(room.region)
@@ -104,6 +110,9 @@ struct ListRoomCardView: View {
                 AlertControl(textString: self.$roomCode, show: self.$isPresented, room: $room, isActive: $isActive,
                              title: "Private Sports Room", message: "You can get your room's code from the host")
             )
+            .alert("Sign In First", isPresented: $showLoginAlert, actions: {
+                Button("Ok") {}
+            })
             .padding(.vertical, 5)
         }
         else {
