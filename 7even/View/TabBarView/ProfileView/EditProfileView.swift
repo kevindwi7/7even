@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditProfileView: View {
-    @StateObject var mainViewModel: MainViewModel
+//    @StateObject var mainViewModel: MainViewModel
     
     @State private var isShowingPhotoPicker = false
     @State private var avatarImage = UIImage(named: "profile")!
@@ -20,12 +20,13 @@ struct EditProfileView: View {
     @State var sportRoutine: String = ""
     @State private var age: DateComponents = DateComponents()
     
-//    @Binding var toMainPage: Bool
+    @Binding var toMainPage: Bool
     //    @Binding var favoriteSports: [String]
     
     @FocusState private var inputIsFocused: Bool
     
     var usersID = UserDefaults.standard.object(forKey: "userID") as! String
+    
     var body: some View {
         VStack(alignment: .leading){
             ScrollView{

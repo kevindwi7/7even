@@ -9,8 +9,9 @@ import SwiftUI
 import CloudKit
 
 struct ProfileView: View {
-    @State var isShowing = false
     @StateObject private var vm: MainViewModel
+    
+    @State var isShowing = false
     @State var action: Int? = 0
     @State var isContentView = false
     @State var isEditProfileView = false
@@ -25,9 +26,9 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView{
-            ScrollView(.vertical){
-                VStack(alignment: .leading){
-                    if(!defaults.bool(forKey: "login")){
+            if(!defaults.bool(forKey: "login")){
+                ScrollView(.vertical){
+                    VStack(alignment: .leading){
                         LazyVStack{
                             Text("Sign up to manage your preferences")
                             NavigationLink(destination: LoginView(toMainPage: $isContentView),isActive: $isContentView){
@@ -38,8 +39,18 @@ struct ProfileView: View {
                                 isContentView = true
                             }
                         }.padding(.vertical, 25)
-                    }else{
-                        
+                        Spacer()
+                    }.onAppear{
+                        vm.fetchSurvey()
+                    }
+                    
+                    Spacer()
+                } .navigationTitle("Profile")
+                    .navigationBarTitleDisplayMode(.inline)
+                
+            }else{
+                ScrollView(.vertical){
+                    VStack(alignment: .leading){
                         ForEach(vm.surveys, id: \.id){ surveys in
                             if (surveys.userID == usersID){
                                 VStack{
@@ -187,22 +198,24 @@ struct ProfileView: View {
                                 }
                             }
                         }
-                        
+                        Spacer()
+                    }.onAppear{
+                        vm.fetchSurvey()
                     }
+                    
                     Spacer()
-                }.onAppear{
-                    vm.fetchSurvey()
-                }
-                
-                Spacer()
-            } .navigationTitle("Profile")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar{
-//                    NavigationLink(destination: EditProfileView(mainViewModel: MainViewModel(container: CKContainer.default())), isActive: $isEditProfileView){
-//                        Text("Edit").foregroundColor(.mint)
-//                        
-//                    }
-                }
+                } .navigationTitle("Profile")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar{
+                        
+                        NavigationLink(destination: EditProfileView(toMainPage: $isEditProfileView), isActive: $isEditProfileView){
+                            Text("Edit").foregroundColor(.mint)
+                            
+                        }
+                    }
+            }
+            
+            
         }
         
     }
