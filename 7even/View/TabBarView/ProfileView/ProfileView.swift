@@ -13,6 +13,8 @@ struct ProfileView: View {
     @StateObject private var vm: MainViewModel
     @State var action: Int? = 0
     @State var isContentView = false
+    @State var isEditProfileView = false
+    @State var isPreferredSportView = false
     
     let defaults = UserDefaults.standard
     let usersID = UserDefaults.standard.object(forKey: "userID") as? String
@@ -121,12 +123,12 @@ struct ProfileView: View {
                                             HStack{
                                                 Text("Preferred Sports").font(.system(size: 16))
                                                 Spacer()
-                                                NavigationLink(destination: EditPreferredSportView(toMainPage: $isContentView), isActive: $isContentView){
+                                                NavigationLink(destination: EditPreferredSportView(toMainPage: $isPreferredSportView, selectedSport: []), isActive: $isPreferredSportView){
                                                     EmptyView()
                                                     //
                                                 }
                                                 Button(action: {
-                                                    isContentView = true
+                                                    isPreferredSportView = true
                                                 }){
                                                     Image(systemName: "plus").resizable().scaledToFit().frame(height: 18).foregroundColor(.mint)
                                                 }
@@ -196,10 +198,10 @@ struct ProfileView: View {
             } .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar{
-                    NavigationLink(destination: EditProfileView(toMainPage: $isContentView), isActive: $isContentView){
-                        Text("Edit").foregroundColor(.mint)
-                        
-                    }
+//                    NavigationLink(destination: EditProfileView(mainViewModel: MainViewModel(container: CKContainer.default())), isActive: $isEditProfileView){
+//                        Text("Edit").foregroundColor(.mint)
+//                        
+//                    }
                 }
         }
         

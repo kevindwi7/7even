@@ -57,16 +57,20 @@ struct MoreDetailsSurveyView: View {
                     }
                     
                     Section(header:
-                                Text("Name")
-                        .font(.title3)
-                        .bold()
-                        .foregroundColor(.primary))
+                                HStack{
+                        Text("Name")
+                            .font(.system(size: 16))
+                            .bold()
+                            .foregroundColor(.primary)
+                        Spacer()
+                    }
+                    )
                     {
                         ZStack {
                             Color(.systemBackground)
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
-                                    TextField("Enter Name", text: $profileName)
+                                    TextField("", text: $profileName)
                                     
                                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
                             }.padding(5)
@@ -77,13 +81,18 @@ struct MoreDetailsSurveyView: View {
                         .shadow(color: Color.black, radius: 1)
                     }
                     .padding(.horizontal,10)
-                    .listRowSeparator(.hidden)
+                    .padding(5)
                     
-                    Section(header: Text("Birthdate")
-                        .font(.title3)
-                            
-                        .bold()
-                        .foregroundColor(.primary)) {
+                    Section(header:
+                                HStack{
+                        Text("BirthDate")
+                            .font(.system(size: 16))
+                            .bold()
+                            .foregroundColor(.primary)
+                        Spacer()
+                    }
+                    ){
+                        HStack{
                             DatePicker("", selection: $birthDate, displayedComponents: .date)
                                 .onChange(of: birthDate, perform: { value in
                                     age = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
@@ -93,70 +102,85 @@ struct MoreDetailsSurveyView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 2))
                                 .padding()
                                 .labelsHidden()
-                                .frame(width: 350, height: 50, alignment: .center)
+                                .frame(width: 350, height: 50)
                             
+                            Spacer()
                         }
-                        .padding(.horizontal,10)
-                        .listRowSeparator(.hidden)
-                    
+                        
+                        
+                    }
+                    .padding(.horizontal,10)
+                    .padding(5)
                 }
-                .listRowSeparator(.hidden)
                 
-                
-                Section(header: Text("Sex")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.primary)
-                    .padding(.horizontal,10)
-                    .listRowSeparator(.hidden)){
-                        HStack {
-                            ForEach(sexes, id: \.self){ item in
-                                RadioButtonField(
-                                    id: item.name,
-                                    label: item.name,
-                                    color: .primary,
-                                    bgColor: .mint,
-                                    isMarked: $gender.wrappedValue == item.name ? true : false,
-                                    callback: { selected in
-                                        self.gender = selected
-                                        print("Selected Gender is: \(selected)")
-                                    }
-                                )
-                            }.listRowSeparator(.hidden)
-                        }.padding(.vertical, 5)
-                    }.listRowSeparator(.hidden)
-                
-                
-                
-                Section(header: Text("Sport With")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.primary)
-                    .padding(.horizontal,10)
-                    .listRowSeparator(.hidden)){
-                        HStack {
-                            ForEach(sportsWith, id: \.self){ test in
-                                RadioButtonField(
-                                    id: test.name,
-                                    label: test.name,
-                                    color: .primary,
-                                    bgColor: .mint,
-                                    isMarked: $sportWith.wrappedValue == test.name ? true : false,
-                                    callback: { selected in
-                                        self.sportWith = selected
-                                        print("Selected Gender is: \(selected)")
-                                    }
-                                )
-                            }
-                        }.padding(.vertical, 5)
-                    }.listRowSeparator(.hidden)
                 
                 Section(header:
-                            Text("How often do you have sport in a week?")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.primary))
-                {
+                            HStack{
+                    Text("Sex")
+                        .font(.system(size: 16))
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                }
+                ){
+                    HStack {
+                        ForEach(sexes, id: \.self){ item in
+                            RadioButtonField(
+                                id: item.name,
+                                label: item.name,
+                                color: .primary,
+                                bgColor: .mint,
+                                isMarked: $gender.wrappedValue == item.name ? true : false,
+                                callback: { selected in
+                                    self.gender = selected
+                                    print("Selected Gender is: \(selected)")
+                                }
+                            )
+                        }.listRowSeparator(.hidden)
+                    }.padding(.vertical, 5)
+                }
+                .padding(.horizontal,10)
+                .padding(5)
+                
+                Section(header:
+                            HStack{
+                    Text("Sport With")
+                        .font(.system(size: 16))
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                }
+                ){
+                    HStack {
+                        ForEach(sportsWith, id: \.self){ test in
+                            RadioButtonField(
+                                id: test.name,
+                                label: test.name,
+                                color: .primary,
+                                bgColor: .mint,
+                                isMarked: $sportWith.wrappedValue == test.name ? true : false,
+                                callback: { selected in
+                                    self.sportWith = selected
+                                    print("Selected Gender is: \(selected)")
+                                }
+                            )
+                        }
+                    }.padding(.vertical, 5)
+                }
+                
+                .padding(.horizontal,10)
+                .padding(5)
+                
+                
+                Section(header:
+                            HStack{
+                    Text("How often do you have sport in a week?")
+                        .font(.system(size: 16))
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                }
+                ){
                     ZStack {
                         Color(.systemBackground)
                         VStack(alignment: .leading, spacing: 8) {
@@ -172,7 +196,7 @@ struct MoreDetailsSurveyView: View {
                     .shadow(color: Color.black, radius: 1)
                 }
                 .padding(.horizontal,10)
-                .listRowSeparator(.hidden)
+                .padding(5)
                 
                 VStack{
                     HStack{
@@ -183,10 +207,9 @@ struct MoreDetailsSurveyView: View {
                             toMainPage = false
                             
                         }
-                        .frame(width: 150, height: 80)
                         .buttonStyle(.borderedProminent)
                         .tint(.mint)
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        //                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                         Spacer()
                     }
                     

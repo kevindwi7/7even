@@ -106,7 +106,7 @@ struct FavoriteSportSurveyView: View {
                     
                     Spacer()
                 }.listStyle(.plain)
-                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
                     .padding(.top,10)
                 
                 
