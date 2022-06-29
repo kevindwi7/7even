@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct ProfileView: View {
-    @StateObject private var vm: MainViewModel
+    @StateObject  var vm: MainViewModel
     
     @State var isShowing = false
     @State var action: Int? = 0
@@ -18,7 +18,7 @@ struct ProfileView: View {
     @State var isPreferredSportView = false
     
     let defaults = UserDefaults.standard
-    let usersID = UserDefaults.standard.object(forKey: "userID") as? String
+    @State var usersID = UserDefaults.standard.object(forKey: "userID") as? String
     
     init(vm: MainViewModel) {
         _vm = StateObject(wrappedValue: vm)
@@ -28,9 +28,12 @@ struct ProfileView: View {
         NavigationView{
             if(!defaults.bool(forKey: "login")){
                 ScrollView(.vertical){
+                    Spacer()
                     VStack(alignment: .leading){
                         LazyVStack{
-                            Text("Sign up to manage your preferences")
+                            
+                            
+                            Text("Sign up to manage your profile")
                             NavigationLink(destination: LoginView(toMainPage: $isContentView),isActive: $isContentView){
                                 EmptyView()
                                 //
@@ -193,6 +196,8 @@ struct ProfileView: View {
                                             }
                                             .padding(.horizontal, 24)
                                             .padding(.vertical,12)
+                                            
+                                            
                                         }
                                     }
                                 }
@@ -202,17 +207,46 @@ struct ProfileView: View {
                     }.onAppear{
                         vm.fetchSurvey()
                     }
-                    
+                    //                    .onReceive(vm.objectWillChange) { _ in
+                    //                        vm.fetchSurvey()
+                    //                    }
+                    //
                     Spacer()
-                } .navigationTitle("Profile")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar{
-                        
-                        NavigationLink(destination: EditProfileView(toMainPage: $isEditProfileView), isActive: $isEditProfileView){
+                }
+                .onAppear{
+                    print("eeewf")
+                    //                    print("\(usersID) testtttt)")
+                    usersID = UserDefaults.standard.object(forKey: "userID") as? String
+                    
+                    vm.fetchSurvey()
+                }
+                
+                .navigationTitle("Profile")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    ForEach($vm.surveys, id: \.id) { index in
+                        NavigationLink(destination: EditProfileView(mainViewModel: MainViewModel(container: CKContainer.default()), survey: index , toMainPage: $isEditProfileView, favoriteSports: [])){
                             Text("Edit").foregroundColor(.mint)
+                            //                                    .onTapGesture {
+                            //                                    print("31 \(index)")
+                            //                                }
                             
                         }
+                        
                     }
+                }
+                //                    .toolbar{
+                //                        forEach()
+                //                        NavigationLink(destination: EditProfileView(mainViewModel: MainViewModel(container: CKContainer.default()), survey: survey.id , toMainPage: $isEditProfileView, favoriteSports: [])){
+                //                            Text("Edit").foregroundColor(.mint)
+                //                        }
+                //
+                //
+                ////                        NavigationLink(destination: EditProfileView(mainViewModel: MainViewModel(container: CKContainer.default()),toMainPage: $isEditProfileView), isActive: $isEditProfileView){
+                ////                            Text("Edit").foregroundColor(.mint)
+                ////
+                ////                        }
+                //                    }
             }
             
             

@@ -15,6 +15,14 @@ struct EditPreferredSportView: View {
     @State var selectedSport: [String]
     @State var sportName = ""
     @State var searchText = ""
+    @State var sports = [
+        Sport(name: "Badminton", image: "badminton", isCheck: false),
+        Sport(name: "Basketball",image: "basketball", isCheck: false),
+    //    Sport(name: "Tennis", image: "tennis", isCheck: false),
+        Sport(name: "Football",image: "soccer", isCheck: false),
+        Sport(name: "Running", image: "running", isCheck: false),
+    ]
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
@@ -30,14 +38,6 @@ struct EditPreferredSportView: View {
                 //                (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self)
                 List(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
                     Button(action: {
-                        for index in selectedSport {
-                            if (index == sport.name){
-                                // MARK BUTTON AS CHECKED
-                                if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
-                                    sports[matchingIndex].isCheck = true
-                                }
-                            }
-                        }
                         
                         if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
                             sports[matchingIndex].isCheck.toggle()
@@ -49,9 +49,22 @@ struct EditPreferredSportView: View {
                                 self.selectedSport.remove(at: match ?? 0)
                             }
                         }
-                        print(selectedSport)
-                    }){
                         
+                        for index in selectedSport {
+                            print("check")
+                            print(index)
+                            print(sport.name)
+                            if (index == sport.name){
+                                // MARK BUTTON AS CHECKED
+                                if let matchingIndex = sports.firstIndex(where: { $0.name == sport.name }) {
+                                    sports[matchingIndex].isCheck = true
+                                    print("test masuk")
+                                }
+                            }
+                        }
+                        print(selectedSport)
+                        print(sport.isCheck)
+                    }){
                         if(sport.isCheck == true){
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10).stroke(.mint, lineWidth: 2)
@@ -88,7 +101,9 @@ struct EditPreferredSportView: View {
                                             .frame(height: 32)
                                     }
                                     
-                                }.padding()
+                                }
+                                .listRowSeparator(.hidden)
+                                .padding()
                             }
                             .padding(.horizontal)
                             .listRowSeparator(.hidden)
@@ -100,19 +115,19 @@ struct EditPreferredSportView: View {
                     
                     .listRowSeparator(.hidden)
                     
-                    .listRowSeparator(.hidden)
-                    .listStyle(.plain)
                     
                     Spacer()
-                }.listStyle(.plain)
-                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
-                    .padding(.top,10)
+                }
+                .listRowSeparator(.hidden)
+                .listStyle(.plain)
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+                .listRowSeparator(.hidden)
                 
                 
                 HStack{
                     Spacer()
                     Button("Edit") {
-//                        mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
+                        //                        mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
                         
                         toMainPage = false
                         
@@ -127,12 +142,12 @@ struct EditPreferredSportView: View {
             .padding()
             .navigationTitle("What do you want to play?")
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar{
-//                NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
-//                    Text("Skip").foregroundColor(.mint)
-//
-//                }
-//            }
+            //            .toolbar{
+            //                NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
+            //                    Text("Skip").foregroundColor(.mint)
+            //
+            //                }
+            //            }
             
             
         }

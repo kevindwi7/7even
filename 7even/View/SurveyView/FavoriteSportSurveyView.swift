@@ -17,6 +17,14 @@ struct FavoriteSportSurveyView: View {
     @State var isCheck = false
     @State var isContentView = true
     
+    @State var sports = [
+        Sport(name: "Badminton", image: "badminton", isCheck: false),
+        Sport(name: "Basketball",image: "basketball", isCheck: false),
+    //    Sport(name: "Tennis", image: "tennis", isCheck: false),
+        Sport(name: "Football",image: "soccer", isCheck: false),
+        Sport(name: "Running", image: "running", isCheck: false),
+    ]
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             HStack{
@@ -114,6 +122,15 @@ struct FavoriteSportSurveyView: View {
                     NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)
                     ){
                         Text("Next")
+                            .padding(.horizontal, 130)
+                            .padding(.vertical, 10)
+                            .background(.mint)
+                            .cornerRadius(12)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            
+                           
+                           
                         
                     }
                 }

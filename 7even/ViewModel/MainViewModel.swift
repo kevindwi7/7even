@@ -195,13 +195,108 @@ final class MainViewModel: ObservableObject {
         record.setValuesForKeys(survey.toDictionary())
         
         self.database.save(record){ returnedRecord, returnedError in
-            DispatchQueue.main.async {
-                self.objectWillChange.send()
-                print("Record: \(returnedRecord)")
-                print("Error: \(returnedError)")
+            if let returnedRecord = returnedRecord {
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                    self.fetchSurvey()
+                    print("Record: \(returnedRecord)")
+                    print("Error: \(returnedError)")
+                }
             }
            
+           
         }
+    }
+    
+    func editSurvey(item: SurveyViewModel, completion: @escaping (Result<SurveyViewModel, Error>) -> ()){
+        guard let recordID = item.id else {return}
+        CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID){ (record, err) in
+            DispatchQueue.main.sync {
+                if let err = err {
+                    print(err)
+                }
+                guard let record = record else {return}
+                record["name"] = item.name as CKRecordValue
+                record["favoriteSport"] = item.favoriteSport as CKRecordValue
+                record["sportWith"] = item.sportWith as CKRecordValue
+                record["age"] = item.age as CKRecordValue
+                record["birthDate"] = item.birthDate as CKRecordValue
+                record["sex"] = item.sex as CKRecordValue
+                
+                CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID){ (record, err) in
+                    if let err = err {
+                        print(err)
+                    }
+                    guard let record = record else { return }
+                    let id = record.recordID
+                    guard let name = record["name"] as? String else {return}
+                    guard let favoriteSport = record["favoriteSport"] as? String else {return}
+                    guard let sportWith = record["sportWith"] as? String else {return}
+                    guard let age = record["age"] as? Int else {return}
+                    guard let birthDate = record["birthDate"] as? Date else {return}
+                    guard let sex = record["sex"] as? String else {return}
+                    guard let userID = record["userID"] as? String else {return}
+                    
+                    let element = SurveyViewModel(survey: Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: [favoriteSport], userID: userID, age: age))
+                    
+                    completion(.success(element))
+                }
+               
+            }
+        }
+        
+    }
+    
+    func updateItem(item: SurveyViewModel, name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],userID: String, age: Int){
+        let recordID = item.id
+        let name = item.name
+        let birthDate = item.birthDate
+        let sex = item.sex
+        let sportWith = item.sportWith
+        let favoriteSport = item.favoriteSport
+        let userID = item.userID
+        let age = item.age
+        
+        database.fetch(withRecordID: recordID!) { returnedRecord, error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                if let error = error {
+                    print(error)
+                }
+                guard let record = returnedRecord else { return }
+                
+                record["name"] = name as CKRecordValue
+                record["favoriteSport"] = favoriteSport as CKRecordValue
+                record["sportWith"] = sportWith as CKRecordValue
+                record["age"] = age as CKRecordValue
+                record["birthDate"] = birthDate as CKRecordValue
+                record["sex"] = sex as CKRecordValue
+                record["userID"] = userID as CKRecordValue
+                
+                self.database.save(record) { record, error in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        if let error = error {
+                            print(error)
+                        }
+                        guard let record = returnedRecord else { return }
+                        let id = record.recordID
+                        
+                        guard let name = record["name"] as? String else {return}
+                        guard let favoriteSport = record["favoriteSport"] as? [String] else {return}
+                        guard let sportWith = record["sportWith"] as? String else {return}
+                        guard let age = record["age"] as? Int else {return}
+                        guard let birthDate = record["birthDate"] as? Date else {return}
+                        guard let sex = record["sex"] as? String else {return}
+                        guard let userID = record["userID"] as? String else {return}
+                        
+                        let element = SurveyViewModel(survey: Survey(id: id, name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport, userID: userID, age: age))
+                        
+//                        let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode))
+//                        print(element)
+                    }
+                }
+            }
+        }
+        
     }
     
     

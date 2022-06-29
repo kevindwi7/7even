@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct EditProfileView: View {
-//    @StateObject var mainViewModel: MainViewModel
+    @StateObject var mainViewModel: MainViewModel
+    
+    @Binding var survey: SurveyViewModel
+    @Binding var toMainPage: Bool
     
     @State private var isShowingPhotoPicker = false
     @State private var avatarImage = UIImage(named: "profile")!
@@ -19,9 +22,9 @@ struct EditProfileView: View {
     @State var sportWith: String = ""
     @State var sportRoutine: String = ""
     @State private var age: DateComponents = DateComponents()
+    @State var favoriteSports: [String]
     
-    @Binding var toMainPage: Bool
-    //    @Binding var favoriteSports: [String]
+    
     
     @FocusState private var inputIsFocused: Bool
     
@@ -95,7 +98,7 @@ struct EditProfileView: View {
                             DatePicker("", selection: $birthDate, displayedComponents: .date)
                                 .onChange(of: birthDate, perform: { value in
                                     age = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
-                                        
+                                    
                                     
                                 })
                                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 2))
@@ -104,7 +107,7 @@ struct EditProfileView: View {
                                 .frame(width: 350, height: 50, alignment: .center)
                             Spacer()
                         }
-                       
+                        
                         
                     }
                     .padding(.horizontal,10)
@@ -166,12 +169,12 @@ struct EditProfileView: View {
                     }.padding(.vertical, 5)
                 }
                 
-            .padding(.horizontal,10)
-            .padding(5)
+                .padding(.horizontal,10)
+                .padding(5)
                 
                 
                 Section(header:
-                    HStack{
+                            HStack{
                     Text("How often do you have sport in a week?")
                         .font(.system(size: 16))
                         .bold()
@@ -198,32 +201,42 @@ struct EditProfileView: View {
                 
                 VStack{
                     HStack{
-                        Spacer()
                         Button("Create") {
-                            //                            mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
+                            mainViewModel.updateItem(item: survey, name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
+//
+//                            mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
                             
-//                            toMainPage = false
+                            toMainPage = false
+                            //                            mainViewModel.editSurvey(item: survey ){ (result)in
+                            //                                switch result{
+                            //                                case .success(let item):
+                            //                                    for i in 0..<self.survey.
+                            //                                }
                             
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.mint)
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                        Spacer()
+                        
+                        
+                        
                     }
-                    
+                    .buttonStyle(.borderedProminent)
+                    .tint(.mint)
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                    Spacer()
                 }
-                .listRowSeparator(.hidden)
-                .padding()
-                .navigationTitle("Edit Profile")
-                .navigationBarTitleDisplayMode(.inline)
-                .sheet(isPresented: $isShowingPhotoPicker, content: {
-                    SurveyPhotoPicker(avatarImage: $avatarImage)
-                })
+                
             }
-            
-        }.padding()
+            .listRowSeparator(.hidden)
+            .padding()
+            .navigationTitle("Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $isShowingPhotoPicker, content: {
+                SurveyPhotoPicker(avatarImage: $avatarImage)
+            })
+        }
+        
     }
 }
+
 //
 //struct EditProfileView_Previews: PreviewProvider {
 //    static var previews: some View {

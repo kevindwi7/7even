@@ -10,7 +10,6 @@ import CloudKit
 
 struct TabBarView: View {
     let test = Color("F2F2F7")
-    
     var body: some View {
         TabView{
             ListRoomView(vm: MainViewModel(container: CKContainer.default()))
@@ -39,11 +38,11 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-    }
-}
+//struct TabBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabBarView()
+//    }
+//}
 
 extension Color {
     init?(_ hex: String) {
