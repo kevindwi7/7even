@@ -28,7 +28,6 @@ struct DetailRoomView: View {
     @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
     
-    @State var hasJoined: Bool = false
     @State var isFilled: Bool = false
     @State var isPresented: Bool = false
     @State var roomCodeBtnText: String = "Room Code"
@@ -258,16 +257,18 @@ struct DetailRoomView: View {
             
             if(userID == room.host) {
                 HStack {
-                    Button(action: {
-                        copyToClipboard()
-                    }) {
-                        Text(roomCodeBtnText)
-                            .bold()
-                            .padding(5)
+                    if(room.isPrivateRoom) {
+                        Button(action: {
+                            copyToClipboard()
+                        }) {
+                            Text(roomCodeBtnText)
+                                .bold()
+                                .padding(5)
+                        }
+                        .tint(.mint)
+                        .buttonStyle(.borderedProminent)
+                        .padding(5)
                     }
-                    .tint(.mint)
-                    .buttonStyle(.borderedProminent)
-                    .padding(5)
                     
                     Button(action: {
                         self.isPresented = true
@@ -286,7 +287,7 @@ struct DetailRoomView: View {
                             self.presentationMode.wrappedValue.dismiss()
                             print("delete room")
                         }) {
-                            Text("Leave")
+                            Text("Delete")
                         }
                     }
                     

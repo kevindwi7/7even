@@ -44,9 +44,7 @@ final class MainViewModel: ObservableObject {
                     if let room = Room.fromRecord(returnedRecord) {
                         DispatchQueue.main.async {
                             self.rooms.append(RoomViewModel(room: room))
-                            defer {
-                                self.objectWillChange.send()
-                            }
+                            self.objectWillChange.send()
                         }
                     }
                 }
@@ -82,9 +80,10 @@ final class MainViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     self.rooms = returnedRooms.map(RoomViewModel.init)
-                    defer {
-                        self.objectWillChange.send()
-                    }
+//                    defer {
+//                        self.objectWillChange.send()
+//                    }
+                    self.objectWillChange.send()
 //                    print("\(self.rooms)")
                 }
                 
@@ -189,22 +188,26 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],userID: String, age: Int){
+    func createSurvey(name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String] ,userID: String, age: Int){
         let record = CKRecord(recordType: RecordType.survey.rawValue)
         let survey = Survey(name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport,userID: userID, age: age)
         record.setValuesForKeys(survey.toDictionary())
         
         self.database.save(record){ returnedRecord, returnedError in
-            if let returnedRecord = returnedRecord {
-                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-                    self.fetchSurvey()
-                    print("Record: \(returnedRecord)")
-                    print("Error: \(returnedError)")
+            if let returnedError = returnedError {
+                print("Error: \(returnedError)")
+            } else {
+                if let returnedRecord = returnedRecord {
+                    if let survey = Survey.fromRecord(returnedRecord) {
+                        DispatchQueue.main.async {
+                            self.surveys.append(SurveyViewModel(survey: survey))
+                            self.objectWillChange.send()
+                            self.fetchSurvey()
+//                            print("Record: \(returnedRecord)")
+                        }
+                    }
                 }
             }
-           
-           
         }
     }
     
@@ -321,7 +324,7 @@ final class MainViewModel: ObservableObject {
                             if let survey = Survey.fromRecord(record) {
                                 returnedSurveys.append(survey)
                             }
-                            print(returnedSurveys)
+//                            print(returnedSurveys)
                         case .failure(let error):
                             print(error)
                         }
@@ -330,7 +333,7 @@ final class MainViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.surveys = returnedSurveys.map(SurveyViewModel.init)
                     self.objectWillChange.send()
-                    print("31 \(self.surveys)")
+//                    print("31 \(self.surveys)")
                 }
                 
             case .failure(let error):
