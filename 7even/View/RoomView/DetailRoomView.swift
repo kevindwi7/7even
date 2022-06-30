@@ -345,7 +345,7 @@ struct DetailRoomView: View {
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 50)
                         }
-                        .tint(hasJoined == true ? .red : .mint)
+                        .tint(.mint)
                         .buttonStyle(.borderedProminent)
                         .padding(5)
                         .disabled(isFilled)
