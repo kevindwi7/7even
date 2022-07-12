@@ -10,25 +10,29 @@ import CloudKit
 
 struct TabBarView: View {
     let test = Color("F2F2F7")
+    
+    @StateObject var vm: MainViewModel
+    
     var body: some View {
         TabView{
             ListRoomView(vm: MainViewModel(container: CKContainer.default()))
                 .tabItem{
                     Label("Rooms", systemImage: "person.3")
                 }
-            
-            SharingView()
-                .tabItem{
-                    Label("Events", systemImage: "calendar")
                     
-                }
-
+            ListRoomEventView(vm: MainViewModel(container: CKContainer.default()))
+                    .tabItem{
+                        Label("Events", systemImage: "calendar")
+                        
+                    }
+            
+            
             ProfileView(vm: MainViewModel(container: CKContainer.default()))
                 .background(test)
-            .tabItem{
-                Label("Profile", systemImage: "person")
-                
-            }
+                .tabItem{
+                    Label("Profile", systemImage: "person")
+                    
+                }
             
         }
         .background(.white)

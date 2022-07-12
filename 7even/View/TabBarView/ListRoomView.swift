@@ -127,7 +127,7 @@ struct ListRoomView: View {
                                                 ZStack {
                                                     RoundedRectangle(cornerRadius: 8)
                                                         .strokeBorder(.mint)
-                                //                        .shadow(radius: 1.5)
+                                                    //                        .shadow(radius: 1.5)
                                                         .frame(width: 170, height: 127)
                                                     
                                                     Image(systemName: "plus")
@@ -145,14 +145,14 @@ struct ListRoomView: View {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ForEach($vm.surveys, id: \.id) { $item in
                                                     if( item.userID == self.userID && item.favoriteSport.contains(index.sport)) {
-//                                                        if( ) {
-    //                                                        if( index.participant.contains(userID ?? "") == false){
-                                                                ListRoomCardView(vm: self.vm, room: $index)
-    //                                                        }
-//                                                        }
+                                                        //                                                        if( ) {
+                                                        //                                                        if( index.participant.contains(userID ?? "") == false){
+                                                        ListRoomCardView(vm: self.vm, room: $index)
+                                                        //                                                        }
+                                                        //                                                        }
                                                     }
                                                 }
-            
+                                                
                                                 if ( index == vm.rooms.last ) {
                                                     ListRoomCardView(vm: self.vm, room: $index, isAddRoomButton: true)
                                                 }
@@ -164,12 +164,12 @@ struct ListRoomView: View {
                                     .padding(.horizontal)
                                 }
                             } else {
-                                    LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
-                                        ForEach($vm.rooms, id: \.id) { $index in
-//                                            if( index.participant.contains(userID ?? "") == false){
-                                                ListRoomCardView(vm: self.vm, room: $index)
-//                                            }
-                                        }
+                                LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
+                                    ForEach($vm.rooms, id: \.id) { $index in
+                                        //                                            if( index.participant.contains(userID ?? "") == false){
+                                        ListRoomCardView(vm: self.vm, room: $index)
+                                        //                                            }
+                                    }
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal)
@@ -187,8 +187,8 @@ struct ListRoomView: View {
             .onReceive(vm.objectWillChange) { _ in
                 if(defaults.bool(forKey: "login")){
                     vm.fetchSurvey()
-//                    print(userID)
-//                    print(vm.surveys.contains(where: { $0.userID == userID }))
+                    //                    print(userID)
+                    //                    print(vm.surveys.contains(where: { $0.userID == userID }))
                     if(vm.surveys.contains(where: { $0.userID == userID })) {
                         vm.fetchRoom()
                     }

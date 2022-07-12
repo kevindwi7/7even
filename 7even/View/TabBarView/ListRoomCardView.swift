@@ -53,6 +53,7 @@ struct ListRoomCardView: View {
                             HStack {
                                 Text(room.sport)
                                     .bold()
+                                    .foregroundColor(room.isFinish == false ? .black : .gray)
                                 if( room.isPrivateRoom ) {
                                     Image(systemName: "lock.fill")
                                         .resizable().scaledToFit().frame(height:18)
@@ -62,27 +63,31 @@ struct ListRoomCardView: View {
                             
                             Text(room.region)
                                 .font(.subheadline)
+                                .foregroundColor(room.isFinish == false ? .black : .gray)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
+                                .foregroundColor(room.isFinish == false ? .black : .gray)
                         } //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
                                 Circle()
                                     .fill( room.levelOfPlay == "Recreational" ? Color(UIColor.systemGreen) : Color(UIColor.systemOrange))
                                     .frame(width: 9, height: 9)
+                                    
                                 
                                 Text(room.levelOfPlay)
                                     .font(.caption)
+                                    .foregroundColor(room.isFinish == false ? .black : .gray)
                             }
                             
                             ZStack {
                                 if (room.participant.count == room.maximumParticipant) {
                                     Circle()
-                                        .strokeBorder( .green )
+                                        .strokeBorder( room.isFinish == false ? .green : .gray )
                                         .frame(width: 30, height: 30)
                                 } else if (room.participant.count >= (Int(Double(room.maximumParticipant * 2)/3))) {
                                     Circle()
-                                        .strokeBorder( .mint )
+                                        .strokeBorder(room.isFinish == false ? .mint : .gray )
                                         .frame(width: 30, height: 30)
                                 } else {
                                     Circle()
@@ -92,7 +97,7 @@ struct ListRoomCardView: View {
                                 
                                 Text("\(room.participant.count)/\(room.maximumParticipant)")
                                     .font(.caption2)
-                                    .foregroundColor(.mint)
+                                    .foregroundColor(room.isFinish == false ? .mint : .gray)
                             }
 
                         } //HSTACK

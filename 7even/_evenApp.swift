@@ -14,7 +14,7 @@ struct _evenApp: App {
     var body: some Scene {
         WindowGroup {
 //            FavoriteSportSurveyView()
-            TabBarView()
+            TabBarView(vm: MainViewModel(container: CKContainer.default()))
 //            TabBarView()
 //            CreateRoomView(vm: MainViewModel(container: CKContainer.default()))
             
