@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TextFieldView: View {
-    var textLabel = "Halo"
-    @Binding var inputNumber: String
+    var textLabel = "Enter"
+    var isTextEditor = false
+    @Binding var text: String
     @FocusState.Binding var inputIsFocused: Bool
     
     var body: some View {
@@ -19,16 +20,20 @@ struct TextFieldView: View {
                 .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.systemBackground)))
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    TextField(textLabel, text: $inputNumber)
-                        .keyboardType(.decimalPad)
-                        .focused($inputIsFocused)
+                    if(isTextEditor) {
+                        TextEditor(text: $text)
+                            .frame(height: 90)
+                            .focused($inputIsFocused)
+                    } else {
+                        TextField(textLabel, text: $text)
+                            .keyboardType(.decimalPad)
+                            .focused($inputIsFocused)
+                    }
                 }.padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
-            }.padding(5)
+            }.padding(isTextEditor == true ? 0 : 5)
         }
-//        .cornerRadius(12)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .fixedSize(horizontal: false, vertical: true)
-//        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
     }
 }
 
