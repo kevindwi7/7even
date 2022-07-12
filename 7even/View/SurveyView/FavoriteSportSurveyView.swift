@@ -20,9 +20,11 @@ struct FavoriteSportSurveyView: View {
     @State var sports = [
         Sport(name: "Badminton", image: "badminton", isCheck: false),
         Sport(name: "Basketball",image: "basketball", isCheck: false),
-        //    Sport(name: "Tennis", image: "tennis", isCheck: false),
+        Sport(name: "Tennis", image: "tennis", isCheck: false),
         Sport(name: "Football",image: "soccer", isCheck: false),
-        Sport(name: "Running", image: "running", isCheck: false),
+        Sport(name: "Yoga", image: "yoga", isCheck: false),
+        Sport(name: "Cycling", image: "cycling", isCheck: false),
+        Sport(name: "Boxing", image: "boxing", isCheck: false)
     ]
     
     var body: some View {
