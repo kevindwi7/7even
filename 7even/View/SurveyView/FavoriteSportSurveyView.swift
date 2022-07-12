@@ -20,129 +20,126 @@ struct FavoriteSportSurveyView: View {
     @State var sports = [
         Sport(name: "Badminton", image: "badminton", isCheck: false),
         Sport(name: "Basketball",image: "basketball", isCheck: false),
-    //    Sport(name: "Tennis", image: "tennis", isCheck: false),
+        Sport(name: "Tennis", image: "tennis", isCheck: false),
         Sport(name: "Football",image: "soccer", isCheck: false),
-        Sport(name: "Running", image: "running", isCheck: false),
+        Sport(name: "Yoga", image: "yoga", isCheck: false),
+        Sport(name: "Cycling", image: "cycling", isCheck: false),
+        Sport(name: "Boxing", image: "boxing", isCheck: false)
     ]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             HStack{
-                Text("Select Maximum 2 Sports")
+                Text("What sports do you want to play?")
                     .fontWeight(.bold)
                 Spacer()
                 
             }.padding()
             Spacer()
             
-            VStack(spacing:15){
-                //                (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self)
-                List(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
-                    Button(action: {
-                        for index in selectedSport {
-                            if (index == sport.name){
-                                // MARK BUTTON AS CHECKED
-                                if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
-                                    sports[matchingIndex].isCheck = true
+            ScrollView(.vertical){
+                VStack(spacing:15){
+                    //                (searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self)
+                    
+                    ForEach(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.id){ sport in
+                        Button(action: {
+                            for index in selectedSport {
+                                if (index == sport.name){
+                                    // MARK BUTTON AS CHECKED
+                                    if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                        sports[matchingIndex].isCheck = true
+                                    }
                                 }
                             }
-                        }
-                        
-                        if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
-                            sports[matchingIndex].isCheck.toggle()
                             
-                            if(sports[matchingIndex].isCheck == true) {
-                                self.selectedSport.append(sport.name)
-                            } else {
-                                let match = self.selectedSport.firstIndex(where: { $0 == sport.name})
-                                self.selectedSport.remove(at: match ?? 0)
+                            if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                sports[matchingIndex].isCheck.toggle()
+                                
+                                if(sports[matchingIndex].isCheck == true) {
+                                    self.selectedSport.append(sport.name)
+                                } else {
+                                    let match = self.selectedSport.firstIndex(where: { $0 == sport.name})
+                                    self.selectedSport.remove(at: match ?? 0)
+                                }
                             }
-                        }
-                        print(selectedSport)
-                    }){
-                        
-                        if(sport.isCheck == true){
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10).stroke(.mint, lineWidth: 2)
-                                    .shadow(radius: 5)
-                                VStack{
-                                    HStack{
-                                        Text(sport.name)
-                                            .foregroundColor(.black)
-                                        Spacer()
-                                        Image(sport.image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height: 32)
+                            print(selectedSport)
+                        }){
+                            
+                            if(sport.isCheck == true){
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10).stroke(.mint, lineWidth: 2)
+                                        .shadow(radius: 5)
+                                    VStack{
+                                        HStack{
+                                            Text(sport.name)
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                            Image(sport.image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: 32)
+                                            
+                                        }
                                         
-                                    }
-                                    
-                                }.padding()
+                                    }.padding()
+                                }
+                                .foregroundColor(.mint)
+                                .padding(.horizontal)
+                                .listRowSeparator(.hidden)
+                            }else{
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10).fill(.white)
+                                        .shadow(radius: 5)
+                                    VStack{
+                                        HStack{
+                                            Text(sport.name)
+                                                .foregroundColor(.black)
+                                            Spacer()
+                                            Image(sport.image)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: 32)
+                                        }
+                                        
+                                    }.padding()
+                                }
+                                .padding(.horizontal)
+                                .listRowSeparator(.hidden)
+                                
+                                
                             }
-                            .foregroundColor(.mint)
-                            .padding(.horizontal)
-                            .listRowSeparator(.hidden)
-                        }else{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10).fill(.white)
-                                    .shadow(radius: 5)
-                                VStack{
-                                    HStack{
-                                        Text(sport.name)
-                                            .foregroundColor(.black)
-                                        Spacer()
-                                        Image(sport.image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(height: 32)
-                                    }
-                                    
-                                }.padding()
-                            }
-                            .padding(.horizontal)
-                            .listRowSeparator(.hidden)
+                            
+                        }.padding(8)
+                    }   .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+                    
+                    
+                    HStack{
+                        NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)
+                        ){
+                            Text("Next")
+                                .padding(.horizontal, 135)
+                                .padding(.vertical, 10)
+                                .background(.mint)
+                                .cornerRadius(12)
+                                .foregroundColor(.white)
+                                .font(.headline)
+                            
+                            
                             
                             
                         }
-                        
                     }
-                    
-                    .listRowSeparator(.hidden)
-                    
-                    .listRowSeparator(.hidden)
-                    .listStyle(.plain)
-                    
                     Spacer()
-                }.listStyle(.plain)
-                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
-                    .padding(.top,10)
-                
-                
-                HStack{
-                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)
-                    ){
-                        Text("Next")
-                            .padding(.horizontal, 130)
-                            .padding(.vertical, 10)
-                            .background(.mint)
-                            .cornerRadius(12)
-                            .foregroundColor(.white)
-                            .font(.headline)
-                            
-                           
-                           
-                        
-                    }
                 }
-                Spacer()
-            }
-            .listRowSeparator(.hidden)
-            .padding()
-            .navigationTitle("What do you want to play?")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
-                    Text("Skip").foregroundColor(.mint)
+                .listRowSeparator(.hidden)
+                .padding()
+                .navigationTitle("Sport")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    NavigationLink(destination: MoreDetailsSurveyView(mainViewModel: MainViewModel(container: CKContainer.default()), toMainPage: $toMainPage, favoriteSports: $selectedSport)){
+                        Text("Skip").foregroundColor(.mint)
+                    }
+                    
                     
                 }
             }
