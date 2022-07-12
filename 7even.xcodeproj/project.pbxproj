@@ -21,6 +21,7 @@
 		4648E4EE28641993003AECAC /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4ED28641993003AECAC /* Age.swift */; };
 		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
 		4648E4F4286420BB003AECAC /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F3286420BB003AECAC /* Sex.swift */; };
+		466F9247287D23F8000CF277 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F9246287D23F8000CF277 /* Extension.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
 		467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */; };
@@ -67,6 +68,7 @@
 		4648E4ED28641993003AECAC /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
 		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
 		4648E4F3286420BB003AECAC /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
+		466F9246287D23F8000CF277 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
 		467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectPreferenceListView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				46108D3128698E560028F71E /* AlertControl.swift */,
 				4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */,
+				466F9246287D23F8000CF277 /* Extension.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
+				466F9247287D23F8000CF277 /* Extension.swift in Sources */,
 				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
 				467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
@@ -512,7 +516,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -525,7 +529,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -542,7 +546,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -555,7 +559,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
