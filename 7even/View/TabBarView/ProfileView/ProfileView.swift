@@ -220,6 +220,16 @@ struct ProfileView: View {
                     
                     vm.fetchSurvey()
                 }
+                .onReceive(vm.objectWillChange) { _ in
+                    if(defaults.bool(forKey: "login")){
+                        vm.fetchSurvey()
+                        //                    print(userID)
+                        //                    print(vm.surveys.contains(where: { $0.userID == userID }))
+                        if(vm.surveys.contains(where: { $0.userID == usersID })) {
+                            vm.fetchSurvey()
+                        }
+                    }
+                }
                 
                 .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.inline)

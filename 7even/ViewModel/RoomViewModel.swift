@@ -87,4 +87,8 @@ struct RoomViewModel: Hashable, Identifiable {
     var roomCode: String {
         room.roomCode
     }
+    
+    var isFinish: Bool{
+        room.isFinish
+    }
 }

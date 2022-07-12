@@ -28,6 +28,10 @@
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
 		46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BA400A2861BC6A007A7EBF /* CloudKit.framework */; };
+		C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D12287C499A00B1B61D /* ListRoomEventView.swift */; };
+		C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */; };
+		C9075D1C287D113900B1B61D /* OnGoingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1B287D113900B1B61D /* OnGoingEventView.swift */; };
+		C9075D1E287D142100B1B61D /* CompletedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1D287D142100B1B61D /* CompletedEventView.swift */; };
 		C90D4A0528602E5800677561 /* _evenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0428602E5800677561 /* _evenApp.swift */; };
 		C90D4A0728602E5800677561 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0628602E5800677561 /* ContentView.swift */; };
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
@@ -44,7 +48,6 @@
 		C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */; };
 		C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */; };
 		C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F932865834100B7E6FE /* TabBarView.swift */; };
-		C9ED0F982865835900B7E6FE /* SharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F972865835900B7E6FE /* SharingView.swift */; };
 		C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F992865836300B7E6FE /* ProfileView.swift */; };
 		C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +74,10 @@
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		46BA400A2861BC6A007A7EBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C9075D12287C499A00B1B61D /* ListRoomEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomEventView.swift; sourceTree = "<group>"; };
+		C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsCardView.swift; sourceTree = "<group>"; };
+		C9075D1B287D113900B1B61D /* OnGoingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingEventView.swift; sourceTree = "<group>"; };
+		C9075D1D287D142100B1B61D /* CompletedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventView.swift; sourceTree = "<group>"; };
 		C90D4A0128602E5800677561 /* 7even.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7even.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90D4A0428602E5800677561 /* _evenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _evenApp.swift; sourceTree = "<group>"; };
 		C90D4A0628602E5800677561 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,7 +95,6 @@
 		C9ED0F8E286582A400B7E6FE /* MoreDetailsSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsSurveyView.swift; sourceTree = "<group>"; };
 		C9ED0F90286582EC00B7E6FE /* SurveyPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyPhotoPicker.swift; sourceTree = "<group>"; };
 		C9ED0F932865834100B7E6FE /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		C9ED0F972865835900B7E6FE /* SharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingView.swift; sourceTree = "<group>"; };
 		C9ED0F992865836300B7E6FE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +181,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C9075D1A287D111A00B1B61D /* EventView */ = {
+			isa = PBXGroup;
+			children = (
+				C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */,
+				C9075D12287C499A00B1B61D /* ListRoomEventView.swift */,
+				C9075D1B287D113900B1B61D /* OnGoingEventView.swift */,
+				C9075D1D287D142100B1B61D /* CompletedEventView.swift */,
+			);
+			path = EventView;
+			sourceTree = "<group>";
+		};
 		C90D49F828602E5800677561 = {
 			isa = PBXGroup;
 			children = (
@@ -247,9 +264,9 @@
 		C9ED0F922865830B00B7E6FE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
+				C9075D1A287D111A00B1B61D /* EventView */,
 				C9A677A5286A3243001BFDC6 /* ProfileView */,
 				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
-				C9ED0F972865835900B7E6FE /* SharingView.swift */,
 				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
 				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
 			);
@@ -329,6 +346,7 @@
 				46108D29286782130028F71E /* RoomViewModel.swift in Sources */,
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
+				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
 				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
 				C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */,
@@ -339,6 +357,7 @@
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
 				C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */,
 				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
+				C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
 				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
@@ -347,7 +366,6 @@
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
 				4648E4E42862FE58003AECAC /* LocationListView.swift in Sources */,
 				467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */,
-				C9ED0F982865835900B7E6FE /* SharingView.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
@@ -362,7 +380,9 @@
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
 				C910EE1228657D1F00696237 /* Survey.swift in Sources */,
+				C9075D1E287D142100B1B61D /* CompletedEventView.swift in Sources */,
 				4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */,
+				C9075D1C287D113900B1B61D /* OnGoingEventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -505,7 +525,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -522,7 +542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -535,7 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
