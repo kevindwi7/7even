@@ -42,7 +42,7 @@ struct FavoriteSportCardView: View {
                         VStack{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10).stroke(.mint, lineWidth: 2)
-                                    .shadow(radius: 5)
+                                    .shadow(radius: 1)
                                 VStack{
                                     HStack{
                                         Text(sport.name)
@@ -60,13 +60,13 @@ struct FavoriteSportCardView: View {
                             .foregroundColor(.mint)
                             .padding(.horizontal)
                             .listRowSeparator(.hidden)
-                        }.padding()
+                        }.padding(.vertical, 48)
                         
                     }else{
                         VStack{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10).fill(.white)
-                                    .shadow(radius: 5)
+                                    .shadow(radius: 1)
                                 VStack{
                                     HStack{
                                         Text(sport.name)
@@ -88,14 +88,15 @@ struct FavoriteSportCardView: View {
                         
                     }
                     
-                }
+                }.padding(.vertical, 128)
             }
             //            ForEach(searchText == "" ? sports : sports.filter{$0.name.lowercased().contains(searchText.lowercased())}, id: \.self){ sport in
             
             //            }
             
             
-        } .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+        }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
     }
 }
 
