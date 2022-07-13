@@ -11,6 +11,7 @@
 		46108D29286782130028F71E /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D28286782130028F71E /* RoomViewModel.swift */; };
 		46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D2D286943BD0028F71E /* DetailRoomView.swift */; };
 		46108D3228698E560028F71E /* AlertControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46108D3128698E560028F71E /* AlertControl.swift */; };
+		4615DFD8287EFFBA004F0AB8 /* StreamChatSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4615DFD7287EFFBA004F0AB8 /* StreamChatSwiftUI */; };
 		4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
@@ -108,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4615DFD8287EFFBA004F0AB8 /* StreamChatSwiftUI in Frameworks */,
 				46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +297,9 @@
 			dependencies = (
 			);
 			name = 7even;
+			packageProductDependencies = (
+				4615DFD7287EFFBA004F0AB8 /* StreamChatSwiftUI */,
+			);
 			productName = 7even;
 			productReference = C90D4A0128602E5800677561 /* 7even.app */;
 			productType = "com.apple.product-type.application";
@@ -323,6 +328,9 @@
 				Base,
 			);
 			mainGroup = C90D49F828602E5800677561;
+			packageReferences = (
+				4615DFD6287EFFBA004F0AB8 /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */,
+			);
 			productRefGroup = C90D4A0228602E5800677561 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -593,6 +601,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4615DFD6287EFFBA004F0AB8 /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getstream/stream-chat-swiftui";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4615DFD7287EFFBA004F0AB8 /* StreamChatSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4615DFD6287EFFBA004F0AB8 /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */;
+			productName = StreamChatSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C90D49F928602E5800677561 /* Project object */;
 }
