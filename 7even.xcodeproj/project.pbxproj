@@ -134,6 +134,14 @@
 			path = ListRoomView;
 			sourceTree = "<group>";
 		};
+		4615DFDB287F01D1004F0AB8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				466F9246287D23F8000CF277 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		46BA3FFB2861A89B007A7EBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +200,6 @@
 			children = (
 				46108D3128698E560028F71E /* AlertControl.swift */,
 				4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */,
-				466F9246287D23F8000CF277 /* Extension.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 				46BA3FFB2861A89B007A7EBF /* Model */,
 				46BA3FFC2861A8A1007A7EBF /* View */,
 				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
+				4615DFDB287F01D1004F0AB8 /* Extension */,
 				46BA40052861BA4B007A7EBF /* Modifier */,
 				C90D4A0428602E5800677561 /* _evenApp.swift */,
 				C90D4A0628602E5800677561 /* ContentView.swift */,
