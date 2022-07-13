@@ -33,6 +33,7 @@
 		C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */; };
 		C9075D1C287D113900B1B61D /* OnGoingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1B287D113900B1B61D /* OnGoingEventView.swift */; };
 		C9075D1E287D142100B1B61D /* CompletedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1D287D142100B1B61D /* CompletedEventView.swift */; };
+		C9075D20287E5B7B00B1B61D /* GroupChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */; };
 		C90D4A0528602E5800677561 /* _evenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0428602E5800677561 /* _evenApp.swift */; };
 		C90D4A0728602E5800677561 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90D4A0628602E5800677561 /* ContentView.swift */; };
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsCardView.swift; sourceTree = "<group>"; };
 		C9075D1B287D113900B1B61D /* OnGoingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingEventView.swift; sourceTree = "<group>"; };
 		C9075D1D287D142100B1B61D /* CompletedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedEventView.swift; sourceTree = "<group>"; };
+		C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatView.swift; sourceTree = "<group>"; };
 		C90D4A0128602E5800677561 /* 7even.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7even.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90D4A0428602E5800677561 /* _evenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _evenApp.swift; sourceTree = "<group>"; };
 		C90D4A0628602E5800677561 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
 				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
 				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
+				C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
 				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
+				C9075D20287E5B7B00B1B61D /* GroupChatView.swift in Sources */,
 				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
 				C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */,
@@ -516,7 +520,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -529,7 +533,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -546,7 +550,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -559,7 +563,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
