@@ -91,4 +91,12 @@ struct RoomViewModel: Hashable, Identifiable {
     var isFinish: Bool{
         room.isFinish
     }
+    
+    var description: String {
+        room.description
+    }
+    
+    var name: String {
+        room.name
+    }
 }

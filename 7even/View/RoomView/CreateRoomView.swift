@@ -16,6 +16,7 @@ struct CreateRoomView: View {
     @State private var maximumParticipant = ""
     @State private var price = ""
     @State private var isPrivateRoom: Bool = false
+    @State private var date = Date()
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State var isPresented = false
@@ -27,6 +28,8 @@ struct CreateRoomView: View {
     @State var sportName = ""
     @State var roomCode = ""
     @State private var isFinish: Bool = false
+    @State var roomDescription = ""
+    @State var name = ""
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -56,33 +59,55 @@ struct CreateRoomView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Section{
+                    TextFieldView(textLabel: "Room's Name", isText: true, text: $name, inputIsFocused: $inputIsFocused)
+                    
                     SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     
-                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
+//                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
                     
-                    if(region != "") {
-                        LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
-                    }
+                    LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
+                    
+//                    if(region != "") {
+//
+//                    }
                     
                     HStack {
-                        TextFieldView(textLabel: "Minimum Participant", inputNumber: $minimumParticipant, inputIsFocused: $inputIsFocused)
-                        TextFieldView(textLabel: "Maximum Participant", inputNumber: $maximumParticipant, inputIsFocused: $inputIsFocused)
+                        TextFieldView(textLabel: "Minimum Participant", text: $minimumParticipant, inputIsFocused: $inputIsFocused)
+                        TextFieldView(textLabel: "Maximum Participant", text: $maximumParticipant, inputIsFocused: $inputIsFocused)
                     }
                     
-                    TextFieldView(textLabel: "Price", inputNumber: $price, inputIsFocused: $inputIsFocused)
+                    TextFieldView(textLabel: "Price", text: $price, inputIsFocused: $inputIsFocused)
                     
                     Toggle("Private Room", isOn: $isPrivateRoom)
                         .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
                         .tint(.mint)
                     
-                    DatePicker("Starts", selection: $startTime)
+                    DatePicker("Date", selection: $date, displayedComponents: .date)
                         .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
                         .accentColor(.mint)
                     
-                    DatePicker("Ends", selection: $endTime)
+                    DatePicker("Starts", selection: $startTime, displayedComponents: .hourAndMinute)
                         .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
                         .accentColor(.mint)
+                        .onChange(of: startTime, perform: { value in
+                            let dateComponents = date.get(.day, .month, .year)
+                            let timeComponents = value.get(.hour, .minute)
+                            if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
+                                startTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
+                            }
+                        })
+                    
+                    DatePicker("Ends", selection: $endTime, displayedComponents: .hourAndMinute)
+                        .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                        .accentColor(.mint)
+                        .onChange(of: endTime, perform: { value in
+                            let dateComponents = date.get(.day, .month, .year)
+                            let timeComponents = value.get(.hour, .minute)
+                            if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
+                                endTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
+                            }
+                        })
                 }
                 
                 Section(header:
@@ -130,11 +155,17 @@ struct CreateRoomView: View {
                     }.padding(.vertical, 5)
                     
                     ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
-    //                    SheetButtonView(showModalButton: true, type: "sex", textLabel: $sex)
-    //                    SheetButtonView(showModalButton: true, type: "levelOfPlay", textLabel: $levelOfPlay)
                 }
                 
-                Spacer()
+                Section(header:
+                    Text("Room Description")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.primary)
+                        .padding(.top, 10)
+                ) {
+                    TextFieldView(isTextEditor: true, text: $roomDescription, inputIsFocused: $inputIsFocused)
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -153,10 +184,10 @@ struct CreateRoomView: View {
                 if isPrivateRoom {
                     roomCode = checkCode()
                 }
-                vm.createRoom(host: userID!, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish)
+                vm.createRoom(host: userID!, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name)
                 presentationMode.wrappedValue.dismiss()
             }
-                .disabled(sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
+                .disabled(name == "" || sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
             )
         }
     }
