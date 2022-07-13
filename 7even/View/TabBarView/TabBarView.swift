@@ -17,15 +17,19 @@ struct TabBarView: View {
         TabView{
             ListRoomView(vm: MainViewModel(container: CKContainer.default()))
                 .tabItem{
-                    Label("Rooms", systemImage: "person.3")
+                    Label("Explore", systemImage: "person.3")
                 }
                     
             ListRoomEventView(vm: MainViewModel(container: CKContainer.default()))
                     .tabItem{
-                        Label("Events", systemImage: "calendar")
+                        Label("My Room", systemImage: "calendar")
                         
                     }
             
+            GroupChatView()
+                .tabItem{
+                    Label("Chat", systemImage: "bubble.left")
+                }
             
             ProfileView(vm: MainViewModel(container: CKContainer.default()))
                 .background(test)
@@ -33,6 +37,8 @@ struct TabBarView: View {
                     Label("Profile", systemImage: "person")
                     
                 }
+            
+          
             
         }
         .background(.white)
