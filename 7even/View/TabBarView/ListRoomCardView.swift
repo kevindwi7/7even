@@ -26,14 +26,14 @@ struct ListRoomCardView: View {
         return formatter
     }
     
-    let userID = UserDefaults.standard.object(forKey: "userID") as? String
+//    let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
     
     var body: some View {
         if(!isAddRoomButton) {
             Button(action: {
                 if(UserDefaults.standard.bool(forKey: "login")) {
-                    if(room.isPrivateRoom && (room.participant.contains(userID!)) == false ){
+                    if(room.isPrivateRoom && (room.participant.contains(vm.userID!)) == false ){
                         self.isPresented = true
                     } else {
                         self.isActive = true

@@ -12,21 +12,39 @@ import Combine
 enum RecordType: String {
     case room = "Room"
     case survey = "Survey"
+    case user = "UsersData"
 }
 
 final class MainViewModel: ObservableObject {
     
     private var database: CKDatabase
-    private var container: CKContainer
+    private var container: CKContainer = CKContainer.default()
     
     @Published var rooms: [RoomViewModel] = []
     @Published var surveys: [SurveyViewModel] = []
+    @Published var isSignedInToiCloud: Bool = false
+    @Published var userID: String = ""
     
     let objectWillChange = PassthroughSubject<(), Never>()
     
     init(container: CKContainer) {
         self.container = container
         self.database = self.container.publicCloudDatabase
+    }
+    
+    func iCloudUserIDAsync() {
+        let record = CKRecord(recordType: RecordType.user.rawValue)
+        container.fetchUserRecordID { returnedID, returnedError in
+            if let returnedError = returnedError {
+                print("Error: \(returnedError)")
+            } else {
+                if let returnedID = returnedID?.recordName {
+                    self.isSignedInToiCloud = true
+                    self.userID = returnedID
+                }
+            }
+        }
+        
     }
     
     func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String){

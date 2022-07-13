@@ -23,7 +23,7 @@ struct DetailRoomView: View {
         return formatter
     }
     
-    let userID = UserDefaults.standard.object(forKey: "userID") as? String
+//    let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
     @StateObject var vm: MainViewModel
     @Binding var room: RoomViewModel
@@ -255,7 +255,7 @@ struct DetailRoomView: View {
             }
 //            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            if(userID == room.host) {
+            if(vm.userID == room.host) {
                 HStack {
                     if(room.isPrivateRoom) {
                         Button(action: {
@@ -298,7 +298,7 @@ struct DetailRoomView: View {
                 }
                 .padding(5)
             } else {
-                if(room.participant.contains(userID!)) {
+                if(room.participant.contains(vm.userID)) {
                     HStack {
                         Button(action: {
                             self.isPresented = true
@@ -314,7 +314,7 @@ struct DetailRoomView: View {
                         .alert("Are you sure to leave this room?", isPresented: $isPresented) {
                             Button(role: .destructive, action: {
 //                                self.hasJoined = false
-                                vm.updateItem(room: room, participantID: userID!, command: "leave")
+                                vm.updateItem(room: room, participantID: vm.userID, command: "leave")
                                 self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("Leave")
@@ -332,7 +332,7 @@ struct DetailRoomView: View {
                         Button(action: {
                             if ( room.participant.count < room.maximumParticipant ){
                                 self.isFilled = false
-                                vm.updateItem(room: room, participantID: userID!, command: "join")
+                                vm.updateItem(room: room, participantID: vm.userID, command: "join")
                             } else {
                                 self.isFilled = true
                             }

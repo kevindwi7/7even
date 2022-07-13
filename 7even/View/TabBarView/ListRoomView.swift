@@ -35,7 +35,7 @@ struct ListRoomView: View {
     @State var selectedSport: [String]
     
     let defaults = UserDefaults.standard
-    @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
+//    @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
     @State var isListRoomView = false
     //    init(vm: MainViewModel) {
     //        _vm = StateObject(wrappedValue: vm)
@@ -205,12 +205,8 @@ struct ListRoomView: View {
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ForEach($vm.surveys, id: \.id) { $item in
-                                                    if( item.userID == self.userID && item.favoriteSport.contains(index.sport)) {
-                                                        //                                                        if( ) {
-                                                        //                                                        if( index.participant.contains(userID ?? "") == false){
+                                                    if( item.userID == vm.userID && item.favoriteSport.contains(index.sport)) {
                                                         ListRoomCardView(vm: self.vm, room: $index)
-                                                        //                                                        }
-                                                        //                                                        }
                                                     }
                                                 }
                                                 
@@ -242,7 +238,7 @@ struct ListRoomView: View {
             } //VSTACK
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                userID = UserDefaults.standard.object(forKey: "userID") as? String
+                vm.iCloudUserIDAsync()
                 vm.fetchRoom()
             }
             .onReceive(vm.objectWillChange) { _ in
@@ -250,7 +246,7 @@ struct ListRoomView: View {
                     vm.fetchSurvey()
                     //                    print(userID)
                     //                    print(vm.surveys.contains(where: { $0.userID == userID }))
-                    if(vm.surveys.contains(where: { $0.userID == userID })) {
+                    if(vm.surveys.contains(where: { $0.userID == vm.userID })) {
                         vm.fetchRoom()
                     }
                 }
