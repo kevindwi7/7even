@@ -29,7 +29,8 @@ struct SheetButtonView: View {
                                 if(type == "sport"){
                                     Text("Sport's Name")
                                         .foregroundColor(.primary)
-                                } else if (type == "region") {
+                                }
+                                else if (type == "region") {
                                     Text("Region")
                                         .foregroundColor(.primary)
                                 }

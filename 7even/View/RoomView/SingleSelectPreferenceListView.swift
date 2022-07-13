@@ -43,7 +43,8 @@ struct SingleSelectPreferenceListView: View {
                         .font(.body)
                         .foregroundColor(Color.mint)
                 })
-            } else if (type == "region"){
+            }
+            else if (type == "region"){
                 List (REGION.allCases, id: \.rawValue) { item in
                     Button(action: {
                         self.preference = item.rawValue

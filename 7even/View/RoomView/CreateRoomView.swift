@@ -64,11 +64,13 @@ struct CreateRoomView: View {
                     SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     
-                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
+//                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
                     
-                    if(region != "") {
-                        LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
-                    }
+                    LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
+                    
+//                    if(region != "") {
+//
+//                    }
                     
                     HStack {
                         TextFieldView(textLabel: "Minimum Participant", text: $minimumParticipant, inputIsFocused: $inputIsFocused)
