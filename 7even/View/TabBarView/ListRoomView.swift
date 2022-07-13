@@ -32,13 +32,14 @@ struct ListRoomView: View {
     @State var isPresented = false
     @State var roomCode = ""
     @State var isActive = false
+    @State var selectedSport: [String]
     
     let defaults = UserDefaults.standard
     @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
     @State var isListRoomView = false
-    init(vm: MainViewModel) {
-        _vm = StateObject(wrappedValue: vm)
-    }
+    //    init(vm: MainViewModel) {
+    //        _vm = StateObject(wrappedValue: vm)
+    //    }
     
     var body: some View {
         NavigationView {
@@ -59,45 +60,97 @@ struct ListRoomView: View {
                 .padding(EdgeInsets(top: -94, leading: 16, bottom: 20, trailing: 0))
                 
                 // FILTER
-                ScrollView(.vertical) {
-                    LazyVStack(alignment: .leading){
-                        HStack {
-                            LazyVGrid(columns: filterAdaptiveColumns, spacing: 10) {
+                
+                HStack{
+                    
+                    ScrollView(.horizontal){
+                        LazyVStack(alignment: .leading){
+                            HStack {
                                 ForEach(sports, id: \.self) { sport in
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color(UIColor.systemGray6))
-                                            .frame(width: 80, height: 22)
+                                    Button(action: {
+                                        for index in selectedSport {
+                                            if (index == sport.name){
+                                                // MARK BUTTON AS CHECKED
+                                                if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                                    sports[matchingIndex].isCheck = true
+                                                }
+                                            }
+                                        }
                                         
-                                        Text(sport.name)
-                                            .font(.caption2)
+                                        if let matchingIndex = sports.firstIndex(where: { $0.id == sport.id }) {
+                                            sports[matchingIndex].isCheck.toggle()
+                                            
+                                            if(sports[matchingIndex].isCheck == true) {
+                                                self.selectedSport.append(sport.name)
+                                            } else {
+                                                let match = self.selectedSport.firstIndex(where: { $0 == sport.name})
+                                                self.selectedSport.remove(at: match ?? 0)
+                                            }
+                                        }
+                                        print(selectedSport)
+                                    }){
+                                        if(sport.isCheck == true){
+                                            ZStack{
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color(UIColor.systemYellow))
+                                                    .frame(width: 80, height: 80)
+                                                VStack{
+                                                    Image(sport.image)
+                                                        .renderingMode(.template)
+                                                        .foregroundColor(.black)
+                                                    Text(sport.name)
+                                                        .font(.caption2)
+                                                        .foregroundColor(Color.black)
+                                                }
+                                                
+                                            }
+                                        }else{
+                                            ZStack{
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color(UIColor.systemGray6))
+                                                    .frame(width: 80, height: 80)
+                                                VStack{
+                                                    Image(sport.image)
+                                                        .renderingMode(.template)
+                                                        .foregroundColor(.black)
+                                                    Text(sport.name)
+                                                        .font(.caption2)
+                                                        .foregroundColor(Color.black)
+                                                }
+                                                
+                                            }
+                                        }
+                                        
                                     }
-                                    .onTapGesture {
-                                        print("Tap \(sport.name)")
-                                    }
+                                    
                                 }
                             }
-                            .frame(maxWidth: .infinity)
                             .padding(.horizontal)
-                            
-                            Group {
-                                VStack{
-                                    Text("See All Filters")
-                                        .font(.caption)
-                                    Image(systemName: "line.3.horizontal.decrease.circle")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 20)
-                                }
-                                .frame(width: 80)
-                                .onTapGesture {
-                                    print("Open Filter Sheet")
-                                }
-                            }.padding(.horizontal)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                        
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    Group {
+                        VStack{
+                            Text("See All")
+                                .font(.caption)
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        }
+                        .frame(width: 40)
+                        .onTapGesture {
+                            print("Open Filter Sheet")
+                        }
+                    }.padding(.horizontal)
+                    
+                }
+                
+                
+                
+                ScrollView(.vertical) {
                     
                     ForEach(roomCategory, id: \.self){ item in
                         VStack(alignment: .leading) {
