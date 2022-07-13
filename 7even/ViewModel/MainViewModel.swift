@@ -30,6 +30,7 @@ final class MainViewModel: ObservableObject {
     init(container: CKContainer) {
         self.container = container
         self.database = self.container.publicCloudDatabase
+        iCloudUserIDAsync()
     }
     
     func iCloudUserIDAsync() {

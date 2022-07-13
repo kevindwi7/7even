@@ -33,7 +33,7 @@ struct ListRoomCardView: View {
         if(!isAddRoomButton) {
             Button(action: {
                 if(UserDefaults.standard.bool(forKey: "login")) {
-                    if(room.isPrivateRoom && (room.participant.contains(vm.userID!)) == false ){
+                    if(room.isPrivateRoom && (room.participant.contains(vm.userID)) == false ){
                         self.isPresented = true
                     } else {
                         self.isActive = true
@@ -53,7 +53,7 @@ struct ListRoomCardView: View {
                             HStack {
                                 Text(room.sport)
                                     .bold()
-                                    .foregroundColor(room.isFinish == false ? .black : .gray)
+                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
                                 if( room.isPrivateRoom ) {
                                     Image(systemName: "lock.fill")
                                         .resizable().scaledToFit().frame(height:18)
@@ -63,10 +63,10 @@ struct ListRoomCardView: View {
                             
                             Text(room.region)
                                 .font(.subheadline)
-                                .foregroundColor(room.isFinish == false ? .black : .gray)
+                                .foregroundColor(room.isFinish == false ? .primary : .gray)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
-                                .foregroundColor(room.isFinish == false ? .black : .gray)
+                                .foregroundColor(room.isFinish == false ? .primary : .gray)
                         } //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
@@ -77,7 +77,7 @@ struct ListRoomCardView: View {
                                 
                                 Text(room.levelOfPlay)
                                     .font(.caption)
-                                    .foregroundColor(room.isFinish == false ? .black : .gray)
+                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
                             }
                             
                             ZStack {

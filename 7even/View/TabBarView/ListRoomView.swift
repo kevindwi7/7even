@@ -112,10 +112,10 @@ struct ListRoomView: View {
                                                 VStack{
                                                     Image(sport.image)
                                                         .renderingMode(.template)
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(.primary)
                                                     Text(sport.name)
                                                         .font(.caption2)
-                                                        .foregroundColor(Color.black)
+                                                        .foregroundColor(Color.primary)
                                                 }
                                                 
                                             }
