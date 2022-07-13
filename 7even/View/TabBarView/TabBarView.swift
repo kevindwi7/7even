@@ -15,7 +15,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView{
-            ListRoomView(vm: MainViewModel(container: CKContainer.default()))
+            ListRoomView(vm: MainViewModel(container: CKContainer.default()), selectedSport: [])
                 .tabItem{
                     Label("Explore", systemImage: "person.3")
                 }
