@@ -117,6 +117,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4615DFD9287F005F004F0AB8 /* GroupChatView */ = {
+			isa = PBXGroup;
+			children = (
+				C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */,
+			);
+			path = GroupChatView;
+			sourceTree = "<group>";
+		};
+		4615DFDA287F00A0004F0AB8 /* ListRoomView */ = {
+			isa = PBXGroup;
+			children = (
+				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
+				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
+			);
+			path = ListRoomView;
+			sourceTree = "<group>";
+		};
 		46BA3FFB2861A89B007A7EBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,12 +288,11 @@
 		C9ED0F922865830B00B7E6FE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
+				4615DFDA287F00A0004F0AB8 /* ListRoomView */,
+				4615DFD9287F005F004F0AB8 /* GroupChatView */,
 				C9075D1A287D111A00B1B61D /* EventView */,
 				C9A677A5286A3243001BFDC6 /* ProfileView */,
 				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
-				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
-				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
-				C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
