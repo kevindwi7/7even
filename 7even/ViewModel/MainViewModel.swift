@@ -22,7 +22,13 @@ final class MainViewModel: ObservableObject {
     
     @Published var rooms: [RoomViewModel] = []
     @Published var surveys: [SurveyViewModel] = []
+    
+    // this variable is used to check if user already created an account (not log in status)
+    // case : if user uninstall the app and install it again, there might be error when user try to sign in with apple id.
+    //        use this variable when user try to log in
     @Published var isSignedInToiCloud: Bool = false
+    
+    // user id of apple account
     @Published var userID: String = ""
     
     let objectWillChange = PassthroughSubject<(), Never>()
