@@ -95,4 +95,8 @@ struct RoomViewModel: Hashable, Identifiable {
     var description: String {
         room.description
     }
+    
+    var name: String {
+        room.name
+    }
 }

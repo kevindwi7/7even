@@ -29,6 +29,7 @@ struct CreateRoomView: View {
     @State var roomCode = ""
     @State private var isFinish: Bool = false
     @State var roomDescription = ""
+    @State var name = ""
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -58,6 +59,8 @@ struct CreateRoomView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Section{
+                    TextFieldView(textLabel: "Room's Name", isText: true, text: $name, inputIsFocused: $inputIsFocused)
+                    
                     SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     
@@ -179,10 +182,10 @@ struct CreateRoomView: View {
                 if isPrivateRoom {
                     roomCode = checkCode()
                 }
-                vm.createRoom(host: userID!, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription)
+                vm.createRoom(host: userID!, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name)
                 presentationMode.wrappedValue.dismiss()
             }
-                .disabled(sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
+                .disabled(name == "" || sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
             )
         }
     }

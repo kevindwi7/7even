@@ -28,8 +28,9 @@ struct Room {
     let roomCode: String
     var isFinish: Bool
     var description: String
+    var name: String
     
-    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String) {
+    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String) {
         self.id = id
         self.host = host
         self.sport = sport
@@ -49,10 +50,11 @@ struct Room {
         self.roomCode = roomCode
         self.isFinish = isFinish
         self.description = description
+        self.name = name
     }
     
     func toDictionary() -> [String: Any]{
-        return ["host": host, "sport": sport, "location": location, "address": address,"region": region, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant, "roomCode": roomCode, "isFinish": isFinish, "description": description]
+        return ["host": host, "sport": sport, "location": location, "address": address,"region": region, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant, "roomCode": roomCode, "isFinish": isFinish, "description": description, "name": name]
     }
     
     static func fromRecord(_ record: CKRecord) -> Room? {
@@ -74,11 +76,12 @@ struct Room {
             let participant = record.value(forKey: "participant") as? [String],
             let roomCode = record.value(forKey: "roomCode") as? String,
             let isFinish = record.value(forKey: "isFinish") as? Bool,
-            let description = record.value(forKey: "description") as? String
+            let description = record.value(forKey: "description") as? String,
+            let name = record.value(forKey: "name") as? String
         else {
             return nil
         }
         
-        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description)
+        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name)
     }
 }

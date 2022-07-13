@@ -10,6 +10,7 @@ import SwiftUI
 struct TextFieldView: View {
     var textLabel = "Enter"
     var isTextEditor = false
+    var isText = false
     @Binding var text: String
     @FocusState.Binding var inputIsFocused: Bool
     
@@ -23,6 +24,9 @@ struct TextFieldView: View {
                     if(isTextEditor) {
                         TextEditor(text: $text)
                             .frame(height: 90)
+                            .focused($inputIsFocused)
+                    } else if (isText){
+                        TextField(textLabel, text: $text)
                             .focused($inputIsFocused)
                     } else {
                         TextField(textLabel, text: $text)
