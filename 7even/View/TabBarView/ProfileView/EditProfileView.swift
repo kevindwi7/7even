@@ -202,7 +202,7 @@ struct EditProfileView: View {
                 VStack{
                     HStack{
                         Button("Create") {
-                            mainViewModel.updateItem(item: survey, name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
+                            mainViewModel.updateSurvey(item: survey, name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
 //
 //                            mainViewModel.createSurvey(name: profileName, birthDate: birthDate, sex: gender, sportWith: sportWith, favoriteSport: favoriteSports, userID: usersID, age: age.year ?? 0 )
                             

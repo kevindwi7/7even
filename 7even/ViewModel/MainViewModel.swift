@@ -21,7 +21,6 @@ enum RecordType: String {
 
 final class MainViewModel: ObservableObject {
     
-//    static let shared = MainViewModel(container: CKContainer.default())
     private var database: CKDatabase
     private var container: CKContainer
     
@@ -41,6 +40,12 @@ final class MainViewModel: ObservableObject {
     
     // user id of apple account
     @Published var userID: String = ""
+    
+    // recently created room id
+    @Published var recentlyCreatedRoomID: String = ""
+    
+    // recently created room id
+    @Published var isLoading: Bool = true
     
     let objectWillChange = PassthroughSubject<(), Never>()
     
@@ -64,10 +69,9 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String){
+    func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, completionHandler:  @escaping (_ recentRoomID: String) -> Void){
         let record = CKRecord(recordType: RecordType.room.rawValue)
         let room = Room(host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name)
-        
         record.setValuesForKeys(room.toDictionary())
         
         // saving record in database
@@ -81,6 +85,9 @@ final class MainViewModel: ObservableObject {
                             self.rooms.append(RoomViewModel(room: room))
                             self.objectWillChange.send()
                         }
+                        self.recentlyCreatedRoomID = room.id?.recordName ?? ""
+                        print("---- ROOM ID NYA INI : \(self.recentlyCreatedRoomID) -----")
+                        completionHandler(self.recentlyCreatedRoomID)
                     }
                 }
             }
@@ -103,7 +110,6 @@ final class MainViewModel: ObservableObject {
                     .forEach {
                         switch $0 {
                         case .success(let record):
-                            
                             if let room = Room.fromRecord(record) {
                                 returnedRooms.append(room)
                             }
@@ -112,7 +118,6 @@ final class MainViewModel: ObservableObject {
                             print(error)
                         }
                     }
-                
                 DispatchQueue.main.async {
                     self.rooms = returnedRooms.map(RoomViewModel.init)
 //                    defer {
@@ -121,8 +126,6 @@ final class MainViewModel: ObservableObject {
                     self.objectWillChange.send()
 //                    print("\(self.rooms)")
                 }
-                
-                
                 
             case .failure(let error):
                 print(error)
@@ -145,7 +148,7 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func updateItem(room: RoomViewModel, participantID: String, command: String){
+    func updateRoom(room: RoomViewModel, participantID: String, command: String, completionHandler:  @escaping () -> Void){
 
         var newParticipant: [String] = [""]
         newParticipant.insert(contentsOf: room.participant, at: 0)
@@ -198,7 +201,7 @@ final class MainViewModel: ObservableObject {
                 
                 record["participant"] = newParticipant as CKRecordValue
                 self.database.save(record) { record, error in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    DispatchQueue.main.async() {
                         if let error = error {
                             print(error)
                         }
@@ -206,6 +209,7 @@ final class MainViewModel: ObservableObject {
                         let id = record.recordID
                         guard let participant = record["participant"] as? [String] else { return }
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name))
+                        completionHandler()
 //                        print(element)
                     }
                 }
@@ -288,7 +292,7 @@ final class MainViewModel: ObservableObject {
         
     }
     
-    func updateItem(item: SurveyViewModel, name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],userID: String, age: Int){
+    func updateSurvey(item: SurveyViewModel, name: String, birthDate: Date, sex: String, sportWith: String, favoriteSport: [String],userID: String, age: Int){
         let recordID = item.id
         let name = item.name
         let birthDate = item.birthDate
@@ -330,17 +334,12 @@ final class MainViewModel: ObservableObject {
                         guard let userID = record["userID"] as? String else {return}
                         
                         let element = SurveyViewModel(survey: Survey(id: id, name: name, birthDate: birthDate, sex: sex, sportWith: sportWith, favoriteSport: favoriteSport, userID: userID, age: age))
-                        
-//                        let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode))
-//                        print(element)
                     }
                 }
             }
         }
         
     }
-    
-    
     
     func fetchSurvey(){
         
@@ -371,7 +370,6 @@ final class MainViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.surveys = returnedSurveys.map(SurveyViewModel.init)
                     self.objectWillChange.send()
-//                    print("31 \(self.surveys)")
                 }
                 
             case .failure(let error):
@@ -380,14 +378,14 @@ final class MainViewModel: ObservableObject {
         }
     }
 
-    func createChannel(createChannelName: String) throws {
+    func createChannel(channelName: String, roomID: String) throws {
         /// 1: Create a `ChannelId` that represents the channel you want to create.
-        let cid = ChannelId(type: .messaging, id: createChannelName)
+        let cid = ChannelId(type: .messaging, id: roomID)
         print("CID: \(cid)")
         /// 2: Use the `ChatClient` to create a `ChatChannelController` with the `ChannelId` and a list of user ids
         let controller = try ChatClient.shared.channelController(
             createChannelWithId: cid,
-            name: createChannelName,
+            name: channelName,
             imageURL: nil,
             isCurrentUserMember: true
         )
@@ -399,8 +397,44 @@ final class MainViewModel: ObservableObject {
                 print(error)
             } else if let channel = controller.channel {
                 self.channels.append(channel)
+                print("Success create channel")
             }
         }
+    }
+    
+    func deleteChannel(room: RoomViewModel) throws {
+        let id = room.id?.recordName ?? ""
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.deleteChannel { error in
+            if let error = error {
+                // handle error
+                print(error)
+            }
+        }
+    }
+    
+    func addMemberToChannel(room: RoomViewModel, userID: String) throws {
+        let id = room.id?.recordName ?? ""
+        var userIDs: [String] = [""]
+        userIDs[0] = userID
+        
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.addMembers(userIds: Set(userIDs))
+        print("Success add member to channel")
+//        controller.removeMembers(userIds: ["tommaso"])
+    }
+    
+    func removeMemberFromChannel(room: RoomViewModel, userID: String) throws {
+        let id = room.id?.recordName ?? ""
+        var userIDs: [String] = [""]
+        userIDs[0] = userID
+        
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.removeMembers(userIds: Set(userIDs))
+        print("Success remove member from channel")
     }
 }
 

@@ -184,9 +184,12 @@ struct CreateRoomView: View {
                 if isPrivateRoom {
                     roomCode = checkCode()
                 }
-                vm.createRoom(host: vm.userID, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [vm.userID], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name)
-                try? vm.createChannel(createChannelName: name)
-//                vm.createChannel(createChannelName: name)
+                
+                vm.createRoom(host: vm.userID, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [vm.userID], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name) { (returnedRoomID) -> Void in
+                    print("------- ROOM ID: \(vm.recentlyCreatedRoomID) --------")
+                  try? vm.createChannel(channelName: name, roomID: vm.recentlyCreatedRoomID)
+                }
+                
                 presentationMode.wrappedValue.dismiss()
             }
                 .disabled(name == "" || sportName == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)

@@ -42,7 +42,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("Current user ID: \(vm.userID)\n")
         chatClient.connectUser(
             userInfo: .init(id: vm.userID,
-                            name: "We Go",
+                            name: "Username",
                             imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
             token: token
             

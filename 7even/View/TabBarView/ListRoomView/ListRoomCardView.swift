@@ -130,9 +130,15 @@ struct ListRoomCardView: View {
 //                        .shadow(radius: 1.5)
                         .frame(width: 170, height: 127)
                     
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .foregroundColor(.mint)
+                    VStack{
+                        Image(systemName: "plus")
+                            .font(.largeTitle)
+                            .foregroundColor(.mint)
+                        
+                        Text("Create your").foregroundColor(.mint)
+                        
+                        Text("own rooms").foregroundColor(.mint)
+                    }
                 } //ZSTACK
             } //BUTTON
             .background(

@@ -67,7 +67,7 @@ struct GroupChatListItemView: View {
             }
         }
         .padding(.vertical, 4)
-        .background(Color(uiColor: .systemBackground))
+//        .background(Color(uiColor: .systemBackground))
     }
 }
 

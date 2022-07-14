@@ -284,6 +284,7 @@ struct DetailRoomView: View {
                         Button(role: .destructive, action: {
 //                                self.hasJoined = false
                             deleteRoom(room)
+                            try? vm.deleteChannel(room: room)
                             self.presentationMode.wrappedValue.dismiss()
                             print("delete room")
                         }) {
@@ -314,7 +315,9 @@ struct DetailRoomView: View {
                         .alert("Are you sure to leave this room?", isPresented: $isPresented) {
                             Button(role: .destructive, action: {
 //                                self.hasJoined = false
-                                vm.updateItem(room: room, participantID: vm.userID, command: "leave")
+                                vm.updateRoom(room: room, participantID: vm.userID, command: "leave") { () -> Void in
+                                    try? vm.removeMemberFromChannel(room: room, userID: vm.userID)
+                                }
                                 self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("Leave")
@@ -332,7 +335,9 @@ struct DetailRoomView: View {
                         Button(action: {
                             if ( room.participant.count < room.maximumParticipant ){
                                 self.isFilled = false
-                                vm.updateItem(room: room, participantID: vm.userID, command: "join")
+                                vm.updateRoom(room: room, participantID: vm.userID, command: "join") {  () -> Void in
+                                    try? vm.addMemberToChannel(room: room, userID: vm.userID)
+                                }
                             } else {
                                 self.isFilled = true
                             }
