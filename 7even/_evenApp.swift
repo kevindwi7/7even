@@ -7,17 +7,18 @@
 
 import SwiftUI
 import CloudKit
+import StreamChat
+import StreamChatSwiftUI
 
 @main
 struct _evenApp: App {
-
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+//    @StateObject var vm = MainViewModel.shared
+    
     var body: some Scene {
         WindowGroup {
-//            FavoriteSportSurveyView()
             TabBarView(vm: MainViewModel(container: CKContainer.default()))
-//            TabBarView()
-//            CreateRoomView(vm: MainViewModel(container: CKContainer.default()))
-            
+//                .environmentObject(appDelegate.vm)
         }
     }
 }

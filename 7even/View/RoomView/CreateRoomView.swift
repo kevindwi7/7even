@@ -185,9 +185,11 @@ struct CreateRoomView: View {
                     roomCode = checkCode()
                 }
                 vm.createRoom(host: vm.userID, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [vm.userID], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name)
+                try? vm.createChannel(createChannelName: name)
+//                vm.createChannel(createChannelName: name)
                 presentationMode.wrappedValue.dismiss()
             }
-                .disabled(name == "" || sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
+                .disabled(name == "" || sportName == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
             )
         }
     }

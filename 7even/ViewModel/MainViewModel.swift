@@ -8,6 +8,10 @@
 import Foundation
 import CloudKit
 import Combine
+import UIKit
+import StreamChat
+import StreamChatSwiftUI
+import SwiftUI
 
 enum RecordType: String {
     case room = "Room"
@@ -17,11 +21,18 @@ enum RecordType: String {
 
 final class MainViewModel: ObservableObject {
     
+//    static let shared = MainViewModel(container: CKContainer.default())
     private var database: CKDatabase
-    private var container: CKContainer = CKContainer.default()
+    private var container: CKContainer
     
+    // Room
     @Published var rooms: [RoomViewModel] = []
+    
+    // Survey
     @Published var surveys: [SurveyViewModel] = []
+    
+    // Chat
+    @Published var channels: [ChatChannel] = []
     
     // this variable is used to check if user already created an account (not log in status)
     // case : if user uninstall the app and install it again, there might be error when user try to sign in with apple id.
@@ -51,7 +62,6 @@ final class MainViewModel: ObservableObject {
                 }
             }
         }
-        
     }
     
     func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String){
@@ -370,5 +380,27 @@ final class MainViewModel: ObservableObject {
         }
     }
 
+    func createChannel(createChannelName: String) throws {
+        /// 1: Create a `ChannelId` that represents the channel you want to create.
+        let cid = ChannelId(type: .messaging, id: createChannelName)
+        print("CID: \(cid)")
+        /// 2: Use the `ChatClient` to create a `ChatChannelController` with the `ChannelId` and a list of user ids
+        let controller = try ChatClient.shared.channelController(
+            createChannelWithId: cid,
+            name: createChannelName,
+            imageURL: nil,
+            isCurrentUserMember: true
+        )
+        
+        /// 3: Call `ChatChannelController.synchronize` to create the channel.
+        controller.synchronize { error in
+            if let error = error {
+                /// 4: Handle possible errors
+                print(error)
+            } else if let channel = controller.channel {
+                self.channels.append(channel)
+            }
+        }
+    }
 }
 

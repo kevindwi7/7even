@@ -2,14 +2,17 @@
 //  GroupChatView.swift
 //  7even
 //
-//  Created by Kevin  Dwi on 13/07/22.
+//  Created by Inez Amanda on 13/07/22.
 //
 
 import SwiftUI
+import StreamChat
+import StreamChatSwiftUI
 
 struct GroupChatView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+//        ChatChannelListView(viewFactory: GroupChatViewFactory(), viewModel: <#T##ChatChannelListViewModel?#>, channelListController: <#T##ChatChannelListController?#>, title: <#T##String#>, onItemTap: <#T##((ChatChannel) -> Void)?##((ChatChannel) -> Void)?##(ChatChannel) -> Void#>, selectedChannelId: <#T##String?#>)
+        ChatChannelListView(viewFactory: GroupChatViewFactory(), title: "Chat")
     }
 }
 
