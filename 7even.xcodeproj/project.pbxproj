@@ -15,7 +15,6 @@
 		4615DFDD287F0262004F0AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615DFDC287F0262004F0AB8 /* AppDelegate.swift */; };
 		4615DFDF287F23EC004F0AB8 /* GroupChatListViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615DFDE287F23EC004F0AB8 /* GroupChatListViewFactory.swift */; };
 		4615DFE3287F2C7F004F0AB8 /* GroupChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615DFE2287F2C7F004F0AB8 /* GroupChatListItemView.swift */; };
-		4615DFE5287F2D80004F0AB8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615DFE4287F2D80004F0AB8 /* Message.swift */; };
 		4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */; };
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
@@ -37,6 +36,9 @@
 		46EAC47B287F362900468CAC /* GroupChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EAC47A287F362900468CAC /* GroupChatView.swift */; };
 		46EAC47D287F36AB00468CAC /* GroupChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EAC47C287F36AB00468CAC /* GroupChatListItem.swift */; };
 		46EAC483287FF2AF00468CAC /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EAC482287FF2AF00468CAC /* Credential.swift */; };
+		46EAC4882881519000468CAC /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = 46EAC4872881519000468CAC /* JWTKit */; };
+		46EAC48B2881563500468CAC /* JWTGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EAC48A2881563500468CAC /* JWTGenerator.swift */; };
+		46EAC48D2881568500468CAC /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EAC48C2881568500468CAC /* Payload.swift */; };
 		C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D12287C499A00B1B61D /* ListRoomEventView.swift */; };
 		C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */; };
 		C9075D1C287D113900B1B61D /* OnGoingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1B287D113900B1B61D /* OnGoingEventView.swift */; };
@@ -69,7 +71,6 @@
 		4615DFDC287F0262004F0AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4615DFDE287F23EC004F0AB8 /* GroupChatListViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListViewFactory.swift; sourceTree = "<group>"; };
 		4615DFE2287F2C7F004F0AB8 /* GroupChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItemView.swift; sourceTree = "<group>"; };
-		4615DFE4287F2D80004F0AB8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonField.swift; sourceTree = "<group>"; };
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +92,8 @@
 		46EAC47A287F362900468CAC /* GroupChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatView.swift; sourceTree = "<group>"; };
 		46EAC47C287F36AB00468CAC /* GroupChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItem.swift; sourceTree = "<group>"; };
 		46EAC482287FF2AF00468CAC /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		46EAC48A2881563500468CAC /* JWTGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTGenerator.swift; sourceTree = "<group>"; };
+		46EAC48C2881568500468CAC /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		C9075D12287C499A00B1B61D /* ListRoomEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomEventView.swift; sourceTree = "<group>"; };
 		C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsCardView.swift; sourceTree = "<group>"; };
 		C9075D1B287D113900B1B61D /* OnGoingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingEventView.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EAC4882881519000468CAC /* JWTKit in Frameworks */,
 				4615DFD8287EFFBA004F0AB8 /* StreamChatSwiftUI in Frameworks */,
 				46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */,
 			);
@@ -169,7 +173,7 @@
 				4648E4F3286420BB003AECAC /* Sex.swift */,
 				C910EE1128657D1F00696237 /* Survey.swift */,
 				C9A677A3286A2CB1001BFDC6 /* SportWith.swift */,
-				4615DFE4287F2D80004F0AB8 /* Message.swift */,
+				46EAC48C2881568500468CAC /* Payload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +232,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		46EAC4892881561400468CAC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				46EAC48A2881563500468CAC /* JWTGenerator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		C9075D1A287D111A00B1B61D /* EventView */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +271,7 @@
 		C90D4A0328602E5800677561 /* 7even */ = {
 			isa = PBXGroup;
 			children = (
+				46EAC4892881561400468CAC /* Helper */,
 				46BA3FFB2861A89B007A7EBF /* Model */,
 				46BA3FFC2861A8A1007A7EBF /* View */,
 				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
@@ -341,6 +354,7 @@
 			name = 7even;
 			packageProductDependencies = (
 				4615DFD7287EFFBA004F0AB8 /* StreamChatSwiftUI */,
+				46EAC4872881519000468CAC /* JWTKit */,
 			);
 			productName = 7even;
 			productReference = C90D4A0128602E5800677561 /* 7even.app */;
@@ -372,6 +386,7 @@
 			mainGroup = C90D49F828602E5800677561;
 			packageReferences = (
 				4615DFD6287EFFBA004F0AB8 /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */,
+				46EAC4862881519000468CAC /* XCRemoteSwiftPackageReference "jwt-kit" */,
 			);
 			productRefGroup = C90D4A0228602E5800677561 /* Products */;
 			projectDirPath = "";
@@ -417,7 +432,6 @@
 				C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */,
 				46EAC47B287F362900468CAC /* GroupChatView.swift in Sources */,
 				46EAC47D287F36AB00468CAC /* GroupChatListItem.swift in Sources */,
-				4615DFE5287F2D80004F0AB8 /* Message.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
 				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
@@ -425,7 +439,9 @@
 				4648E4E628632275003AECAC /* Location.swift in Sources */,
 				C9E67AF1286884EB007B63D5 /* SurveyViewModel.swift in Sources */,
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
+				46EAC48B2881563500468CAC /* JWTGenerator.swift in Sources */,
 				4648E4E42862FE58003AECAC /* LocationListView.swift in Sources */,
+				46EAC48D2881568500468CAC /* Payload.swift in Sources */,
 				467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
@@ -659,6 +675,14 @@
 				kind = branch;
 			};
 		};
+		46EAC4862881519000468CAC /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/jwt-kit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -666,6 +690,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4615DFD6287EFFBA004F0AB8 /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */;
 			productName = StreamChatSwiftUI;
+		};
+		46EAC4872881519000468CAC /* JWTKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46EAC4862881519000468CAC /* XCRemoteSwiftPackageReference "jwt-kit" */;
+			productName = JWTKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

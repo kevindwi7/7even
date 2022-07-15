@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
-
 import AuthenticationServices
-
 import CloudKit
 
 struct LoginView: View {
     @AppStorage("login") private var login = false
     @Binding var toMainPage: Bool
     @State var isContentView = true
+    @StateObject var vm: MainViewModel 
     
     var body: some View {
         VStack{
@@ -50,13 +49,15 @@ struct LoginView: View {
                                 let userID = appleIDCredential.user
                                 if let firstName = appleIDCredential.fullName?.givenName,
                                    let lastName = appleIDCredential.fullName?.familyName,
-                                   let email = appleIDCredential.email{
+                                   let email = appleIDCredential.email,
+                                   let token = appleIDCredential.identityToken {
                                     // For New user to signup, and
                                     // save the 3 records to CloudKit
                                     let record = CKRecord(recordType: "UsersData", recordID: CKRecord.ID(recordName: userID))
                                     record["email"] = email
                                     record["firstName"] = firstName
                                     record["lastName"] = lastName
+                                    record["iCloudID"] = vm.userID
                                     // Save to local
                                     UserDefaults.standard.set(email, forKey: "email")
                                     UserDefaults.standard.set(firstName, forKey: "firstName")
@@ -67,6 +68,9 @@ struct LoginView: View {
                                     }
                                     // Change login state
                                     self.login = true
+                                    let jwt = vm.generateToken(id: userID)
+                                    UserDefaults.standard.set(jwt, forKey: "authToken")
+                                    print("--------- \(jwt) ---------")
                                 } else {
                                     // For returning user to signin,
                                     // fetch the saved records from Cloudkit
@@ -105,9 +109,7 @@ struct LoginView: View {
                     Text("SignIn")
                 }
             }
-        }
-        
-        
+        }     
     }
 }
 

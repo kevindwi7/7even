@@ -10,7 +10,7 @@ import CloudKit
 
 struct TabBarView: View {
     let test = Color("F2F2F7")
-    
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var vm: MainViewModel
     
     var body: some View {

@@ -35,12 +35,6 @@ struct DetailRoomView: View {
     
     private let pasteboard = UIPasteboard.general
     
-    func deleteRoom(_ item: RoomViewModel) {
-        if let recordId = room.id {
-            vm.deleteRoom(recordId)
-        }
-    }
-    
     func ageString(arr: [String]) -> String {
         var tempMin = 0
         var tempMax = 0
@@ -283,8 +277,9 @@ struct DetailRoomView: View {
                     .alert("Are you sure to delete this room?", isPresented: $isPresented) {
                         Button(role: .destructive, action: {
 //                                self.hasJoined = false
-                            deleteRoom(room)
-                            try? vm.deleteChannel(room: room)
+                            vm.deleteRoom(room: room) { () -> Void in
+                                try? vm.deleteChannel(room: room)
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                             print("delete room")
                         }) {

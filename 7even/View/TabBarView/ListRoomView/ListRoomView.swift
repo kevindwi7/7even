@@ -163,7 +163,7 @@ struct ListRoomView: View {
                                 if(!defaults.bool(forKey: "login")){
                                     LazyVStack{
                                         Text("Sign up to manage your preferences")
-                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView),isActive: $isListRoomView){
+                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView, vm: vm),isActive: $isListRoomView){
                                             EmptyView()
                                             //
                                         }
@@ -238,7 +238,7 @@ struct ListRoomView: View {
             } //VSTACK
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                vm.iCloudUserIDAsync()
+                vm.fetchUserID()
                 vm.fetchRoom()
             }
             .onReceive(vm.objectWillChange) { _ in

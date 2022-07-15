@@ -12,6 +12,7 @@ import UIKit
 import StreamChat
 import StreamChatSwiftUI
 import SwiftUI
+import JWTKit
 
 enum RecordType: String {
     case room = "Room"
@@ -54,9 +55,9 @@ final class MainViewModel: ObservableObject {
         self.database = self.container.publicCloudDatabase
         iCloudUserIDAsync()
     }
-    
+
     func iCloudUserIDAsync() {
-        let record = CKRecord(recordType: RecordType.user.rawValue)
+        // FETCH ID OF DEVICE ACCOUNT
         container.fetchUserRecordID { returnedID, returnedError in
             if let returnedError = returnedError {
                 print("Error: \(returnedError)")
@@ -64,9 +65,56 @@ final class MainViewModel: ObservableObject {
                 if let returnedID = returnedID?.recordName {
                     self.isSignedInToiCloud = true
                     self.userID = returnedID
+//                    print("uid : \(returnedID)")
                 }
             }
         }
+    }
+    
+    func fetchUserID() {
+        // FETCH ID OF REGISTRATED ACCOUNT FROM DB
+        let referenceField = "userID"
+        let uid = self.userID
+        let refID = CKRecord.ID(recordName: uid)
+        let ref = CKRecord.Reference(recordID: refID, action: .none)
+        let predicate = NSPredicate(format: "iCloudID == %@", self.userID)
+        let query = CKQuery(recordType: RecordType.user.rawValue, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        self.database.fetch(withQuery: query) { result in
+            switch result {
+            case .success(let result):
+                result.matchResults.compactMap { $0.1 }
+                    .forEach {
+                        switch $0 {
+                        case .success(let record):
+                            self.userID = record.recordID.recordName
+                            print("UID DISINI : \(self.userID)")
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func generateToken(id : String) -> String {
+        // Signs and verifies JWTs
+        let signers = JWTSigners()
+        // Add HMAC with SHA-256 signer.
+        signers.use(.hs256(key: APIKey))
+        // Create a new instance of our JWTPayload
+        let payload = Payload(
+            subject: "Returned Token",
+            expiration: .init(value: .distantFuture),
+            userID: id
+        )
+        
+        // Sign the payload, returning a JWT.
+        let jwt = try? signers.sign(payload)
+        print("--------- \(jwt) ---------")
+        return jwt ?? ""
     }
     
     func createRoom(host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, completionHandler:  @escaping (_ recentRoomID: String) -> Void){
@@ -217,13 +265,15 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func deleteRoom(_ recordId: CKRecord.ID){
-        database.delete(withRecordID: recordId) { deletedRecordId, error in
+    func deleteRoom(room: RoomViewModel, completionHandler:  @escaping () -> Void){
+        let recordId = room.id
+        database.delete(withRecordID: recordId!) { deletedRecordId, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print(error)
                 } else {
                     self.fetchRoom()
+                    completionHandler()
                 }
                 print("here")
             }

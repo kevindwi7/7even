@@ -34,7 +34,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
     private func connectUser(chatClient: ChatClient) {
-        
+        let authToken = UserDefaults.standard.object(forKey: "authToken") as? String
+        let firstName = UserDefaults.standard.object(forKey: "firstName") as? String
+        let lastName = UserDefaults.standard.object(forKey: "lastName") as? String
+
+        print("INI AUTH TOKEN : \(authToken)")
         let token = try! Token(rawValue: TokenValue)
         
         // Use the chat client to connect the user. This gets the user ID, name and avatar
@@ -42,7 +46,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         print("Current user ID: \(vm.userID)\n")
         chatClient.connectUser(
             userInfo: .init(id: vm.userID,
-                            name: "Username",
+                            name: ((firstName ?? "") + (lastName ?? "")),
                             imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
             token: token
             
