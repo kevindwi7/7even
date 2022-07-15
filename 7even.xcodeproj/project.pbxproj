@@ -15,8 +15,6 @@
 		4648E4D32861DA8C003AECAC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D22861DA8C003AECAC /* Room.swift */; };
 		4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4D82861EF38003AECAC /* MainViewModel.swift */; };
 		4648E4E22862D071003AECAC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E12862D071003AECAC /* Enum.swift */; };
-		4648E4E42862FE58003AECAC /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E32862FE58003AECAC /* LocationListView.swift */; };
-		4648E4E628632275003AECAC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E528632275003AECAC /* Location.swift */; };
 		4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4E728633334003AECAC /* LocationButtonView.swift */; };
 		4648E4EE28641993003AECAC /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4ED28641993003AECAC /* Age.swift */; };
 		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
@@ -39,6 +37,9 @@
 		C90D4A0928602E5900677561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0828602E5900677561 /* Assets.xcassets */; };
 		C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90D4A0B28602E5900677561 /* Preview Assets.xcassets */; };
 		C910EE1228657D1F00696237 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910EE1128657D1F00696237 /* Survey.swift */; };
+		C9473E4F287F37A000B63986 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E4E287F37A000B63986 /* MapView.swift */; };
+		C9473E51287F385200B63986 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E50287F385200B63986 /* MapViewModel.swift */; };
+		C9473E53287F4BEA00B63986 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E52287F4BEA00B63986 /* Place.swift */; };
 		C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */; };
 		C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A3286A2CB1001BFDC6 /* SportWith.swift */; };
 		C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */; };
@@ -63,8 +64,6 @@
 		4648E4D22861DA8C003AECAC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		4648E4D82861EF38003AECAC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4648E4E12862D071003AECAC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
-		4648E4E32862FE58003AECAC /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
-		4648E4E528632275003AECAC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4648E4E728633334003AECAC /* LocationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButtonView.swift; sourceTree = "<group>"; };
 		4648E4ED28641993003AECAC /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
 		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
@@ -88,6 +87,9 @@
 		C90D4A0828602E5900677561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90D4A0B28602E5900677561 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C910EE1128657D1F00696237 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		C9473E4E287F37A000B63986 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		C9473E50287F385200B63986 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		C9473E52287F4BEA00B63986 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportCardView.swift; sourceTree = "<group>"; };
 		C9A677A3286A2CB1001BFDC6 /* SportWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportWith.swift; sourceTree = "<group>"; };
 		C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreferredSportView.swift; sourceTree = "<group>"; };
@@ -120,13 +122,13 @@
 			children = (
 				4648E4D22861DA8C003AECAC /* Room.swift */,
 				4648E4E12862D071003AECAC /* Enum.swift */,
-				4648E4E528632275003AECAC /* Location.swift */,
 				C9B659432863FCCC0074961A /* FavoriteSportList.swift */,
 				4648E4ED28641993003AECAC /* Age.swift */,
 				4648E4F1286419E1003AECAC /* LevelOfPlay.swift */,
 				4648E4F3286420BB003AECAC /* Sex.swift */,
 				C910EE1128657D1F00696237 /* Survey.swift */,
 				C9A677A3286A2CB1001BFDC6 /* SportWith.swift */,
+				C9473E52287F4BEA00B63986 /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,6 +136,7 @@
 		46BA3FFC2861A8A1007A7EBF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9473E4D287F378000B63986 /* MapView */,
 				C9ED0F922865830B00B7E6FE /* TabBarView */,
 				C9B659472863FD310074961A /* SurveyView */,
 				C9B659422863FCA50074961A /* LoginView */,
@@ -148,6 +151,7 @@
 				4648E4D82861EF38003AECAC /* MainViewModel.swift */,
 				46108D28286782130028F71E /* RoomViewModel.swift */,
 				C9E67AF0286884EB007B63D5 /* SurveyViewModel.swift */,
+				C9473E50287F385200B63986 /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -159,7 +163,6 @@
 				46108D2D286943BD0028F71E /* DetailRoomView.swift */,
 				46BA40032861AAE1007A7EBF /* TextFieldView.swift */,
 				4648E4E728633334003AECAC /* LocationButtonView.swift */,
-				4648E4E32862FE58003AECAC /* LocationListView.swift */,
 				46BA40012861AA89007A7EBF /* SheetButtonView.swift */,
 				467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */,
 				467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */,
@@ -235,6 +238,14 @@
 				C90D4A0B28602E5900677561 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C9473E4D287F378000B63986 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				C9473E4E287F37A000B63986 /* MapView.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		C9A677A5286A3243001BFDC6 /* ProfileView */ = {
@@ -368,12 +379,12 @@
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
 				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
-				4648E4E628632275003AECAC /* Location.swift in Sources */,
 				C9E67AF1286884EB007B63D5 /* SurveyViewModel.swift in Sources */,
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
-				4648E4E42862FE58003AECAC /* LocationListView.swift in Sources */,
 				467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */,
+				C9473E53287F4BEA00B63986 /* Place.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
+				C9473E4F287F37A000B63986 /* MapView.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
 				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
@@ -387,6 +398,7 @@
 				467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */,
 				C90D4A0528602E5800677561 /* _evenApp.swift in Sources */,
 				4648E4E22862D071003AECAC /* Enum.swift in Sources */,
+				C9473E51287F385200B63986 /* MapViewModel.swift in Sources */,
 				C910EE1228657D1F00696237 /* Survey.swift in Sources */,
 				C9075D1E287D142100B1B61D /* CompletedEventView.swift in Sources */,
 				4648E4E828633334003AECAC /* LocationButtonView.swift in Sources */,
@@ -523,6 +535,7 @@
 				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -553,6 +566,7 @@
 				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

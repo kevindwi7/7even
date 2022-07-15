@@ -35,14 +35,14 @@ struct RoomViewModel: Hashable, Identifiable {
     var location: String {
         room.location
     }
-    
-    var address: String {
-        room.address
-    }
-    
-    var region: String {
-        room.region
-    }
+//
+//    var address: String {
+//        room.address
+//    }
+//
+//    var region: String {
+//        room.region
+//    }
     
     var minimumParticipant: Int {
         room.minimumParticipant
@@ -98,5 +98,13 @@ struct RoomViewModel: Hashable, Identifiable {
     
     var name: String {
         room.name
+    }
+    
+    var address: String {
+        room.address
+    }
+    
+    var region: String {
+        room.region
     }
 }
