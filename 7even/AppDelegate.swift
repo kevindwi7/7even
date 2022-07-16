@@ -32,29 +32,30 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         connectUser(chatClient: chatClient!)
         return true
     }
-
-    private func connectUser(chatClient: ChatClient) {
+    
+    func connectUser(chatClient: ChatClient) {
         let authToken = UserDefaults.standard.object(forKey: "authToken") as? String
         let firstName = UserDefaults.standard.object(forKey: "firstName") as? String
         let lastName = UserDefaults.standard.object(forKey: "lastName") as? String
 
-        print("INI AUTH TOKEN : \(authToken)")
-        let token = try! Token(rawValue: TokenValue)
-        
-        // Use the chat client to connect the user. This gets the user ID, name and avatar
-        
-        print("Current user ID: \(vm.userID)\n")
-        chatClient.connectUser(
-            userInfo: .init(id: vm.userID,
-                            name: ((firstName ?? "") + (lastName ?? "")),
-                            imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
-            token: token
+        print("AUTH TOKEN : \(authToken)")
+        if(authToken != nil) {
+            let token = try! Token(rawValue: authToken ?? "")
+            vm.fetchUserID()
+            // Use the chat client to connect the user. This gets the user ID, name and avatar
             
-        ) { error in
-            if let error = error {
-                // Some very basic error handling only logging the error.
-                log.error("connecting the user failed \(error)")
-                return
+            chatClient.connectUser(
+                userInfo: .init(id: vm.userID,
+                                name: "\(firstName ?? "") \(lastName ?? "")",
+                                imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
+                token: token
+                
+            ) { error in
+                if let error = error {
+                    // Some very basic error handling only logging the error.
+                    log.error("connecting the user failed \(error)")
+                    return
+                }
             }
         }
     }
