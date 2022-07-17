@@ -76,6 +76,19 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         mapView.addAnnotation(pointAnnotation)
     }
     
+    func pinLocation(place: Place){
+        guard let coordinate =  place.placemark.location?.coordinate else{return}
+        
+        let  pointAnnotation  = MKPointAnnotation()
+        pointAnnotation.coordinate = coordinate
+//        pointAnnotation.title = place.place.name ?? "No Name"
+        pointAnnotation.title = place.placemark.title ?? "No Name"
+        pointAnnotation.title = place.placemark.name ?? "No Name"
+        pointAnnotation.title = place.placemark.countryCode ?? "No Name"
+        // Removing All Old Ones
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(pointAnnotation)
+    }
 //    func OnTapSelectedPlace(place: Place){
 //        guard let coordinate =  place.placemark.location?.coordinate else{return}
 //

@@ -15,10 +15,10 @@ struct LocationButtonView: View {
     var showIcon = false
     var iconName = "mappin"
     var type = ""
-
+    
     @Binding var textLabel: String
     @State var isPresented = false
-//    @Binding var place: Place
+    //    @Binding var place: Place
     @Binding var region: String
     @Binding var location: String
     @Binding var address: String
@@ -56,23 +56,23 @@ struct LocationButtonView: View {
                         isPresented: $isPresented
                     ) {
                         print("The sheet has been dismissed")
-//                        print(location)
+                        //                        print(location)
                     } content: {
                         NavigationView{
                             ZStack{
                                 MapView()
                                     .environmentObject(mapData)
                                     .ignoresSafeArea(edges: .bottom)
-//                                    .onTapGesture { test in
-//                                        print("Tapped at \(test)" )
-//                                    }
+                                //                                    .onTapGesture { test in
+                                //                                        print("Tapped at \(test)" )
+                                //                                    }
                                 //                                    .onTapGesture {
-//                                        ForEach(mapData.places){ place in
-//
-//                                        mapData.OnTapSelectedPlace(place: place)
-//
-//                                        }
-//                                    }
+                                //                                        ForEach(mapData.places){ place in
+                                //
+                                //                                        mapData.OnTapSelectedPlace(place: place)
+                                //
+                                //                                        }
+                                //                                    }
                                 VStack{
                                     VStack(spacing: 0){
                                         HStack{
@@ -118,7 +118,7 @@ struct LocationButtonView: View {
                                                             }
                                                         
                                                         Divider()
-                                                          
+                                                        
                                                     }
                                                 }
                                                 .padding(.top)
@@ -128,11 +128,21 @@ struct LocationButtonView: View {
                                         
                                     }
                                     .padding()
-                                   
+                                    
                                     
                                     Spacer()
                                     
                                     VStack{
+                                        
+                                        Button(action: {
+                                           
+                                        }, label: {
+                                            Image(systemName: "pin.fill")
+                                                .font(.title)
+                                                .padding(10)
+                                                .background(Color.primary)
+                                                .clipShape(Circle())
+                                        })
                                         Button(action: {mapData.focusLocation()}, label: {
                                             Image(systemName: "location.fill")
                                                 .font(.title)
@@ -148,27 +158,29 @@ struct LocationButtonView: View {
                                                 .background(Color.primary)
                                                 .clipShape(Circle())
                                         })
+                                        
+                                        
                                     }
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .padding()
                                 }
                             }
-//                            .searchable(text: $mapData.searchTxt, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search" )
+                            //                            .searchable(text: $mapData.searchTxt, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search" )
                             .navigationBarTitle(Text("Choose Location"), displayMode: .inline)
-//                            .toolbar{
-//                                Button(action: {
-//                                  
-//                                 
-//                                }, label: {
-//                                    Text("Submit")
-//                                })
-//                            }
+                            //                            .toolbar{
+                            //                                Button(action: {
+                            //
+                            //
+                            //                                }, label: {
+                            //                                    Text("Submit")
+                            //                                })
+                            //                            }
                             .navigationBarItems(leading: Button(action: {
-                                    print("The sheet has been dismissed")
-                                    self.isPresented = false
+                                print("The sheet has been dismissed")
+                                self.isPresented = false
                             }) {
                                 Image(systemName: "chevron.left")
-                                .font(.body)
+                                    .font(.body)
                             })
                             .onAppear(perform: {
                                 locationManager.delegate = mapData
@@ -176,7 +188,7 @@ struct LocationButtonView: View {
                             })
                         }
                         
-                       //permission denied alert
+                        //permission denied alert
                         .alert(isPresented: $mapData.permissionDenied, content: {
                             Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission In App Settings"), dismissButton: .default(Text("Go To Settings"), action: {
                                 //Redirecting user to setting
