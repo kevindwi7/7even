@@ -8,7 +8,7 @@
 import SwiftUI
 import CloudKit
 
-struct CreateRoomView: View {
+ struct CreateRoomView: View {
     
     var isEnabled = false
     @StateObject private var vm: MainViewModel
@@ -20,8 +20,10 @@ struct CreateRoomView: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State var isPresented = false
-    @State var location = Location(name: "", address: "", region: "", isChecked: false)
-    @State var region = ""
+//    @State var place = Location(name: "", address: "", region: "", isChecked: false)
+    @State var address : String = ""
+    @State var region : String = ""
+    @State var location : String = ""
     @State var age = [""]
     @State var sex = "Both"
     @State var levelOfPlay = "Recreational"
@@ -30,6 +32,7 @@ struct CreateRoomView: View {
     @State private var isFinish: Bool = false
     @State var roomDescription = ""
     @State var name = ""
+    
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -55,7 +58,7 @@ struct CreateRoomView: View {
         return code
     }
     
-    var body: some View {
+    public var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Section{
@@ -66,7 +69,9 @@ struct CreateRoomView: View {
                     
 //                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
                     
-                    LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location.name, location: $location, region: $region)
+                    LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location, region: $region, location: $location, address: $address)
+                    
+//                    print(location)
                     
 //                    if(region != "") {
 //
@@ -184,10 +189,10 @@ struct CreateRoomView: View {
                 if isPrivateRoom {
                     roomCode = checkCode()
                 }
-                vm.createRoom(host: userID!, sport: sportName, location: location.name, address: location.address, region: region, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name)
+                vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region)
                 presentationMode.wrappedValue.dismiss()
             }
-                .disabled(name == "" || sportName == "" || region == "" || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
+                .disabled(name == "" || sportName == ""  || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
             )
         }
     }

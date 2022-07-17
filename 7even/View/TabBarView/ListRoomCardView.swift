@@ -17,7 +17,7 @@ struct ListRoomCardView: View {
     @State var isPresented = false
     @State var roomCode = ""
     @State var showLoginAlert = false
-    
+   
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -61,9 +61,9 @@ struct ListRoomCardView: View {
                                 }
                             }
                             
-                            Text(room.region)
-                                .font(.subheadline)
-                                .foregroundColor(room.isFinish == false ? .black : .gray)
+//                            Text(room.region)
+//                                .font(.subheadline)
+//                                .foregroundColor(room.isFinish == false ? .black : .gray)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
                                 .foregroundColor(room.isFinish == false ? .black : .gray)

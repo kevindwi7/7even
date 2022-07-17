@@ -30,7 +30,7 @@ struct Room {
     var description: String
     var name: String
     
-    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, region: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String) {
+    init(id: CKRecord.ID? = nil, host: String, sport: String, location: String, address: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, region: String) {
         self.id = id
         self.host = host
         self.sport = sport
@@ -54,7 +54,7 @@ struct Room {
     }
     
     func toDictionary() -> [String: Any]{
-        return ["host": host, "sport": sport, "location": location, "address": address,"region": region, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant, "roomCode": roomCode, "isFinish": isFinish, "description": description, "name": name]
+        return ["host": host, "sport": sport, "location": location, "address" : address, "minimumParticipant": minimumParticipant, "maximumParticipant": maximumParticipant, "price": price, "isPrivateRoom": isPrivateRoom, "startTime": startTime, "endTime": endTime, "sex": sex, "age": age, "levelOfPlay": levelOfPlay, "participant": participant, "roomCode": roomCode, "isFinish": isFinish, "description": description, "name": name, "region": region]
     }
     
     static func fromRecord(_ record: CKRecord) -> Room? {
@@ -82,6 +82,6 @@ struct Room {
             return nil
         }
         
-        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, region: region, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name)
+        return Room(id: record.recordID, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: Decimal(price), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region)
     }
 }
