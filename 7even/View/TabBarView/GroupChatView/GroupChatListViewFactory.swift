@@ -20,9 +20,9 @@ class GroupChatViewFactory: ViewFactory {
 
     public static let shared = GroupChatViewFactory()
     
-    func makeChannelHeaderViewModifier(for channel: ChatChannel) -> some ChatChannelHeaderViewModifier {
-        CustomChatChannelModifier(channel: channel)
-    }
+//    func makeChannelHeaderViewModifier(for channel: ChatChannel) -> some ChatChannelHeaderViewModifier {
+//        CustomChatChannelModifier(channel: channel)
+//    }
 
     func makeChannelListItem(
         channel: ChatChannel,
