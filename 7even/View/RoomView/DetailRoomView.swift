@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
 struct DetailRoomView: View {
     
@@ -26,6 +28,7 @@ struct DetailRoomView: View {
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
     @StateObject var vm: MainViewModel
+    @StateObject var mapData = MapViewModel()
     @Binding var room: RoomViewModel
     
     @State var isFilled: Bool = false
@@ -33,6 +36,11 @@ struct DetailRoomView: View {
     @State var isDeleted: Bool = false
     @State var roomCodeBtnText: String = "Room Code"
     @Environment(\.presentationMode) var presentationMode
+    
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 5.1608, longitude: 119.4494),
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    )
     
     private let pasteboard = UIPasteboard.general
     
@@ -64,45 +72,110 @@ struct DetailRoomView: View {
         }
     }
     
+    func colorToShow(for sportType: String) -> Color {
+        switch sportType {
+            case "Badminton":
+                return .mint
+            case "Basketball":
+                return .orange
+            case "Football":
+                return .blue
+            case "Yoga":
+                return .brown
+            case "Cycling":
+                return .pink
+            case "Running":
+                return .purple
+            case "Tennis":
+                return .indigo
+            default:
+                return .gray
+        }
+    }
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(room.location)
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                Text(room.address)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2.5, trailing: 0))
-                
-                if(room.price != 0) {
-                    Text("Rp. \(String(describing: room.price)),-")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.vertical, 7.5)
-                } else {
-                    Text("Free")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.vertical, 7.5)
+                HStack {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(colorToShow(for: room.sport))
+                            .frame(width: 80, height: 22)
+                        
+                        Text(room.sport)
+                            .font(.caption2)
+                            .bold()
+                    }
+                    Spacer()
                 }
 
-                HStack {
-                    Text(dateFormatter.string(from: room.endTime))
-                        .font(.subheadline)
+                if(room.description != "") {
+                    Text(room.description)
+                        .font(.callout)
                         .foregroundColor(.gray)
-                    Spacer()
-                    Text("\(timeFormatter.string(from: room.startTime))-\(timeFormatter.string(from: room.endTime))")
-                        .font(.subheadline)
+                }
+               
+                HStack {
+                    Image(systemName: "calendar.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 21, height: 21)
+                    Text("\(dateFormatter.string(from: room.endTime)), \(timeFormatter.string(from: room.startTime))-\(timeFormatter.string(from: room.endTime))")
+                        .font(.headline)
                         .foregroundColor(.gray)
                 }
                 .padding(.vertical, 5)
+                
+                HStack {
+                    Image(systemName: "dollarsign.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 21, height: 21)
+                    if(room.price != 0) {
+                        Text("Rp. \(String(describing: Double(truncating: room.price as NSNumber) / Double(room.maximumParticipant))),- per person")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .padding(.vertical, 7.5)
+                    } else {
+                        Text("Free")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .padding(.vertical, 7.5)
+                    }
+                }
+                
+                Group {
+                    HStack {
+                        Image(systemName: "location.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 21, height: 21)
+                        Text(room.location)
+                            .font(.headline)
+                    }
+                    .foregroundColor(.gray)
+                    
+                    Text(room.address)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(EdgeInsets(top: 0, leading: 30, bottom: 2.5, trailing: 0))
+                }
+
             }
             
-            Rectangle()
-                .fill(.mint)
-                .frame(width: 295, height: 166)
-                .padding(.vertical, 5)
+            Map(coordinateRegion: $region, annotationItems: mapData.places) { location in
+                MapMarker(coordinate: location.coordinate, tint: .mint)
+            }
+            .frame(width: 340, height: 190)
+            
+            
+//            MapView()
+//                .environmentObject(mapData)
+//                .frame(width: 295, height: 166)
+//                .padding(.vertical, 5)
+//            Rectangle()
+//                .fill(.mint)
+                
             
             HStack {
                 if(room.levelOfPlay != "" || room.levelOfPlay.isEmpty == false){
@@ -162,92 +235,42 @@ struct DetailRoomView: View {
                 Spacer()
                 Button (action: {
                     print("Tap Participant Button")
+                    print(mapData.region)
                 }) {
                     Text("See All")
                 }
             }
             
-            HStack {
-                HStack(alignment: .center) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 56.8, height: 56.8)
-//                        .padding()
-                        .foregroundColor(.mint)
-                    VStack(alignment: .leading) {
-                        Text("Dwi")
-                        HStack{
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
+            ScrollView(.horizontal){
+                ForEach(room.participant, id: \.self) { item in
+                    VStack(alignment: .center) {
+                        ZStack(alignment: .bottomTrailing) {
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 56.8, height: 56.8)
+                                .foregroundColor(.mint)
+                            ZStack {
+                                Image(systemName: "pentagon.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(.yellow)
+                                Text("5.0")
+                                    .font(.caption2)
+                            }
+                        }
+                        
+                        ForEach(vm.surveys, id: \.id) { user in
+                            if(user.userID == item) {
+                                Text(user.name)
+                            }
                         }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                Spacer()
-                HStack(alignment: .center) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 56.8, height: 56.8)
-//                        .padding()
-                        .foregroundColor(.mint)
-                    VStack(alignment: .leading) {
-                        Text("Dwi")
-                        HStack{
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                        }
-                    }
-                }
-                .padding(.horizontal)
             }
-            
-            HStack {
-                HStack(alignment: .center) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 56.8, height: 56.8)
-                        .foregroundColor(.mint)
-                    VStack(alignment: .leading) {
-                        Text("Dwi")
-                        HStack{
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                        }
-                    }
-                }
-                .padding(.horizontal)
-                Spacer()
-                HStack(alignment: .center) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 56.8, height: 56.8)
-                        .foregroundColor(.mint)
-                    VStack(alignment: .leading) {
-                        Text("Dwi")
-                        HStack{
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                            Image("star").resizable().scaledToFit()
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
+
 //            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
             if(userID == room.host) {
@@ -268,9 +291,16 @@ struct DetailRoomView: View {
                     Button(action: {
                         self.isPresented = true
                     }) {
-                        Text("Delete Room")
-                            .bold()
-                            .padding(5)
+                        if !(room.isPrivateRoom) {
+                            Text("Delete Room")
+                                .bold()
+                                .padding(5)
+                                .frame(width: 270)
+                        } else {
+                            Text("Delete Room")
+                                .bold()
+                                .padding(5)
+                        }
                     }
                     .tint(.red)
                     .buttonStyle(.borderedProminent)
@@ -281,8 +311,8 @@ struct DetailRoomView: View {
                             vm.deleteRoom(room: room) { () -> Void in
                                 try? vm.deleteChannel(room: room)
                                 self.isDeleted = true
+                                self.presentationMode.wrappedValue.dismiss()
                             }
-                            self.presentationMode.wrappedValue.dismiss()
                             print("delete room")
                         }) {
                             Text("Delete")
@@ -291,6 +321,7 @@ struct DetailRoomView: View {
                     
                     Image(systemName: "square.and.arrow.up")
                         .resizable().scaledToFit()
+                        .foregroundColor(.mint)
                         .frame(width: 35, height: 36, alignment: .center)
                         .padding(5)
                 }
@@ -305,6 +336,7 @@ struct DetailRoomView: View {
                                 .bold()
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 50)
+                                .frame(width: 270)
                         }
                         .tint(.red)
                         .buttonStyle(.borderedProminent)
@@ -312,10 +344,10 @@ struct DetailRoomView: View {
                         .alert("Are you sure to leave this room?", isPresented: $isPresented) {
                             Button(role: .destructive, action: {
 //                                self.hasJoined = false
-                                vm.updateRoom(room: room, participantID: userID!, command: "leave") { () -> Void in
+                                vm.updateRoomMember(room: room, participantID: userID!, command: "leave") { () -> Void in
                                     try? vm.removeMemberFromChannel(room: room, userID: vm.userID)
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }
-                                self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("Leave")
                             }
@@ -323,6 +355,7 @@ struct DetailRoomView: View {
                         
                         Image(systemName: "square.and.arrow.up")
                             .resizable().scaledToFit()
+                            .foregroundColor(.mint)
                             .frame(width: 35, height: 36, alignment: .center)
                             .padding(5)
                     }
@@ -332,8 +365,9 @@ struct DetailRoomView: View {
                         Button(action: {
                             if ( room.participant.count < room.maximumParticipant ){
                                 self.isFilled = false
-                                vm.updateRoom(room: room, participantID: userID!, command: "join") {  () -> Void in
+                                vm.updateRoomMember(room: room, participantID: userID!, command: "join") {  () -> Void in
                                     try? vm.addMemberToChannel(room: room, userID: vm.userID)
+                                    
                                 }
                             } else {
                                 self.isFilled = true
@@ -346,6 +380,7 @@ struct DetailRoomView: View {
                                 .bold()
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, 50)
+                                .frame(width: 270)
                         }
                         .tint(.mint)
                         .buttonStyle(.borderedProminent)
@@ -353,6 +388,7 @@ struct DetailRoomView: View {
                         .disabled(isFilled)
                         
                         Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.mint)
                             .frame(width: 35, height: 36, alignment: .center)
                             .padding(5)
                     }
@@ -369,7 +405,21 @@ struct DetailRoomView: View {
             }
         }
         .padding(.horizontal)
-        .navigationTitle(room.sport)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if(room.host == userID) {
+                    Button(action: {
+                        vm.finishRoom(room: room) { () -> Void in
+                            try? vm.hideChannel(room: room)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }){
+                        Text("Finish")
+                    }
+                }
+            }
+        }
+        .navigationTitle(room.name)
         .navigationBarTitleDisplayMode(.large)
     }
 }

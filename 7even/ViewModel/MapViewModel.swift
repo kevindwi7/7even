@@ -71,6 +71,8 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         pointAnnotation.title = place.placemark.title ?? "No Name"
         pointAnnotation.title = place.placemark.name ?? "No Name"
         pointAnnotation.title = place.placemark.countryCode ?? "No Name"
+        
+        self.region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         // Removing All Old Ones
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(pointAnnotation)
