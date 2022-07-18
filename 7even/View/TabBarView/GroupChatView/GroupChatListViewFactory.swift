@@ -9,10 +9,21 @@ import Foundation
 import StreamChatSwiftUI
 import StreamChat
 import SwiftUI
+import CloudKit
 
 class GroupChatViewFactory: ViewFactory {
     @Injected(\.chatClient) var chatClient: ChatClient
     
+//    @StateObject var vm : MainViewModel = MainViewModel.MainVmShared
+    
+    private init() {}
+
+    public static let shared = GroupChatViewFactory()
+    
+    func makeChannelHeaderViewModifier(for channel: ChatChannel) -> some ChatChannelHeaderViewModifier {
+        CustomChatChannelModifier(channel: channel)
+    }
+
     func makeChannelListItem(
         channel: ChatChannel,
         channelName: String,

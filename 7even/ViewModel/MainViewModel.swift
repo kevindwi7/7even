@@ -25,6 +25,8 @@ final class MainViewModel: ObservableObject {
     private var database: CKDatabase
     private var container: CKContainer
     
+    @Published var MainVmShared: MainViewModel?
+    
     // Room
     @Published var rooms: [RoomViewModel] = []
     
@@ -106,8 +108,9 @@ final class MainViewModel: ObservableObject {
         signers.use(.hs256(key: APIKey))
         // Create a new instance of our JWTPayload
         let payload = Payload(
-            userID: id,
-            expiration: .init(value: .distantFuture)
+            subject: "Returned Token",
+            expiration: .init(value: .distantFuture),
+            userID: id
         )
         
         // Sign the payload, returning a JWT.
@@ -128,12 +131,12 @@ final class MainViewModel: ObservableObject {
             } else {
                 if let returnedRecord = returnedRecord {
                     if let room = Room.fromRecord(returnedRecord) {
-                        DispatchQueue.main.sync {
+                        DispatchQueue.main.async {
                             self.rooms.append(RoomViewModel(room: room))
                             self.objectWillChange.send()
-                            print("add data")
                         }
                         self.recentlyCreatedRoomID = room.id?.recordName ?? ""
+                        print("---- ROOM ID NYA INI : \(self.recentlyCreatedRoomID) -----")
                         completionHandler(self.recentlyCreatedRoomID)
                     }
                 }
@@ -427,33 +430,6 @@ final class MainViewModel: ObservableObject {
         }
     }
 
-    func connectUser(chatClient: ChatClient) {
-        let authToken = UserDefaults.standard.object(forKey: "authToken") as? String
-        let firstName = UserDefaults.standard.object(forKey: "firstName") as? String
-        let lastName = UserDefaults.standard.object(forKey: "lastName") as? String
-
-        print("INI AUTH TOKEN : \(authToken)")
-        if(authToken != nil) {
-            let token = try! Token(rawValue: TokenValue)
-            
-            // Use the chat client to connect the user. This gets the user ID, name and avatar
-            
-            chatClient.connectUser(
-                userInfo: .init(id: self.userID,
-                                name: ((firstName ?? "") + "" + (lastName ?? "")),
-                                imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
-                token: token
-                
-            ) { error in
-                if let error = error {
-                    // Some very basic error handling only logging the error.
-                    log.error("connecting the user failed \(error)")
-                    return
-                }
-            }
-        }
-    }
-    
     func createChannel(channelName: String, roomID: String) throws {
         /// 1: Create a `ChannelId` that represents the channel you want to create.
         let cid = ChannelId(type: .messaging, id: roomID)

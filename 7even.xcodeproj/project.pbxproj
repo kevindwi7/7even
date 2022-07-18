@@ -25,6 +25,9 @@
 		4648E4EE28641993003AECAC /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4ED28641993003AECAC /* Age.swift */; };
 		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
 		4648E4F4286420BB003AECAC /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F3286420BB003AECAC /* Sex.swift */; };
+		4655D49E2883107D006B3B2B /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D49D2883107D006B3B2B /* Credential.swift */; };
+		4655D4A2288444CE006B3B2B /* CustomChatChannelHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4A1288444CE006B3B2B /* CustomChatChannelHeader.swift */; };
+		4655D4A42884450C006B3B2B /* CustomChatChannelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4A32884450C006B3B2B /* CustomChatChannelModifier.swift */; };
 		466F9247287D23F8000CF277 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F9246287D23F8000CF277 /* Extension.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
@@ -80,6 +83,9 @@
 		4648E4ED28641993003AECAC /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
 		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
 		4648E4F3286420BB003AECAC /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
+		4655D49D2883107D006B3B2B /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		4655D4A1288444CE006B3B2B /* CustomChatChannelHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatChannelHeader.swift; sourceTree = "<group>"; };
+		4655D4A32884450C006B3B2B /* CustomChatChannelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChatChannelModifier.swift; sourceTree = "<group>"; };
 		466F9246287D23F8000CF277 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 				4615DFDE287F23EC004F0AB8 /* GroupChatListViewFactory.swift */,
 				4615DFE2287F2C7F004F0AB8 /* GroupChatListItemView.swift */,
 				46EAC47C287F36AB00468CAC /* GroupChatListItem.swift */,
+				4655D4A1288444CE006B3B2B /* CustomChatChannelHeader.swift */,
+				4655D4A32884450C006B3B2B /* CustomChatChannelModifier.swift */,
 			);
 			path = GroupChatView;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 				C90D4A0A28602E5900677561 /* Preview Content */,
 				4615DFDC287F0262004F0AB8 /* AppDelegate.swift */,
 				46EAC482287FF2AF00468CAC /* Credential.swift */,
+				4655D49D2883107D006B3B2B /* Credential.swift */,
 			);
 			path = 7even;
 			sourceTree = "<group>";
@@ -418,7 +427,9 @@
 				4615DFDF287F23EC004F0AB8 /* GroupChatListViewFactory.swift in Sources */,
 				C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */,
 				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
+				4655D49E2883107D006B3B2B /* Credential.swift in Sources */,
 				C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */,
+				4655D4A42884450C006B3B2B /* CustomChatChannelModifier.swift in Sources */,
 				46EAC47B287F362900468CAC /* GroupChatView.swift in Sources */,
 				46EAC47D287F36AB00468CAC /* GroupChatListItem.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
@@ -436,6 +447,7 @@
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
 				46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */,
 				4648E4EE28641993003AECAC /* Age.swift in Sources */,
+				4655D4A2288444CE006B3B2B /* CustomChatChannelHeader.swift in Sources */,
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
 				4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */,
 				4615DFDD287F0262004F0AB8 /* AppDelegate.swift in Sources */,

@@ -7,9 +7,6 @@
 
 import SwiftUI
 import CloudKit
-import StreamChat // The StreamChat class is the central object in the SwiftUI SDK
-import StreamChatSwiftUI
-import UIKit
 
 struct ListRoomView: View {
     
@@ -38,7 +35,6 @@ struct ListRoomView: View {
     @State var selectedSport: [String]
     
     let defaults = UserDefaults.standard
-    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 //    @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
     @State var isListRoomView = false
     //    init(vm: MainViewModel) {
@@ -152,6 +148,8 @@ struct ListRoomView: View {
                     
                 }
                 
+                
+                
                 ScrollView(.vertical) {
                     
                     ForEach(roomCategory, id: \.self){ item in
@@ -184,6 +182,8 @@ struct ListRoomView: View {
                                                         .strokeBorder(.mint)
                                                     //                        .shadow(radius: 1.5)
                                                         .frame(width: 170, height: 127)
+                                                    
+                                                    
                                                     
                                                     VStack{
                                                         Image(systemName: "plus")

@@ -12,7 +12,7 @@ import StreamChatSwiftUI
 struct GroupChatView: View {
     var body: some View {
 //        ChatChannelListView(viewFactory: GroupChatViewFactory(), viewModel: <#T##ChatChannelListViewModel?#>, channelListController: <#T##ChatChannelListController?#>, title: <#T##String#>, onItemTap: <#T##((ChatChannel) -> Void)?##((ChatChannel) -> Void)?##(ChatChannel) -> Void#>, selectedChannelId: <#T##String?#>)
-        ChatChannelListView(viewFactory: GroupChatViewFactory(), title: "Chat")
+        ChatChannelListView(viewFactory: GroupChatViewFactory.shared, title: "Chat")
     }
 }
 

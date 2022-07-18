@@ -8,16 +8,12 @@
 import SwiftUI
 import AuthenticationServices
 import CloudKit
-import StreamChat // The StreamChat class is the central object in the SwiftUI SDK
-import StreamChatSwiftUI
-import UIKit
 
 struct LoginView: View {
     @AppStorage("login") private var login = false
     @Binding var toMainPage: Bool
     @State var isContentView = true
-    @StateObject var vm: MainViewModel
-    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    @StateObject var vm: MainViewModel 
     
     var body: some View {
         VStack{
@@ -75,15 +71,6 @@ struct LoginView: View {
                                     let jwt = vm.generateToken(id: userID)
                                     UserDefaults.standard.set(jwt, forKey: "authToken")
                                     print("--------- \(jwt) ---------")
-                                    
-                                    var config = ChatClientConfig(apiKeyString: APIKey)
-                                    config.applicationGroupIdentifier = "MiniChallenge.inezamanda.-even"
-                                    
-                                    ChatClient.shared = ChatClient(config: config)
-                                    
-                                    let chatClient = ChatClient.shared
-                                    
-                                    appDelegate?.connectUser(chatClient: chatClient!)
                                 } else {
                                     // For returning user to signin,
                                     // fetch the saved records from Cloudkit
