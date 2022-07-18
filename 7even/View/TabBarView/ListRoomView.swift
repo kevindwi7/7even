@@ -163,7 +163,7 @@ struct ListRoomView: View {
                                 if(!defaults.bool(forKey: "login")){
                                     LazyVStack{
                                         Text("Sign up to manage your preferences")
-                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView),isActive: $isListRoomView){
+                                        NavigationLink(destination: LoginView(toMainPage: $isListRoomView, vm: vm),isActive: $isListRoomView){
                                             EmptyView()
                                             //
                                         }
@@ -205,7 +205,7 @@ struct ListRoomView: View {
                                         } else {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ForEach($vm.surveys, id: \.id) { $item in
-                                                    if( item.userID == self.userID && item.favoriteSport.contains(index.sport)) {
+                                                    if( item.userID == userID && item.favoriteSport.contains(index.sport)) {
                                                         //                                                        if( ) {
                                                         //                                                        if( index.participant.contains(userID ?? "") == false){
                                                         ListRoomCardView(vm: self.vm, room: $index)
@@ -243,13 +243,13 @@ struct ListRoomView: View {
             .navigationBarBackButtonHidden(true)
             .onAppear {
                 userID = UserDefaults.standard.object(forKey: "userID") as? String
+//                vm.fetchUserID()
                 vm.fetchRoom()
             }
             .onReceive(vm.objectWillChange) { _ in
                 if(defaults.bool(forKey: "login")){
                     vm.fetchSurvey()
-                    //                    print(userID)
-                    //                    print(vm.surveys.contains(where: { $0.userID == userID }))
+            
                     if(vm.surveys.contains(where: { $0.userID == userID })) {
                         vm.fetchRoom()
                     }

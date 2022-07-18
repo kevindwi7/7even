@@ -34,7 +34,7 @@ struct ProfileView: View {
                             
                             
                             Text("Sign up to manage your profile")
-                            NavigationLink(destination: LoginView(toMainPage: $isContentView),isActive: $isContentView){
+                            NavigationLink(destination: LoginView(toMainPage: $isContentView, vm: vm),isActive: $isContentView){
                                 EmptyView()
                                 //
                             }

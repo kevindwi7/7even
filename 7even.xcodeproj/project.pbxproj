@@ -19,6 +19,14 @@
 		4648E4EE28641993003AECAC /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4ED28641993003AECAC /* Age.swift */; };
 		4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F1286419E1003AECAC /* LevelOfPlay.swift */; };
 		4648E4F4286420BB003AECAC /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648E4F3286420BB003AECAC /* Sex.swift */; };
+		4655D4AC2884F48D006B3B2B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4AB2884F48D006B3B2B /* Payload.swift */; };
+		4655D4AF2884F4C2006B3B2B /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4655D4AE2884F4C2006B3B2B /* JWTKit */; };
+		4655D4B22884F4E7006B3B2B /* StreamChatSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4655D4B12884F4E7006B3B2B /* StreamChatSwiftUI */; };
+		4655D4B52884F67A006B3B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4B42884F67A006B3B2B /* AppDelegate.swift */; };
+		4655D4B72884F686006B3B2B /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4B62884F686006B3B2B /* Credential.swift */; };
+		4655D4BC2884F778006B3B2B /* GroupChatViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */; };
+		4655D4BE2884F78E006B3B2B /* GroupChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */; };
+		4655D4C02884F7A7006B3B2B /* GroupChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */; };
 		466F9247287D23F8000CF277 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F9246287D23F8000CF277 /* Extension.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
@@ -68,6 +76,12 @@
 		4648E4ED28641993003AECAC /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
 		4648E4F1286419E1003AECAC /* LevelOfPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfPlay.swift; sourceTree = "<group>"; };
 		4648E4F3286420BB003AECAC /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
+		4655D4AB2884F48D006B3B2B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		4655D4B42884F67A006B3B2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4655D4B62884F686006B3B2B /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewFactory.swift; sourceTree = "<group>"; };
+		4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItem.swift; sourceTree = "<group>"; };
+		4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItemView.swift; sourceTree = "<group>"; };
 		466F9246287D23F8000CF277 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
@@ -110,13 +124,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4655D4B22884F4E7006B3B2B /* StreamChatSwiftUI in Frameworks */,
 				46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */,
+				4655D4AF2884F4C2006B3B2B /* JWTKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4655D4B32884F4F5006B3B2B /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */,
+				4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */,
+				4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */,
+				4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */,
+			);
+			path = ChatView;
+			sourceTree = "<group>";
+		};
 		46BA3FFB2861A89B007A7EBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +156,7 @@
 				C910EE1128657D1F00696237 /* Survey.swift */,
 				C9A677A3286A2CB1001BFDC6 /* SportWith.swift */,
 				C9473E52287F4BEA00B63986 /* Place.swift */,
+				4655D4AB2884F48D006B3B2B /* Payload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +256,8 @@
 				C90D4A0628602E5800677561 /* ContentView.swift */,
 				C90D4A0828602E5900677561 /* Assets.xcassets */,
 				C90D4A0A28602E5900677561 /* Preview Content */,
+				4655D4B42884F67A006B3B2B /* AppDelegate.swift */,
+				4655D4B62884F686006B3B2B /* Credential.swift */,
 			);
 			path = 7even;
 			sourceTree = "<group>";
@@ -280,12 +310,12 @@
 		C9ED0F922865830B00B7E6FE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
+				4655D4B32884F4F5006B3B2B /* ChatView */,
 				C9075D1A287D111A00B1B61D /* EventView */,
 				C9A677A5286A3243001BFDC6 /* ProfileView */,
 				C9ED0F932865834100B7E6FE /* TabBarView.swift */,
 				C9ED0F9B286583AD00B7E6FE /* ListRoomView.swift */,
 				46108D262866DDF70028F71E /* ListRoomCardView.swift */,
-				C9075D1F287E5B7B00B1B61D /* GroupChatView.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
@@ -306,6 +336,10 @@
 			dependencies = (
 			);
 			name = 7even;
+			packageProductDependencies = (
+				4655D4AE2884F4C2006B3B2B /* JWTKit */,
+				4655D4B12884F4E7006B3B2B /* StreamChatSwiftUI */,
+			);
 			productName = 7even;
 			productReference = C90D4A0128602E5800677561 /* 7even.app */;
 			productType = "com.apple.product-type.application";
@@ -334,6 +368,10 @@
 				Base,
 			);
 			mainGroup = C90D49F828602E5800677561;
+			packageReferences = (
+				4655D4AD2884F4C2006B3B2B /* XCRemoteSwiftPackageReference "jwt-kit" */,
+				4655D4B02884F4E6006B3B2B /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */,
+			);
 			productRefGroup = C90D4A0228602E5800677561 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,30 +398,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4655D4C02884F7A7006B3B2B /* GroupChatListItemView.swift in Sources */,
 				46108D29286782130028F71E /* RoomViewModel.swift in Sources */,
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
+				4655D4B52884F67A006B3B2B /* AppDelegate.swift in Sources */,
 				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
 				C9075D20287E5B7B00B1B61D /* GroupChatView.swift in Sources */,
 				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
 				C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */,
 				4629D0DF2869F68600FF05E6 /* RadioButtonField.swift in Sources */,
+				4655D4BE2884F78E006B3B2B /* GroupChatListItem.swift in Sources */,
 				46108D2E286943BD0028F71E /* DetailRoomView.swift in Sources */,
 				C9ED0F942865834100B7E6FE /* TabBarView.swift in Sources */,
 				4648E4F4286420BB003AECAC /* Sex.swift in Sources */,
 				C9ED0F9C286583AD00B7E6FE /* ListRoomView.swift in Sources */,
 				C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */,
+				4655D4BC2884F778006B3B2B /* GroupChatViewFactory.swift in Sources */,
 				C9ED0F8F286582A400B7E6FE /* MoreDetailsSurveyView.swift in Sources */,
 				C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */,
 				46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */,
 				46108D3228698E560028F71E /* AlertControl.swift in Sources */,
+				4655D4AC2884F48D006B3B2B /* Payload.swift in Sources */,
 				C9ED0F91286582EC00B7E6FE /* SurveyPhotoPicker.swift in Sources */,
 				C9E67AF1286884EB007B63D5 /* SurveyViewModel.swift in Sources */,
 				C9B659462863FCF10074961A /* LoginView.swift in Sources */,
 				467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */,
 				C9473E53287F4BEA00B63986 /* Place.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
+				4655D4B72884F686006B3B2B /* Credential.swift in Sources */,
 				C9473E4F287F37A000B63986 /* MapView.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
@@ -532,7 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -546,7 +590,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -563,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -577,7 +621,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -607,6 +651,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4655D4AD2884F4C2006B3B2B /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/jwt-kit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		4655D4B02884F4E6006B3B2B /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getstream/stream-chat-swiftui";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4655D4AE2884F4C2006B3B2B /* JWTKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4655D4AD2884F4C2006B3B2B /* XCRemoteSwiftPackageReference "jwt-kit" */;
+			productName = JWTKit;
+		};
+		4655D4B12884F4E7006B3B2B /* StreamChatSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4655D4B02884F4E6006B3B2B /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */;
+			productName = StreamChatSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C90D49F928602E5800677561 /* Project object */;
 }

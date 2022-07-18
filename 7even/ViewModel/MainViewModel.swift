@@ -8,10 +8,16 @@
 import Foundation
 import CloudKit
 import Combine
+import UIKit
+import StreamChat
+import StreamChatSwiftUI
+import SwiftUI
+import JWTKit
 
 enum RecordType: String {
     case room = "Room"
     case survey = "Survey"
+    case user = "UsersData"
 }
 
 final class MainViewModel: ObservableObject {
@@ -21,15 +27,81 @@ final class MainViewModel: ObservableObject {
     
     @Published var rooms: [RoomViewModel] = []
     @Published var surveys: [SurveyViewModel] = []
+    @Published var channels: [ChatChannel] = []
+    @Published var isSignedInToiCloud: Bool = false
+    @Published var userID: String = ""
+    @Published var recentlyCreatedRoomID: String = ""
     
     let objectWillChange = PassthroughSubject<(), Never>()
     
     init(container: CKContainer) {
         self.container = container
         self.database = self.container.publicCloudDatabase
+        iCloudUserIDAsync()
     }
     
-    func createRoom(host: String, sport: String, location: String, address: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, region: String){
+    func iCloudUserIDAsync() {
+        // FETCH ID OF DEVICE ACCOUNT
+        container.fetchUserRecordID { returnedID, returnedError in
+            if let returnedError = returnedError {
+                print("Error: \(returnedError)")
+            } else {
+                if let returnedID = returnedID?.recordName {
+                    self.isSignedInToiCloud = true
+                    self.userID = returnedID
+//                    print("uid : \(returnedID)")
+                }
+            }
+        }
+    }
+    
+    func fetchUserID() {
+        // FETCH ID OF REGISTRATED ACCOUNT FROM DB
+        let referenceField = "userID"
+        let uid = self.userID
+        let refID = CKRecord.ID(recordName: uid)
+        let ref = CKRecord.Reference(recordID: refID, action: .none)
+        let predicate = NSPredicate(format: "iCloudID == %@", self.userID)
+        let query = CKQuery(recordType: RecordType.user.rawValue, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        self.database.fetch(withQuery: query) { result in
+            switch result {
+            case .success(let result):
+                result.matchResults.compactMap { $0.1 }
+                    .forEach {
+                        switch $0 {
+                        case .success(let record):
+                            self.userID = record.recordID.recordName
+                            print("UID DISINI : \(self.userID)")
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func generateToken(id : String) -> String {
+        // Signs and verifies JWTs
+        let signers = JWTSigners()
+        // Add HMAC with SHA-256 signer.
+        signers.use(.hs256(key: APIKey))
+        // Create a new instance of our JWTPayload
+        let payload = Payload(
+            subject: "Returned Token",
+            expiration: .init(value: .distantFuture),
+            userID: id
+        )
+        
+        // Sign the payload, returning a JWT.
+        let jwt = try? signers.sign(payload)
+        print("--------- \(jwt) ---------")
+        return jwt ?? ""
+    }
+    
+    func createRoom(host: String, sport: String, location: String, address: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, region: String, completionHandler:  @escaping (_ recentRoomID: String) -> Void){
         let record = CKRecord(recordType: RecordType.room.rawValue)
         let room = Room(host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region)
         
@@ -46,6 +118,9 @@ final class MainViewModel: ObservableObject {
                             self.rooms.append(RoomViewModel(room: room))
                             self.objectWillChange.send()
                         }
+                        self.recentlyCreatedRoomID = room.id?.recordName ?? ""
+                        print("---- ROOM ID NYA INI : \(self.recentlyCreatedRoomID) -----")
+                        completionHandler(self.recentlyCreatedRoomID)
                     }
                 }
             }
@@ -86,9 +161,7 @@ final class MainViewModel: ObservableObject {
                     self.objectWillChange.send()
 //                    print("\(self.rooms)")
                 }
-                
-                
-                
+
             case .failure(let error):
                 print(error)
             }
@@ -110,7 +183,7 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func updateItem(room: RoomViewModel, participantID: String, command: String){
+    func updateRoom(room: RoomViewModel, participantID: String, command: String, completionHandler:  @escaping () -> Void){
 
         var newParticipant: [String] = [""]
         newParticipant.insert(contentsOf: room.participant, at: 0)
@@ -172,19 +245,22 @@ final class MainViewModel: ObservableObject {
                         guard let participant = record["participant"] as? [String] else { return }
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region))
 //                        print(element)
+                        completionHandler()
                     }
                 }
             }
         }
     }
     
-    func deleteRoom(_ recordId: CKRecord.ID){
-        database.delete(withRecordID: recordId) { deletedRecordId, error in
+    func deleteRoom(room: RoomViewModel, completionHandler:  @escaping () -> Void){
+        let recordId = room.id
+        database.delete(withRecordID: recordId!) { deletedRecordId, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print(error)
                 } else {
                     self.fetchRoom()
+                    completionHandler()
                 }
                 print("here")
             }
@@ -343,6 +419,65 @@ final class MainViewModel: ObservableObject {
                 print(error)
             }
         }
+    }
+    
+    func createChannel(channelName: String, roomID: String) throws {
+        /// 1: Create a `ChannelId` that represents the channel you want to create.
+        let cid = ChannelId(type: .messaging, id: roomID)
+        print("CID: \(cid)")
+        /// 2: Use the `ChatClient` to create a `ChatChannelController` with the `ChannelId` and a list of user ids
+        let controller = try ChatClient.shared.channelController(
+            createChannelWithId: cid,
+            name: channelName,
+            imageURL: nil,
+            isCurrentUserMember: true
+        )
+        
+        /// 3: Call `ChatChannelController.synchronize` to create the channel.
+        controller.synchronize { error in
+            if let error = error {
+                /// 4: Handle possible errors
+                print(error)
+            } else if let channel = controller.channel {
+                self.channels.append(channel)
+                print("Success create channel")
+            }
+        }
+    }
+    
+    func deleteChannel(room: RoomViewModel) throws {
+        let id = room.id?.recordName ?? ""
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.deleteChannel { error in
+            if let error = error {
+                // handle error
+                print(error)
+            }
+        }
+    }
+    
+    func addMemberToChannel(room: RoomViewModel, userID: String) throws {
+        let id = room.id?.recordName ?? ""
+        var userIDs: [String] = [""]
+        userIDs[0] = userID
+        
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.addMembers(userIds: Set(userIDs))
+        print("Success add member to channel")
+//        controller.removeMembers(userIds: ["tommaso"])
+    }
+    
+    func removeMemberFromChannel(room: RoomViewModel, userID: String) throws {
+        let id = room.id?.recordName ?? ""
+        var userIDs: [String] = [""]
+        userIDs[0] = userID
+        
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.removeMembers(userIds: Set(userIDs))
+        print("Success remove member from channel")
     }
 
 }

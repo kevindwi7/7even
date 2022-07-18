@@ -53,7 +53,7 @@ struct ListRoomCardView: View {
                             HStack {
                                 Text(room.sport)
                                     .bold()
-                                    .foregroundColor(room.isFinish == false ? .black : .gray)
+                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
                                 if( room.isPrivateRoom ) {
                                     Image(systemName: "lock.fill")
                                         .resizable().scaledToFit().frame(height:18)
@@ -66,7 +66,7 @@ struct ListRoomCardView: View {
 //                                .foregroundColor(room.isFinish == false ? .black : .gray)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
-                                .foregroundColor(room.isFinish == false ? .black : .gray)
+                                .foregroundColor(room.isFinish == false ? .primary : .gray)
                         } //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
@@ -77,7 +77,7 @@ struct ListRoomCardView: View {
                                 
                                 Text(room.levelOfPlay)
                                     .font(.caption)
-                                    .foregroundColor(room.isFinish == false ? .black : .gray)
+                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
                             }
                             
                             ZStack {
@@ -119,6 +119,9 @@ struct ListRoomCardView: View {
                 Button("Ok") {}
             })
             .padding(.vertical, 5)
+            .onAppear {
+                vm.fetchUserID()
+            }
         }
         else {
             Button(action: {

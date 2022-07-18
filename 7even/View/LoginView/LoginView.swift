@@ -15,6 +15,9 @@ struct LoginView: View {
     @AppStorage("login") private var login = false
     @Binding var toMainPage: Bool
     @State var isContentView = true
+    @StateObject var vm: MainViewModel
+    
+    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     
     var body: some View {
         VStack{
@@ -57,6 +60,7 @@ struct LoginView: View {
                                     record["email"] = email
                                     record["firstName"] = firstName
                                     record["lastName"] = lastName
+                                    record["iCloudID"] = vm.userID
                                     // Save to local
                                     UserDefaults.standard.set(email, forKey: "email")
                                     UserDefaults.standard.set(firstName, forKey: "firstName")
