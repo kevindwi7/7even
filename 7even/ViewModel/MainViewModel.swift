@@ -31,6 +31,7 @@ final class MainViewModel: ObservableObject {
     @Published var isSignedInToiCloud: Bool = false
     @Published var userID: String = ""
     @Published var recentlyCreatedRoomID: String = ""
+    @Published var hasUpdated: Bool = false
     
     let objectWillChange = PassthroughSubject<(), Never>()
     
@@ -218,8 +219,8 @@ final class MainViewModel: ObservableObject {
         } else if (command == "leave") {
             if(newParticipant.contains(participantID)){
                 if let index = newParticipant.firstIndex(of: participantID) {
+                    print("Leave Room : \(newParticipant[index])")
                     newParticipant.remove(at: index)
-                    print(newParticipant[index])
                 }
             }
         }
@@ -239,12 +240,14 @@ final class MainViewModel: ObservableObject {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         if let error = error {
                             print(error)
+                            completionHandler()
                         }
                         guard let record = returnedRecord else { return }
                         let id = record.recordID
                         guard let participant = record["participant"] as? [String] else { return }
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region))
 //                        print(element)
+                        self.hasUpdated = true
                         completionHandler()
                     }
                 }
@@ -510,6 +513,7 @@ final class MainViewModel: ObservableObject {
         var userIDs: [String] = [""]
         userIDs[0] = userID
         
+        print(userIDs)
         let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
 
         controller.addMembers(userIds: Set(userIDs))
@@ -522,6 +526,7 @@ final class MainViewModel: ObservableObject {
         var userIDs: [String] = [""]
         userIDs[0] = userID
         
+        print(userIDs)
         let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
 
         controller.removeMembers(userIds: Set(userIDs))
