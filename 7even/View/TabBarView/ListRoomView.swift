@@ -163,7 +163,7 @@ struct ListRoomView: View {
                             
                             if(item == "Rooms You Might Like" ) {
                                 if(!defaults.bool(forKey: "login")){
-                                    VStack{
+                                    VStack(alignment: .leading){
                                         HStack(){
                                             Text("Sign up to manage your preferences")
                                             
@@ -174,8 +174,8 @@ struct ListRoomView: View {
                                             Button(" Here"){
                                                 isListRoomView = true
                                             }
-                                            
-                                        }.padding(.horizontal)
+                                            Spacer()
+                                        }
                                         
                                         
                                         
