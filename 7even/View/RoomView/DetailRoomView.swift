@@ -37,10 +37,10 @@ struct DetailRoomView: View {
     @State var roomCodeBtnText: String = "Room Code"
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 5.1608, longitude: 119.4494),
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-    )
+//    @State private var region = MKCoordinateRegion(
+//        center: CLLocationCoordinate2D(latitude: 5.1579, longitude: 119.4494),
+//        span: MKCoordinateSpan(latitudeDelta: 50, longitudeDelta: 50)
+//    )
     
     private let pasteboard = UIPasteboard.general
     
@@ -163,19 +163,15 @@ struct DetailRoomView: View {
 
             }
             
-            Map(coordinateRegion: $region, annotationItems: mapData.places) { location in
-                MapMarker(coordinate: location.coordinate, tint: .mint)
-            }
-            .frame(width: 340, height: 190)
+//            Map(coordinateRegion: $region, annotationItems: mapData.places) { location in
+//                MapMarker(coordinate: location.coordinate, tint: .mint)
+//            }
+//            .frame(width: 340, height: 190)
             
-            
-//            MapView()
-//                .environmentObject(mapData)
-//                .frame(width: 295, height: 166)
-//                .padding(.vertical, 5)
-//            Rectangle()
-//                .fill(.mint)
-                
+            MapView()
+                .environmentObject(mapData)
+                .frame(width: 340, height: 190)
+                .padding(.vertical, 5)
             
             HStack {
                 if(room.levelOfPlay != "" || room.levelOfPlay.isEmpty == false){
@@ -236,6 +232,7 @@ struct DetailRoomView: View {
                 Button (action: {
                     print("Tap Participant Button")
                     print(mapData.region)
+                    print(mapData.places)
                 }) {
                     Text("See All")
                 }

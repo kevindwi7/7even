@@ -30,8 +30,9 @@ struct MapView: UIViewRepresentable{
         return view
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+    func updateUIView(_ map: MKMapView, context: Context) {
+        map.removeAnnotations(map.annotations)
+        map.addAnnotations(map.annotations)
     }
     
     class Coordinator: NSObject, MKMapViewDelegate{
