@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StreamChat
 
 extension Date {
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
@@ -15,4 +16,8 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
+}
+
+extension ChatClient {
+    static var shared: ChatClient!
 }

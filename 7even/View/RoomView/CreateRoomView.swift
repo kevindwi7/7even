@@ -61,158 +61,139 @@ struct CreateRoomView: View {
     
     public var body: some View {
         ScrollView {
-            ZStack{
-                VStack(alignment: .leading) {
-                    Section{
-                        TextFieldView(textLabel: "Room's Name", isText: true, text: $name, inputIsFocused: $inputIsFocused)
-                        
-                        SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                        
-                        //                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
-                        
-                        LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location, region: $region, location: $location, address: $address)
-                        
-                        //                    print(location)
-                        
-                        //                    if(region != "") {
-                        //
-                        //                    }
-                        
-                        HStack {
-                            TextFieldView(textLabel: "Minimum Participant", text: $minimumParticipant, inputIsFocused: $inputIsFocused)
-                            TextFieldView(textLabel: "Maximum Participant", text: $maximumParticipant, inputIsFocused: $inputIsFocused)
-                        }
-                        
-                        TextFieldView(textLabel: "Price", text: $price, inputIsFocused: $inputIsFocused)
-                        
-                        Toggle("Private Room", isOn: $isPrivateRoom)
-                            .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
-                            .tint(.mint)
-                        
-                        DatePicker("Date", selection: $date, displayedComponents: .date)
-                            .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
-                            .accentColor(.mint)
-                        
-                        DatePicker("Starts", selection: $startTime, displayedComponents: .hourAndMinute)
-                            .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
-                            .accentColor(.mint)
-                            .onChange(of: startTime, perform: { value in
-                                let dateComponents = date.get(.day, .month, .year)
-                                let timeComponents = value.get(.hour, .minute)
-                                if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
-                                    startTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
-                                }
-                            })
-                        
-                        DatePicker("Ends", selection: $endTime, displayedComponents: .hourAndMinute)
-                            .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
-                            .accentColor(.mint)
-                            .onChange(of: endTime, perform: { value in
-                                let dateComponents = date.get(.day, .month, .year)
-                                let timeComponents = value.get(.hour, .minute)
-                                if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
-                                    endTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
-                                }
-                            })
+            VStack(alignment: .leading) {
+                Section{
+                    TextFieldView(textLabel: "Room's Name", isText: true, text: $name, inputIsFocused: $inputIsFocused)
+                    
+                    SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    
+//                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
+                    
+                    LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location, region: $region, location: $location, address: $address)
+                    
+//                    print(location)
+                    
+//                    if(region != "") {
+//
+//                    }
+                    
+                    HStack {
+                        TextFieldView(textLabel: "Minimum Participant", text: $minimumParticipant, inputIsFocused: $inputIsFocused)
+                        TextFieldView(textLabel: "Maximum Participant", text: $maximumParticipant, inputIsFocused: $inputIsFocused)
                     }
                     
-                    Section(header:
-                                Text("Preferences")
+                    TextFieldView(textLabel: "Price", text: $price, inputIsFocused: $inputIsFocused)
+                    
+                    Toggle("Private Room", isOn: $isPrivateRoom)
+                        .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                        .tint(.mint)
+                    
+                    DatePicker("Date", selection: $date, displayedComponents: .date)
+                        .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                        .accentColor(.mint)
+                    
+                    DatePicker("Starts", selection: $startTime, displayedComponents: .hourAndMinute)
+                        .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                        .accentColor(.mint)
+                        .onChange(of: startTime, perform: { value in
+                            let dateComponents = date.get(.day, .month, .year)
+                            let timeComponents = value.get(.hour, .minute)
+                            if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
+                                startTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
+                            }
+                        })
+                    
+                    DatePicker("Ends", selection: $endTime, displayedComponents: .hourAndMinute)
+                        .padding(EdgeInsets(top: 0, leading: 13, bottom: 0, trailing: 0))
+                        .accentColor(.mint)
+                        .onChange(of: endTime, perform: { value in
+                            let dateComponents = date.get(.day, .month, .year)
+                            let timeComponents = value.get(.hour, .minute)
+                            if let day = dateComponents.day, let month = dateComponents.month, let year = dateComponents.year, let hour = timeComponents.hour, let minute = timeComponents.minute {
+                                endTime = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
+                            }
+                        })
+                }
+                
+                Section(header:
+                    Text("Preferences")
                         .font(.title3)
                         .bold()
                         .foregroundColor(.primary)
                         .padding(.top, 10)
-                    ) {
-                        HStack {
-                            Text("Sex")
-                                .padding(.trailing, 30)
-                            //                    Spacer()
-                            ForEach(sexes, id: \.self){ item in
-                                RadioButtonField(
-                                    id: item.name,
-                                    label: item.name,
-                                    color: .primary,
-                                    bgColor: .mint,
-                                    isMarked: $sex.wrappedValue == item.name ? true : false,
-                                    callback: { selected in
-                                        self.sex = selected
-                                        print("Selected Gender is: \(selected)")
-                                    }
-                                )
-                            }
-                        }.padding(.vertical, 5)
-                        
-                        HStack {
-                            Text("Competitive Level")
-                            //                        .padding(.trailing, 30)
-                            ForEach(level, id: \.self){ item in
-                                RadioButtonField(
-                                    id: item.name,
-                                    label: item.name,
-                                    color: .primary,
-                                    bgColor: .mint,
-                                    isMarked: $levelOfPlay.wrappedValue == item.name ? true : false,
-                                    callback: { selected in
-                                        self.levelOfPlay = selected
-                                        print("Selected Level of Play is: \(selected)")
-                                    }
-                                )
-                            }
-                        }.padding(.vertical, 5)
-                        
-                        ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
-                    }
+                ) {
+                    HStack {
+                        Text("Sex")
+                            .padding(.trailing, 30)
+    //                    Spacer()
+                        ForEach(sexes, id: \.self){ item in
+                            RadioButtonField(
+                                id: item.name,
+                                label: item.name,
+                                color: .primary,
+                                bgColor: .mint,
+                                isMarked: $sex.wrappedValue == item.name ? true : false,
+                                callback: { selected in
+                                    self.sex = selected
+                                    print("Selected Gender is: \(selected)")
+                                }
+                            )
+                        }
+                    }.padding(.vertical, 5)
                     
-                    Section(header:
-                                Text("Room Description")
+                    HStack {
+                        Text("Competitive Level")
+    //                        .padding(.trailing, 30)
+                        ForEach(level, id: \.self){ item in
+                            RadioButtonField(
+                                id: item.name,
+                                label: item.name,
+                                color: .primary,
+                                bgColor: .mint,
+                                isMarked: $levelOfPlay.wrappedValue == item.name ? true : false,
+                                callback: { selected in
+                                    self.levelOfPlay = selected
+                                    print("Selected Level of Play is: \(selected)")
+                                }
+                            )
+                        }
+                    }.padding(.vertical, 5)
+                    
+                    ChecklistSheetButtonView(showModalButton: true, type: "age", textLabel: $age)
+                }
+                
+                Section(header:
+                    Text("Room Description")
                         .font(.title3)
                         .bold()
                         .foregroundColor(.primary)
                         .padding(.top, 10)
-                    ) {
-                        TextFieldView(isTextEditor: true, text: $roomDescription, inputIsFocused: $inputIsFocused)
-                    }
+                ) {
+                    TextFieldView(isTextEditor: true, text: $roomDescription, inputIsFocused: $inputIsFocused)
                 }
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        
-                        Button("Done") {
-                            inputIsFocused = false
-                        }
-                        .accessibilityAddTraits(.isKeyboardKey)
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                                
+                    Button("Done") {
+                        inputIsFocused = false
                     }
+                    .accessibilityAddTraits(.isKeyboardKey)
                 }
-                .padding(.horizontal)
-                .navigationTitle("Create Room")
-                .navigationBarTitle("Create Room", displayMode: .inline)
-                .navigationBarItems(trailing:
-                                        
-                    Button("Create") {
-                        self.isLoading = true
-                    
-                        if isPrivateRoom {
-                            roomCode = checkCode()
-                        }
-                        
-                            vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region) 
-                        
-                        
-                        
-                        presentationMode.wrappedValue.dismiss()
-                        
-                        
-                    }
-        
-                    .disabled(name == "" || sportName == ""  || minimumParticipant == "" || maximumParticipant == "" || startTime < Date() || endTime <= startTime)
-                )
-                if self.isLoading == true {
-                    GeometryReader{_ in
-                        LoadingIndicatorView()
-                    }
-                    .background(Color.black.opacity(0.45).edgesIgnoringSafeArea(.all))
+            }
+            .padding(.horizontal)
+            .navigationTitle("Create Room")
+            .navigationBarTitle("Create Room", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Create") {
+                if isPrivateRoom {
+                    roomCode = checkCode()
                 }
+                vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region) {recentRoomID in 
+                    try? vm.createChannel(channelName: name, roomID: vm.recentlyCreatedRoomID)
+                }
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }
