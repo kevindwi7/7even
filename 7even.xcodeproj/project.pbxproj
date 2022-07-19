@@ -51,6 +51,8 @@
 		C9473E4F287F37A000B63986 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E4E287F37A000B63986 /* MapView.swift */; };
 		C9473E51287F385200B63986 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E50287F385200B63986 /* MapViewModel.swift */; };
 		C9473E53287F4BEA00B63986 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9473E52287F4BEA00B63986 /* Place.swift */; };
+		C96DA13B28866AC800DF33D5 /* EmptyEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DA13A28866AC800DF33D5 /* EmptyEventView.swift */; };
+		C96DA13D288719AE00DF33D5 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DA13C288719AE00DF33D5 /* ActivityIndicator.swift */; };
 		C97CD866286B4AE5000B479B /* FavoriteSportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */; };
 		C9A677A4286A2CB1001BFDC6 /* SportWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A3286A2CB1001BFDC6 /* SportWith.swift */; };
 		C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */; };
@@ -109,6 +111,8 @@
 		C9473E4E287F37A000B63986 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C9473E50287F385200B63986 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C9473E52287F4BEA00B63986 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		C96DA13A28866AC800DF33D5 /* EmptyEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventView.swift; sourceTree = "<group>"; };
+		C96DA13C288719AE00DF33D5 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C97CD865286B4AE5000B479B /* FavoriteSportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSportCardView.swift; sourceTree = "<group>"; };
 		C9A677A3286A2CB1001BFDC6 /* SportWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportWith.swift; sourceTree = "<group>"; };
 		C9A677A6286A3263001BFDC6 /* EditPreferredSportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreferredSportView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				C9B659472863FD310074961A /* SurveyView */,
 				C9B659422863FCA50074961A /* LoginView */,
 				46BA3FFE2861A8EE007A7EBF /* RoomView */,
+				C96DA13C288719AE00DF33D5 /* ActivityIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 		C9075D1A287D111A00B1B61D /* EventView */ = {
 			isa = PBXGroup;
 			children = (
+				C96DA13A28866AC800DF33D5 /* EmptyEventView.swift */,
 				C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */,
 				C9075D12287C499A00B1B61D /* ListRoomEventView.swift */,
 				C9075D1B287D113900B1B61D /* OnGoingEventView.swift */,
@@ -412,6 +418,7 @@
 				46108D29286782130028F71E /* RoomViewModel.swift in Sources */,
 				467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */,
 				46108D272866DDF70028F71E /* ListRoomCardView.swift in Sources */,
+				C96DA13D288719AE00DF33D5 /* ActivityIndicator.swift in Sources */,
 				4655D4B52884F67A006B3B2B /* AppDelegate.swift in Sources */,
 				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
 				46CD3ADB2886E1C6002C326F /* DelayMonitor.swift in Sources */,
@@ -449,6 +456,7 @@
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
 				4655D4C228865DA3006B3B2B /* JoinedRoomNotificationView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
+				C96DA13B28866AC800DF33D5 /* EmptyEventView.swift in Sources */,
 				466F9247287D23F8000CF277 /* Extension.swift in Sources */,
 				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
 				467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */,
@@ -588,7 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -602,7 +610,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -619,7 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = NLM7SY7FHH;
+				DEVELOPMENT_TEAM = P66CL8827J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -633,7 +641,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
+				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

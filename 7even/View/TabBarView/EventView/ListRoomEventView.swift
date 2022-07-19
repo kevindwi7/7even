@@ -22,7 +22,7 @@ struct ListRoomEventView: View {
         GridItem(.adaptive(minimum: 142)),
         GridItem(.adaptive(minimum: 142))
     ]
-    
+
     var body: some View {
         NavigationView{
             if(!defaults.bool(forKey: "login")){
@@ -62,9 +62,22 @@ struct ListRoomEventView: View {
                         }
                         
                         LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
-                            ForEach($vm.rooms, id: \.id){ $item in
-                                OnGoingEventView(vm: self.vm, room: $item)
+                            ForEach($vm.rooms, id: \.id){ item1 in
+                                if vm.rooms.isEmpty{
+                                    EmptyEventView()
+                                }else{
+                                    OnGoingEventView(vm: self.vm, room: item1)
+                                }
+                             
                             }
+                            
+                            
+                            
+//                            ForEach($vm.rooms, id: \.id) { $index in
+//                                //                                            if( index.participant.contains(userID ?? "") == false){
+//                                ListRoomCardView(vm: self.vm, room: $index)
+//                                //                                            }
+//                            }
                         }.padding(.horizontal)
                         
                         
@@ -79,8 +92,13 @@ struct ListRoomEventView: View {
                         }
                         
                         LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
-                            ForEach($vm.rooms, id: \.id){ $item in
-                                UpcomingEventsCardView(vm: self.vm, room: $item)
+                            ForEach($vm.rooms, id: \.id){ item2 in
+                                if vm.rooms.isEmpty{
+                                    EmptyEventView()
+                                }else{
+                                    UpcomingEventsCardView(vm: self.vm, room: item2)
+                                }
+                            
                             }
                         }.padding(.horizontal)
                         
@@ -96,8 +114,8 @@ struct ListRoomEventView: View {
                         
                         LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
                             
-                            ForEach($vm.rooms, id: \.id){ $item in
-                                CompletedEventView(vm: self.vm, room: $item)
+                            ForEach($vm.rooms, id: \.id){ item3 in
+                                CompletedEventView(vm: self.vm, room: item3)
                             }
                         }.padding(.horizontal)
                         
@@ -118,6 +136,7 @@ struct ListRoomEventView: View {
                 }.navigationTitle("Events")
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always),prompt: "Search")
+                   
             }
             
             

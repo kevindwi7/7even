@@ -93,7 +93,7 @@ struct DetailRoomView: View {
     }
     
     var body: some View {
-//        ZStack {
+        LoadingView(isShowing: $vm.isLoading){
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -268,6 +268,7 @@ struct DetailRoomView: View {
                             }
                             .padding(.horizontal)
                         }
+                        .padding(.horizontal)
                     }
                     
                 }
@@ -377,7 +378,9 @@ struct DetailRoomView: View {
                                 } else {
                                     self.isFilled = true
                                 }
+    //                            self.presentationMode.wrappedValue.dismiss()
                                 print(room.participant)
+    //                            self.hasJoined = true
                             }) {
                                 Text("Join Room")
                                     .bold()
@@ -452,6 +455,8 @@ struct DetailRoomView: View {
             }
             .navigationTitle(room.name)
         .navigationBarTitleDisplayMode(.large)
+        }
+           
         }
         
 //        if(self.isActive == true) {
