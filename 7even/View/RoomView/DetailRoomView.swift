@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreLocation
 import MapKit
+import Popovers
 
 struct DetailRoomView: View {
     
@@ -29,18 +30,16 @@ struct DetailRoomView: View {
     
     @StateObject var vm: MainViewModel
     @StateObject var mapData = MapViewModel()
+    @StateObject var delayMonitor = DelayMonitor()
     @Binding var room: RoomViewModel
     
     @State var isFilled: Bool = false
     @State var isPresented: Bool = false
     @State var isDeleted: Bool = false
+    @State var hasJoinedChannel: Bool = false
     @State var roomCodeBtnText: String = "Room Code"
+//    @State var isActive = false
     @Environment(\.presentationMode) var presentationMode
-    
-//    @State private var region = MKCoordinateRegion(
-//        center: CLLocationCoordinate2D(latitude: 5.1579, longitude: 119.4494),
-//        span: MKCoordinateSpan(latitudeDelta: 50, longitudeDelta: 50)
-//    )
     
     private let pasteboard = UIPasteboard.general
     
@@ -94,7 +93,7 @@ struct DetailRoomView: View {
     }
     
     var body: some View {
-        LoadingView(isShowing: $vm.loading){
+//        ZStack {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -240,33 +239,38 @@ struct DetailRoomView: View {
                 }
                 
                 ScrollView(.horizontal){
-                    ForEach(room.participant, id: \.self) { item in
-                        VStack(alignment: .center) {
-                            ZStack(alignment: .bottomTrailing) {
-                                Image(systemName: "person.crop.circle.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 56.8, height: 56.8)
-                                    .foregroundColor(.mint)
-                                ZStack {
-                                    Image(systemName: "pentagon.fill")
+                    HStack {
+                        ForEach(room.participant, id: \.self) { item in
+                            
+                            VStack(alignment: .center) {
+                                ZStack(alignment: .bottomTrailing) {
+                                    Image(systemName: "person.crop.circle.fill")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 25, height: 25)
-                                        .foregroundColor(.yellow)
-                                    Text("5.0")
-                                        .font(.caption2)
+                                        .frame(width: 56.8, height: 56.8)
+                                        .foregroundColor(.mint)
+                                    ZStack {
+                                        Image(systemName: "pentagon.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 25, height: 25)
+                                            .foregroundColor(.yellow)
+                                        Text("5.0")
+                                            .font(.caption2)
+                                    }
+                                }
+                                
+                                ForEach(vm.surveys, id: \.id) { user in
+                                    if(user.userID == item) {
+                                        Text(user.name)
+                                    }
                                 }
                             }
-                            
-                            ForEach(vm.surveys, id: \.id) { user in
-                                if(user.userID == item) {
-                                    Text(user.name)
-                                }
-                            }
+                            .padding(.horizontal)
                         }
                         .padding(.horizontal)
                     }
+                    
                 }
 
     //            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
@@ -363,9 +367,13 @@ struct DetailRoomView: View {
                             Button(action: {
                                 if ( room.participant.count < room.maximumParticipant ){
                                     self.isFilled = false
+                                    delayMonitor.start()
+                                    print("HAS UPDATED INITIAL VALUE :\(vm.hasUpdated)")
                                     vm.updateRoomMember(room: room, participantID: userID!, command: "join") {  () -> Void in
                                         try? vm.addMemberToChannel(room: room, userID: vm.userID)
                                         
+//                                        self.isActive = true
+                                        print("onChange HAS UPDATED VALUE: \(vm.hasUpdated)")
                                     }
                                 } else {
                                     self.isFilled = true
@@ -384,6 +392,34 @@ struct DetailRoomView: View {
                             .buttonStyle(.borderedProminent)
                             .padding(5)
                             .disabled(isFilled)
+    //                        .onReceive(vm.$hasUpdated, perform: { value in
+    //                            print("onChange HAS UPDATED VALUE: \(vm.hasUpdated)")
+    //                            if(value == true) {
+    //                                self.hasJoinedChannel = value
+    //                            }
+    //                        })
+                            .onReceive(delayMonitor.$failed, perform: { value in
+                                print("onChange HAS UPDATED VALUE 2: \(vm.hasUpdated)")
+                                if(value == true) {
+                                    self.hasJoinedChannel = value
+                                }
+                            })
+                            .popover(
+                                present: $hasJoinedChannel,
+                                attributes: {
+                                    $0.position = .absolute(
+                                                originAnchor: .top,
+                                                popoverAnchor: .bottom
+                                    )
+                                    $0.sourceFrameInset.top = -16
+                                }
+                            ) {
+                                Text("New Channel")
+                                    .frame(maxWidth: 250)
+                                            .padding()
+                                            .background(.regularMaterial)
+                                            .border(.blue)
+                            }
                             
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundColor(.mint)
@@ -418,10 +454,16 @@ struct DetailRoomView: View {
                 }
             }
             .navigationTitle(room.name)
-            .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.large)
         }
-       
-    }
+        
+//        if(self.isActive == true) {
+////            JoinedRoomNotificationView()
+//            NavigationLink(destination: JoinedRoomNotificationView(), isActive: $isActive, label: {
+//                EmptyView()
+//            })
+//        }
+//    }
 }
 
 //struct DetailRoomView_Previews: PreviewProvider {

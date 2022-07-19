@@ -27,6 +27,7 @@
 		4655D4BC2884F778006B3B2B /* GroupChatViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */; };
 		4655D4BE2884F78E006B3B2B /* GroupChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */; };
 		4655D4C02884F7A7006B3B2B /* GroupChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */; };
+		4655D4C228865DA3006B3B2B /* JoinedRoomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */; };
 		466F9247287D23F8000CF277 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F9246287D23F8000CF277 /* Extension.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
@@ -35,6 +36,8 @@
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
 		46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BA400A2861BC6A007A7EBF /* CloudKit.framework */; };
+		46CD3AD92886DC90002C326F /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 46CD3AD82886DC90002C326F /* Popovers */; };
+		46CD3ADB2886E1C6002C326F /* DelayMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD3ADA2886E1C6002C326F /* DelayMonitor.swift */; };
 		C9075D13287C499A00B1B61D /* ListRoomEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D12287C499A00B1B61D /* ListRoomEventView.swift */; };
 		C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */; };
 		C9075D1C287D113900B1B61D /* OnGoingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9075D1B287D113900B1B61D /* OnGoingEventView.swift */; };
@@ -84,6 +87,7 @@
 		4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewFactory.swift; sourceTree = "<group>"; };
 		4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItem.swift; sourceTree = "<group>"; };
 		4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItemView.swift; sourceTree = "<group>"; };
+		4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedRoomNotificationView.swift; sourceTree = "<group>"; };
 		466F9246287D23F8000CF277 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		46BA400A2861BC6A007A7EBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		46CD3ADA2886E1C6002C326F /* DelayMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayMonitor.swift; sourceTree = "<group>"; };
 		C9075D12287C499A00B1B61D /* ListRoomEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoomEventView.swift; sourceTree = "<group>"; };
 		C9075D18287C98DB00B1B61D /* UpcomingEventsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsCardView.swift; sourceTree = "<group>"; };
 		C9075D1B287D113900B1B61D /* OnGoingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGoingEventView.swift; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			files = (
 				4655D4B22884F4E7006B3B2B /* StreamChatSwiftUI in Frameworks */,
 				46BA400B2861BC6A007A7EBF /* CloudKit.framework in Frameworks */,
+				46CD3AD92886DC90002C326F /* Popovers in Frameworks */,
 				4655D4AF2884F4C2006B3B2B /* JWTKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +191,7 @@
 				46108D28286782130028F71E /* RoomViewModel.swift */,
 				C9E67AF0286884EB007B63D5 /* SurveyViewModel.swift */,
 				C9473E50287F385200B63986 /* MapViewModel.swift */,
+				46CD3ADA2886E1C6002C326F /* DelayMonitor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 				467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */,
 				467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */,
 				467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */,
+				4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */,
 			);
 			path = RoomView;
 			sourceTree = "<group>";
@@ -345,6 +353,7 @@
 			packageProductDependencies = (
 				4655D4AE2884F4C2006B3B2B /* JWTKit */,
 				4655D4B12884F4E7006B3B2B /* StreamChatSwiftUI */,
+				46CD3AD82886DC90002C326F /* Popovers */,
 			);
 			productName = 7even;
 			productReference = C90D4A0128602E5800677561 /* 7even.app */;
@@ -377,6 +386,7 @@
 			packageReferences = (
 				4655D4AD2884F4C2006B3B2B /* XCRemoteSwiftPackageReference "jwt-kit" */,
 				4655D4B02884F4E6006B3B2B /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */,
+				46CD3AD72886DC8F002C326F /* XCRemoteSwiftPackageReference "Popovers" */,
 			);
 			productRefGroup = C90D4A0228602E5800677561 /* Products */;
 			projectDirPath = "";
@@ -411,6 +421,7 @@
 				C96DA13D288719AE00DF33D5 /* ActivityIndicator.swift in Sources */,
 				4655D4B52884F67A006B3B2B /* AppDelegate.swift in Sources */,
 				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
+				46CD3ADB2886E1C6002C326F /* DelayMonitor.swift in Sources */,
 				C9075D20287E5B7B00B1B61D /* GroupChatView.swift in Sources */,
 				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,
 				C9E67AF528689DF9007B63D5 /* EditProfileView.swift in Sources */,
@@ -443,6 +454,7 @@
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
 				4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
+				4655D4C228865DA3006B3B2B /* JoinedRoomNotificationView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
 				C96DA13B28866AC800DF33D5 /* EmptyEventView.swift in Sources */,
 				466F9247287D23F8000CF277 /* Extension.swift in Sources */,
@@ -677,6 +689,14 @@
 				kind = branch;
 			};
 		};
+		46CD3AD72886DC8F002C326F /* XCRemoteSwiftPackageReference "Popovers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Popovers.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -689,6 +709,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4655D4B02884F4E6006B3B2B /* XCRemoteSwiftPackageReference "stream-chat-swiftui" */;
 			productName = StreamChatSwiftUI;
+		};
+		46CD3AD82886DC90002C326F /* Popovers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46CD3AD72886DC8F002C326F /* XCRemoteSwiftPackageReference "Popovers" */;
+			productName = Popovers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
