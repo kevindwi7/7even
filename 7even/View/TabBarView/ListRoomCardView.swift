@@ -66,42 +66,47 @@ struct ListRoomCardView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(Color(UIColor.systemGray2))
                         .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor.systemBackground)))
-                        .frame(width: 170, height: 138)
+                        .frame(width: 170, height: 144)
                     
                     VStack() {
-                        VStack(alignment: .leading, spacing: 5){
-                            HStack {
-                                Text(room.name)
-                                    .bold()
-                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
-                                if( room.isPrivateRoom ) {
-                                    Image(systemName: "lock.fill")
-                                        .resizable().scaledToFit().frame(height:18)
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                            
-                            Text(room.region)
-                                .font(.subheadline)
-                                .foregroundColor(room.isFinish == false ? .black : .gray)
-                            Text(dateFormatter.string(from: room.endTime))
-                                .font(.footnote)
-                                .foregroundColor(room.isFinish == false ? .primary : .gray)
-                            
-                        
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .fill(colorToShow(for: room.sport))
-                                        .frame(width: 80, height: 22)
+                        HStack{
+                            VStack(alignment: .leading, spacing: 5){
+                                    HStack {
+                                        Text(room.name)
+                                            .bold()
+                                            .foregroundColor(room.isFinish == false ? .primary : .gray)
+                                        if( room.isPrivateRoom ) {
+                                            Image(systemName: "lock.fill")
+                                                .resizable().scaledToFit().frame(height:18)
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
                                     
-                                    Text(room.sport)
-                                        .font(.caption2)
-                                        .bold()
-                                }
+                                    Text(room.region)
+                                        .font(.subheadline)
+                                        .foregroundColor(room.isFinish == false ? .black : .gray)
+                                    
+                                    Text(dateFormatter.string(from: room.endTime))
+                                        .font(.footnote)
+                                        .foregroundColor(room.isFinish == false ? .primary : .gray)
+                                    
                                 
-                          
-                            
-                        }    //VSTACK
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .fill(colorToShow(for: room.sport))
+                                                .frame(width: 80, height: 22)
+                                            
+                                            Text(room.sport)
+                                                .font(.caption2)
+                                                .bold()
+                                        }
+                       
+                    
+                                
+                            }
+                            Spacer()
+                        }.padding(.horizontal)
+                         //HSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
                                 Circle()
@@ -165,11 +170,18 @@ struct ListRoomCardView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(.mint)
 //                        .shadow(radius: 1.5)
-                        .frame(width: 170, height: 127)
+                        .frame(width: 170, height: 144)
                     
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .foregroundColor(.mint)
+                    VStack{
+                        Image(systemName: "plus")
+                            .font(.largeTitle)
+                            .foregroundColor(.mint)
+                        
+                        Text("Create your").foregroundColor(.mint)
+                        
+                        Text("own rooms").foregroundColor(.mint)
+                    }
+                  
                 } //ZSTACK
             } //BUTTON
             .background(
