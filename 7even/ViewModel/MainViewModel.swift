@@ -45,6 +45,7 @@ final class MainViewModel: ObservableObject {
                         DispatchQueue.main.async {
                             self.rooms.append(RoomViewModel(room: room))
                             self.objectWillChange.send()
+                            
                         }
                     }
                 }

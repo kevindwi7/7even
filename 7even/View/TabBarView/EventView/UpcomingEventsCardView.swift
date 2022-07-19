@@ -13,9 +13,9 @@ struct UpcomingEventsCardView: View {
     
     @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
     
-    //    init(vm: MainViewModel) {
-    //        _vm = StateObject(wrappedValue: vm)
-    //    }
+//        init(vm: MainViewModel) {
+//            _vm = StateObject(wrappedValue: vm)
+//        }
     
     let defaults = UserDefaults.standard
     
