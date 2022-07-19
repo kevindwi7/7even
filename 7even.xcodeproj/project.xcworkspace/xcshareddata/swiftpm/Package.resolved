@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "popovers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/Popovers.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0ededfb43f0e124b8f78cd111f14f62516f1c91f"
+      }
+    },
+    {
       "identity" : "stream-chat-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/GetStream/stream-chat-swift.git",

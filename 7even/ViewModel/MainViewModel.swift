@@ -32,6 +32,7 @@ final class MainViewModel: ObservableObject {
     @Published var userID: String = ""
     @Published var recentlyCreatedRoomID: String = ""
     @Published var hasUpdated: Bool = false
+    @Published var isLoading: Bool = false
     
     let objectWillChange = PassthroughSubject<(), Never>()
     
@@ -39,6 +40,7 @@ final class MainViewModel: ObservableObject {
         self.container = container
         self.database = self.container.publicCloudDatabase
         iCloudUserIDAsync()
+       
     }
     
     func iCloudUserIDAsync() {
@@ -50,6 +52,7 @@ final class MainViewModel: ObservableObject {
                 if let returnedID = returnedID?.recordName {
                     self.isSignedInToiCloud = true
                     self.userID = returnedID
+                    
 //                    print("uid : \(returnedID)")
                 }
             }
@@ -103,7 +106,7 @@ final class MainViewModel: ObservableObject {
     }
     
     func createRoom(host: String, sport: String, location: String, address: String, minimumParticipant: Int, maximumParticipant: Int, price: Decimal, isPrivateRoom: Bool, startTime: Date, endTime: Date, sex: String, age: [String], levelOfPlay: String, participant: [String], roomCode: String, isFinish: Bool, description: String, name: String, region: String, completionHandler:  @escaping (_ recentRoomID: String) -> Void){
-        self.loading = true
+        self.isLoading = true
         let record = CKRecord(recordType: RecordType.room.rawValue)
         let room = Room(host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region)
         
@@ -117,7 +120,7 @@ final class MainViewModel: ObservableObject {
                 if let returnedRecord = returnedRecord {
                     if let room = Room.fromRecord(returnedRecord) {
                         DispatchQueue.main.async {
-                            self.loading = false
+                            self.isLoading = false
                             self.rooms.append(RoomViewModel(room: room))
                             self.objectWillChange.send()
                             
@@ -189,7 +192,7 @@ final class MainViewModel: ObservableObject {
     
     func updateRoomMember(room: RoomViewModel, participantID: String, command: String, completionHandler:  @escaping () -> Void){
         
-        self.loading = true
+        self.isLoading = true
         
         var newParticipant =  [String]()
         newParticipant.insert(contentsOf: room.participant, at: 0)
@@ -253,6 +256,7 @@ final class MainViewModel: ObservableObject {
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region))
 //                        print(element)
                         self.hasUpdated = true
+                        self.isLoading =  false
                         completionHandler()
                     }
                 }
@@ -261,7 +265,7 @@ final class MainViewModel: ObservableObject {
     }
     
     func finishRoom(room: RoomViewModel, completionHandler:  @escaping () -> Void){
-        self.loading = true
+        self.isLoading = true
         let recordId = room.id
         let host = room.host
         let sport = room.sport
@@ -302,7 +306,7 @@ final class MainViewModel: ObservableObject {
                         guard let finishStatus = record["isFinish"] as? Bool else { return }
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: finishStatus, description: description, name: name, region: region))
 //                        print(element)
-                        self.loading = false
+                        self.isLoading = false
                         completionHandler()
                     }
                 }
@@ -311,14 +315,14 @@ final class MainViewModel: ObservableObject {
     }
     
     func deleteRoom(room: RoomViewModel, completionHandler:  @escaping () -> Void){
-        self.loading = true
+        self.isLoading = true
         let recordId = room.id
         database.delete(withRecordID: recordId!) { deletedRecordId, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print(error)
                 } else {
-                    self.loading = false
+                    self.isLoading = false
                     self.fetchRoom()
                     completionHandler()
                 }

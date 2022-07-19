@@ -93,7 +93,7 @@ struct DetailRoomView: View {
     }
     
     var body: some View {
-//        ZStack {
+        LoadingView(isShowing: $vm.isLoading){
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
@@ -455,6 +455,8 @@ struct DetailRoomView: View {
             }
             .navigationTitle(room.name)
         .navigationBarTitleDisplayMode(.large)
+        }
+           
         }
         
 //        if(self.isActive == true) {

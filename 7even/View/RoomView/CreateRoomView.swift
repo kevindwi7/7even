@@ -60,7 +60,7 @@ struct CreateRoomView: View {
     }
     
     public var body: some View {
-        LoadingView(isShowing: $vm.loading){
+        LoadingView(isShowing: $vm.isLoading){
             ScrollView {
                     VStack(alignment: .leading) {
                         Section{
