@@ -239,33 +239,37 @@ struct DetailRoomView: View {
             }
             
             ScrollView(.horizontal){
-                ForEach(room.participant, id: \.self) { item in
-                    VStack(alignment: .center) {
-                        ZStack(alignment: .bottomTrailing) {
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 56.8, height: 56.8)
-                                .foregroundColor(.mint)
-                            ZStack {
-                                Image(systemName: "pentagon.fill")
+                HStack {
+                    ForEach(room.participant, id: \.self) { item in
+                        
+                        VStack(alignment: .center) {
+                            ZStack(alignment: .bottomTrailing) {
+                                Image(systemName: "person.crop.circle.fill")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(.yellow)
-                                Text("5.0")
-                                    .font(.caption2)
+                                    .frame(width: 56.8, height: 56.8)
+                                    .foregroundColor(.mint)
+                                ZStack {
+                                    Image(systemName: "pentagon.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.yellow)
+                                    Text("5.0")
+                                        .font(.caption2)
+                                }
+                            }
+                            
+                            ForEach(vm.surveys, id: \.id) { user in
+                                if(user.userID == item) {
+                                    Text(user.name)
+                                }
                             }
                         }
-                        
-                        ForEach(vm.surveys, id: \.id) { user in
-                            if(user.userID == item) {
-                                Text(user.name)
-                            }
-                        }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
+                
             }
 
 //            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
