@@ -66,11 +66,14 @@ struct OnGoingEventView: View {
     var body: some View {
         VStack{
                 ForEach($vm.surveys, id: \.id){ $item in
-                    if(item.userID == self.userID && currentTime < startTime && room.isFinish == false){
-                       
-                        ListRoomCardView(vm: self.vm, room: $room)
-                        
+                    Group {
+                        if(item.userID == self.userID && currentTime < startTime && room.isFinish == false){
+                           
+                            ListRoomCardView(vm: self.vm, room: $room)
+                            
+                        }
                     }
+                   
                 
                 }
             

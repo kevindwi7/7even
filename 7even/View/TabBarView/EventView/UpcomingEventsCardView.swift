@@ -13,10 +13,6 @@ struct UpcomingEventsCardView: View {
     
     @State var userID = UserDefaults.standard.object(forKey: "userID") as? String
     
-//        init(vm: MainViewModel) {
-//            _vm = StateObject(wrappedValue: vm)
-//        }
-    
     let defaults = UserDefaults.standard
     
     var startTime: String{
@@ -55,10 +51,17 @@ struct UpcomingEventsCardView: View {
     var body: some View {
         VStack{
                 ForEach($vm.surveys, id: \.id){ $item in
-                    if(item.userID == self.userID && currentTime > startTime && room.isFinish == false){
-                        ListRoomCardView(vm: self.vm, room: $room)
-                        
+                    Group{
+                        if(item.userID == self.userID && currentTime > startTime ){
+                            if room.isFinish == false{
+                                ListRoomCardView(vm: self.vm, room: $room)
+                            }
+
+                        }else{
+                            EmptyEventView()
+                        }
                     }
+                  
                 }
                 
         }

@@ -181,7 +181,7 @@ struct ListRoomView: View {
                                                     RoundedRectangle(cornerRadius: 8)
                                                         .strokeBorder(.mint)
                                                     //                        .shadow(radius: 1.5)
-                                                        .frame(width: 170, height: 127)
+                                                        .frame(width: 170, height: 138)
                                                     
                                                     
                                                     

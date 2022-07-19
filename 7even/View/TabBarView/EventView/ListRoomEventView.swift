@@ -63,8 +63,12 @@ struct ListRoomEventView: View {
                         
                         LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
                             ForEach($vm.rooms, id: \.id){ item1 in
+                                if vm.rooms.isEmpty{
+                                    EmptyEventView()
+                                }else{
+                                    OnGoingEventView(vm: self.vm, room: item1)
+                                }
                              
-                                OnGoingEventView(vm: self.vm, room: item1)
                             }
                             
                             
@@ -89,7 +93,12 @@ struct ListRoomEventView: View {
                         
                         LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
                             ForEach($vm.rooms, id: \.id){ item2 in
-                                UpcomingEventsCardView(vm: self.vm, room: item2)
+                                if vm.rooms.isEmpty{
+                                    EmptyEventView()
+                                }else{
+                                    UpcomingEventsCardView(vm: self.vm, room: item2)
+                                }
+                            
                             }
                         }.padding(.horizontal)
                         

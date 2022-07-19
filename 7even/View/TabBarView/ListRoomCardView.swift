@@ -28,6 +28,26 @@ struct ListRoomCardView: View {
     
     let userID = UserDefaults.standard.object(forKey: "userID") as? String
     
+    func colorToShow(for sportType: String) -> Color {
+        switch sportType {
+            case "Badminton":
+                return .mint
+            case "Basketball":
+                return .orange
+            case "Football":
+                return .blue
+            case "Yoga":
+                return .brown
+            case "Cycling":
+                return .pink
+            case "Running":
+                return .purple
+            case "Tennis":
+                return .indigo
+            default:
+                return .gray
+        }
+    }
     
     var body: some View {
         if(!isAddRoomButton) {
@@ -46,12 +66,12 @@ struct ListRoomCardView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(Color(UIColor.systemGray2))
                         .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor.systemBackground)))
-                        .frame(width: 170, height: 127)
+                        .frame(width: 170, height: 138)
                     
                     VStack() {
                         VStack(alignment: .leading, spacing: 5){
                             HStack {
-                                Text(room.sport)
+                                Text(room.name)
                                     .bold()
                                     .foregroundColor(room.isFinish == false ? .primary : .gray)
                                 if( room.isPrivateRoom ) {
@@ -61,13 +81,27 @@ struct ListRoomCardView: View {
                                 }
                             }
                             
-//                            Text(room.region)
-//                                .font(.subheadline)
-//                                .foregroundColor(room.isFinish == false ? .black : .gray)
+                            Text(room.region)
+                                .font(.subheadline)
+                                .foregroundColor(room.isFinish == false ? .black : .gray)
                             Text(dateFormatter.string(from: room.endTime))
                                 .font(.footnote)
                                 .foregroundColor(room.isFinish == false ? .primary : .gray)
-                        } //VSTACK
+                            
+                        
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(colorToShow(for: room.sport))
+                                        .frame(width: 80, height: 22)
+                                    
+                                    Text(room.sport)
+                                        .font(.caption2)
+                                        .bold()
+                                }
+                                
+                          
+                            
+                        }    //VSTACK
                         HStack(alignment: .center, spacing: 20) {
                             HStack {
                                 Circle()
