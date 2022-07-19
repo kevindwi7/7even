@@ -184,9 +184,9 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func updateRoom(room: RoomViewModel, participantID: String, command: String, completionHandler:  @escaping () -> Void){
+    func updateRoomMember(room: RoomViewModel, participantID: String, command: String, completionHandler:  @escaping () -> Void){
 
-        var newParticipant: [String] = [""]
+        var newParticipant =  [String]()
         newParticipant.insert(contentsOf: room.participant, at: 0)
         
         let recordId = room.id
@@ -245,6 +245,54 @@ final class MainViewModel: ObservableObject {
                         let id = record.recordID
                         guard let participant = record["participant"] as? [String] else { return }
                         let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: isFinish, description: description, name: name, region: region))
+//                        print(element)
+                        completionHandler()
+                    }
+                }
+            }
+        }
+    }
+    
+    func finishRoom(room: RoomViewModel, completionHandler:  @escaping () -> Void){
+        let recordId = room.id
+        let host = room.host
+        let sport = room.sport
+        let location = room.location
+        let address = room.address
+        let region = room.region
+        let minimumParticipant = room.minimumParticipant
+        let maximumParticipant = room.maximumParticipant
+        let price = room.price
+        let isPrivateRoom = room.isPrivateRoom
+        let startTime = room.startTime
+        let endTime = room.endTime
+        let sex = room.sex
+        let age = room.age
+        let levelOfPlay = room.levelOfPlay
+        let roomCode = room.roomCode
+        let description = room.description
+        let name = room.name
+        let participant = room.participant
+        
+        let isFinish = true
+        
+        database.fetch(withRecordID: recordId!) { returnedRecord, error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                if let error = error {
+                    print(error)
+                }
+                guard let record = returnedRecord else { return }
+                
+                record["isFinish"] = isFinish as CKRecordValue
+                self.database.save(record) { record, error in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        if let error = error {
+                            print(error)
+                        }
+                        guard let record = returnedRecord else { return }
+                        let id = record.recordID
+                        guard let finishStatus = record["isFinish"] as? Bool else { return }
+                        let element = RoomViewModel(room: Room(id: id, host: host, sport: sport, location: location, address: address, minimumParticipant: minimumParticipant, maximumParticipant: maximumParticipant, price: price, isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: participant, roomCode: roomCode, isFinish: finishStatus, description: description, name: name, region: region))
 //                        print(element)
                         completionHandler()
                     }
@@ -479,6 +527,18 @@ final class MainViewModel: ObservableObject {
 
         controller.removeMembers(userIds: Set(userIDs))
         print("Success remove member from channel")
+    }
+    
+    func hideChannel(room: RoomViewModel) throws {
+        let id = room.id?.recordName ?? ""
+        let controller = try ChatClient.shared.channelController(for: .init(type: .messaging, id: id))
+
+        controller.hideChannel(clearHistory: false) { error in
+            if let error = error {
+                // handle error
+                print(error)
+            }
+        }
     }
 
 }

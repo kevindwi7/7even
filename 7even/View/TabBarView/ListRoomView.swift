@@ -206,11 +206,9 @@ struct ListRoomView: View {
                                             ForEach($vm.rooms, id: \.id) { $index in
                                                 ForEach($vm.surveys, id: \.id) { $item in
                                                     if( item.userID == userID && item.favoriteSport.contains(index.sport)) {
-                                                        //                                                        if( ) {
-                                                        //                                                        if( index.participant.contains(userID ?? "") == false){
-                                                        ListRoomCardView(vm: self.vm, room: $index)
-                                                        //                                                        }
-                                                        //                                                        }
+                                                        if(index.isFinish == false){
+                                                            ListRoomCardView(vm: self.vm, room: $index)
+                                                        }
                                                     }
                                                 }
                                                 
@@ -227,9 +225,9 @@ struct ListRoomView: View {
                             } else {
                                 LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5) {
                                     ForEach($vm.rooms, id: \.id) { $index in
-                                        //                                            if( index.participant.contains(userID ?? "") == false){
-                                        ListRoomCardView(vm: self.vm, room: $index)
-                                        //                                            }
+                                        if(index.isFinish == false){
+                                            ListRoomCardView(vm: self.vm, room: $index)
+                                        }
                                     }
                                 }
                                 .frame(maxWidth: .infinity)

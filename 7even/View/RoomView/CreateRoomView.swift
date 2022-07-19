@@ -190,8 +190,9 @@ struct CreateRoomView: View {
                 if isPrivateRoom {
                     roomCode = checkCode()
                 }
-                vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region) {recentRoomID in 
+                vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region) {recentRoomID in
                     try? vm.createChannel(channelName: name, roomID: vm.recentlyCreatedRoomID)
+                    
                 }
                 presentationMode.wrappedValue.dismiss()
             }

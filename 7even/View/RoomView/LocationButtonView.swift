@@ -99,6 +99,9 @@ struct LocationButtonView: View {
                                                                 mapData.selectedPlace(place: place)
                                                                 location = place.placemark.name ?? ""
                                                                 
+//                                                                mapData.region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//                                                                
+//                                                                print("REGION 2: \(mapData.region)")
                                                                 
                                                                 mapData.getAddressFromLatLon(Latitude: place.placemark.coordinate.latitude, Longitude: place.placemark.coordinate.longitude) { dataProcess in
                                                                     address = dataProcess

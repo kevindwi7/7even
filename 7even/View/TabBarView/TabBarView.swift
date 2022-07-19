@@ -12,6 +12,7 @@ struct TabBarView: View {
     let test = Color("F2F2F7")
     
     @StateObject var vm: MainViewModel
+    @State var isPopoverPresented = true
     
     var body: some View {
         TabView{
@@ -30,6 +31,13 @@ struct TabBarView: View {
                 .tabItem{
                     Label("Chat", systemImage: "bubble.left")
                 }
+//                .popover(isPresented: $isPopoverPresented) {
+//                    Text("Hi, I'm a popover.")
+//                                   .padding()
+//                                   .foregroundColor(.white)
+//                                   .background(.blue)
+//                                   .cornerRadius(16)
+//                }
             
             ProfileView(vm: MainViewModel(container: CKContainer.default()))
                 .background(test)
