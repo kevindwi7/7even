@@ -67,15 +67,18 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         
         let  pointAnnotation  = MKPointAnnotation()
         pointAnnotation.coordinate = coordinate
-//        pointAnnotation.title = place.place.name ?? "No Name"
-        pointAnnotation.title = place.placemark.title ?? "No Name"
         pointAnnotation.title = place.placemark.name ?? "No Name"
-        pointAnnotation.title = place.placemark.countryCode ?? "No Name"
-        
+      
         self.region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         // Removing All Old Ones
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(pointAnnotation)
+        
+        //Moving map to that location
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
     }
     
     func pinLocation(place: Place){

@@ -19,10 +19,6 @@ struct MapView: UIViewRepresentable{
     
     func makeUIView(context: Context) -> MKMapView{
         let view = mapData.mapView
-        let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.doubleTapped))
-        tap.numberOfTapsRequired = (2)
-        
-        view.addGestureRecognizer(tap)
         
         view.showsUserLocation = true
         view.delegate = context.coordinator
@@ -31,13 +27,20 @@ struct MapView: UIViewRepresentable{
     }
     
     func updateUIView(_ map: MKMapView, context: Context) {
-        map.removeAnnotations(map.annotations)
-        map.addAnnotations(map.annotations)
+      
     }
     
     class Coordinator: NSObject, MKMapViewDelegate{
-        @objc func doubleTapped(){
-            
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if annotation.isKind(of: MKUserLocation.self){return nil}
+            else{
+                let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
+                pinAnnotation.tintColor = .red
+                pinAnnotation.animatesDrop = true
+                pinAnnotation.canShowCallout = true
+                
+                return pinAnnotation
+            }
         }
     }
 }

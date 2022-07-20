@@ -109,7 +109,11 @@ struct LocationButtonView: View {
                                                                     
                                                                     mapData.getCityFromLatLon(Latitude: place.placemark.coordinate.latitude, Longitude: place.placemark.coordinate.longitude){
                                                                         cityProcess in
-                                                                        region = cityProcess
+                                                                        
+                                                                        let string = cityProcess
+                                                                        let subString = string.dropLast(1)
+                                                                        let result = String(subString.dropLast())
+                                                                        region = result
                                                                         print(region)
                                                                     }
                                                                 }
