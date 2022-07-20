@@ -74,32 +74,36 @@ struct ListRoomCardView: View {
                                     HStack {
                                         Text(room.name)
                                             .bold()
-                                            .foregroundColor(room.isFinish == false ? .primary : .gray)
+                                            
                                         if( room.isPrivateRoom ) {
                                             Image(systemName: "lock.fill")
                                                 .resizable().scaledToFit().frame(height:18)
-                                                .foregroundColor(.gray)
+                                              
                                         }
                                     }
                                     
                                     Text(room.region)
                                         .font(.subheadline)
-                                        .foregroundColor(room.isFinish == false ? .black : .gray)
+                                     
                                     
                                     Text(dateFormatter.string(from: room.endTime))
                                         .font(.footnote)
-                                        .foregroundColor(room.isFinish == false ? .primary : .gray)
+                            
                                     
-                                
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .fill(colorToShow(for: room.sport))
-                                                .frame(width: 80, height: 22)
-                                            
-                                            Text(room.sport)
-                                                .font(.caption2)
-                                                .bold()
-                                        }
+                                if room.isFinish == true{
+                                    Text("")
+                                }else{
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(colorToShow(for: room.sport))
+                                            .frame(width: 80, height: 22)
+                                        
+                                        Text(room.sport)
+                                            .font(.caption2)
+                                            .bold()
+                                    }
+                                }
+                                        
                        
                     
                                 
@@ -108,36 +112,52 @@ struct ListRoomCardView: View {
                         }.padding(.horizontal)
                          //HSTACK
                         HStack(alignment: .center, spacing: 20) {
-                            HStack {
-                                Circle()
-                                    .fill( room.levelOfPlay == "Recreational" ? Color(UIColor.systemGreen) : Color(UIColor.systemOrange))
-                                    .frame(width: 9, height: 9)
+                            if (room.isFinish == true){
+                                Button(action: {}){
+                                    Text("Review Members")
+                                        .font(.system(size: 12))
+                                        .bold()
+                                        .padding()
+                                        .overlay(
+                                                       RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(Color.mint, lineWidth: 2)
+                                               )
+                                }
+                                    .border(Color.mint)
+                                    .cornerRadius(10)
+                            }else{
+                                HStack {
+                                    Circle()
+                                        .fill( room.levelOfPlay == "Recreational" ? Color(UIColor.systemGreen) : Color(UIColor.systemOrange))
+                                        .frame(width: 9, height: 9)
+                                        
                                     
-                                
-                                Text(room.levelOfPlay)
-                                    .font(.caption)
-                                    .foregroundColor(room.isFinish == false ? .primary : .gray)
-                            }
-                            
-                            ZStack {
-                                if (room.participant.count == room.maximumParticipant) {
-                                    Circle()
-                                        .strokeBorder( room.isFinish == false ? .green : .gray )
-                                        .frame(width: 30, height: 30)
-                                } else if (room.participant.count >= (Int(Double(room.maximumParticipant * 2)/3))) {
-                                    Circle()
-                                        .strokeBorder(room.isFinish == false ? .mint : .gray )
-                                        .frame(width: 30, height: 30)
-                                } else {
-                                    Circle()
-                                        .strokeBorder( .gray )
-                                        .frame(width: 30, height: 30)
+                                    Text(room.levelOfPlay)
+                                        .font(.caption)
+                                   
                                 }
                                 
-                                Text("\(room.participant.count)/\(room.maximumParticipant)")
-                                    .font(.caption2)
-                                    .foregroundColor(room.isFinish == false ? .mint : .gray)
+                                ZStack {
+                                    if (room.participant.count == room.maximumParticipant) {
+                                        Circle()
+                                            .strokeBorder( .green )
+                                            .frame(width: 30, height: 30)
+                                    } else if (room.participant.count >= (Int(Double(room.maximumParticipant * 2)/3))) {
+                                        Circle()
+                                            .strokeBorder( .mint )
+                                            .frame(width: 30, height: 30)
+                                    } else {
+                                        Circle()
+                                            .strokeBorder( .gray )
+                                            .frame(width: 30, height: 30)
+                                    }
+                                    
+                                    Text("\(room.participant.count)/\(room.maximumParticipant)")
+                                        .font(.caption2)
+                                        .foregroundColor(.mint)
+                                }
                             }
+                            
 
                         } //HSTACK
                     } //VSTACK

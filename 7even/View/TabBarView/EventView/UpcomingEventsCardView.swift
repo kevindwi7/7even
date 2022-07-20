@@ -30,8 +30,8 @@ struct UpcomingEventsCardView: View {
     }
     
     private let roomAdaptiveColumns = [
-        GridItem(.adaptive(minimum: 280)),
-        GridItem(.adaptive(minimum: 280))
+        GridItem(.adaptive(minimum: 142)),
+        GridItem(.adaptive(minimum: 142))
     ]
     
     var currentTime: String{
@@ -49,21 +49,25 @@ struct UpcomingEventsCardView: View {
     }
     
     var body: some View {
-        VStack{
-                ForEach($vm.surveys, id: \.id){ $item in
-                    Group{
-                        if(item.userID == self.userID && currentTime > startTime ){
-                            if room.isFinish == false{
-                                ListRoomCardView(vm: self.vm, room: $room)
-                            }
-
-                        }else{
-                            EmptyEventView()
+//            LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
+       
+            ForEach($vm.surveys, id: \.id){ $item in
+              
+                    if(item.userID == self.userID && currentTime > startTime ){
+                        if room.isFinish == false{
+                            ListRoomCardView(vm: self.vm, room: $room)
                         }
+
+                    }else{
+                        EmptyView()
                     }
-                  
-                }
+              
+            }
+        
+               
+//            }.padding(.horizontal)
+               
                 
-        }
+        
     }
 }

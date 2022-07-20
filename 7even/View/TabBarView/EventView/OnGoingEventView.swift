@@ -27,6 +27,9 @@ struct OnGoingEventView: View {
         let theDate = "\(day)/\(month)/\(year), \(hour):\(minutes)"
         
         return theDate
+        
+        print(startTime)
+     
     }
     
     var endTime: String{
@@ -54,6 +57,8 @@ struct OnGoingEventView: View {
         let theDate = "\(day)/\(month)/\(year), \(hour):\(minutes)"
         
         return theDate
+      
+        print(currentTime)
     }
     
     
@@ -64,20 +69,25 @@ struct OnGoingEventView: View {
     
     
     var body: some View {
-        VStack{
+        
+          
+                
                 ForEach($vm.surveys, id: \.id){ $item in
-                    Group {
                         if(item.userID == self.userID && currentTime < startTime && room.isFinish == false){
-                           
                             ListRoomCardView(vm: self.vm, room: $room)
                             
+                        }else{
+                            EmptyView()
                         }
-                    }
+                    
                    
                 
                 }
+
+              
             
           
-        }
+        
+        
     }
 }
