@@ -51,15 +51,21 @@ struct CompletedEventView: View {
     
     
     var body: some View {
-        VStack{
-            ForEach($vm.surveys, id: \.id){ $item in
-                if(item.userID == self.userID && room.isFinish == true){
-                    ListRoomCardView(vm: self.vm, room: $room)
+      
+                ForEach($vm.surveys, id: \.id){ $item in
+                    if(item.userID == self.userID && room.isFinish == true){
+                        ListRoomCardView(vm: self.vm, room: $room)
+                    }else{
+                        EmptyView()
+                    }
                 }
-            }
+                
+              
+        
+           
             
             
-        }
+       
     }
 }
 
