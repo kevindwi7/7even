@@ -29,7 +29,7 @@ struct OnGoingEventView: View {
         return theDate
         
         print(startTime)
-     
+        
     }
     
     var endTime: String{
@@ -57,7 +57,7 @@ struct OnGoingEventView: View {
         let theDate = "\(day)/\(month)/\(year), \(hour):\(minutes)"
         
         return theDate
-      
+        
         print(currentTime)
     }
     
@@ -69,24 +69,22 @@ struct OnGoingEventView: View {
     
     
     var body: some View {
-        
-          
-                
-                ForEach($vm.surveys, id: \.id){ $item in
-                        if(item.userID == self.userID && currentTime < startTime && room.isFinish == false){
-                            ListRoomCardView(vm: self.vm, room: $room)
-                            
-                        }else{
-                            EmptyView()
-                        }
-                    
-                   
-                
-                }
-
-              
+        ForEach($vm.surveys, id: \.id){ $item in
+            if(item.userID == self.userID && currentTime >= startTime  && room.isFinish == false ){
+                ListRoomCardView(vm: self.vm, room: $room)
             
-          
+            }else{
+                //                            EmptyView()
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
         
         
     }

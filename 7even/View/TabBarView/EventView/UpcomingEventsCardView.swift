@@ -48,12 +48,26 @@ struct UpcomingEventsCardView: View {
         return theDate
     }
     
+    var endTime: String{
+        let calender = Calendar.current
+        let day = calender.component(.day, from: room.endTime)
+        let month = calender.component(.month, from: room.endTime)
+        let year = calender.component(.year, from: room.endTime)
+        let hour = calender.component(.hour, from: room.endTime)
+        let minutes = calender.component(.minute, from: room.endTime)
+        let seconds = calender.component(.second, from: room.endTime)
+        
+        let theDate = "\(day)/\(month)/\(year), \(hour):\(minutes)"
+        
+        return theDate
+    }
+    
     var body: some View {
 //            LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
        
             ForEach($vm.surveys, id: \.id){ $item in
               
-                    if(item.userID == self.userID && currentTime > startTime ){
+                    if(item.userID == self.userID && currentTime < startTime && currentTime < endTime ){
                         if room.isFinish == false{
                             ListRoomCardView(vm: self.vm, room: $room)
                         }

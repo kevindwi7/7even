@@ -44,6 +44,20 @@ struct CompletedEventView: View {
     }
     
     
+    var endTime: String{
+        let calender = Calendar.current
+        let day = calender.component(.day, from: room.endTime)
+        let month = calender.component(.month, from: room.endTime)
+        let year = calender.component(.year, from: room.endTime)
+        let hour = calender.component(.hour, from: room.endTime)
+        let minutes = calender.component(.minute, from: room.endTime)
+        let seconds = calender.component(.second, from: room.endTime)
+        
+        let theDate = "\(day)/\(month)/\(year), \(hour):\(minutes)"
+        
+        return theDate
+    }
+    
     private let roomAdaptiveColumns = [
         GridItem(.adaptive(minimum: 280)),
         GridItem(.adaptive(minimum: 280))
@@ -51,21 +65,22 @@ struct CompletedEventView: View {
     
     
     var body: some View {
-      
-                ForEach($vm.surveys, id: \.id){ $item in
-                    if(item.userID == self.userID && room.isFinish == true){
-                        ListRoomCardView(vm: self.vm, room: $room)
-                    }else{
-                        EmptyView()
-                    }
-                }
-                
-              
+        ForEach($vm.surveys, id: \.id){ $item in
+            if(item.userID == self.userID && room.isFinish == true){
+                ListRoomCardView(vm: self.vm, room: $room)
+            }else{
+                EmptyView()
+            }
         
-           
             
-            
-       
+        }
+        
+        
+        
+        
+        
+        
+        
     }
 }
 
