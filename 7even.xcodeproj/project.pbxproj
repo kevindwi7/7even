@@ -31,7 +31,6 @@
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
 		467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */; };
-		46B151FE2888F024007116F4 /* WithPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B151FD2888F024007116F4 /* WithPopover.swift */; };
 		46B152002888FCAC007116F4 /* NewChannelNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
@@ -91,7 +90,6 @@
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
 		467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectPreferenceListView.swift; sourceTree = "<group>"; };
-		46B151FD2888F024007116F4 /* WithPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPopover.swift; sourceTree = "<group>"; };
 		46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChannelNotificationView.swift; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				46108D3128698E560028F71E /* AlertControl.swift */,
 				4629D0DE2869F68600FF05E6 /* RadioButtonField.swift */,
 				466F9246287D23F8000CF277 /* Extension.swift */,
-				46B151FD2888F024007116F4 /* WithPopover.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -421,7 +418,6 @@
 				C96DA13D288719AE00DF33D5 /* ActivityIndicator.swift in Sources */,
 				4655D4B52884F67A006B3B2B /* AppDelegate.swift in Sources */,
 				C9075D19287C98DB00B1B61D /* UpcomingEventsCardView.swift in Sources */,
-				46B151FE2888F024007116F4 /* WithPopover.swift in Sources */,
 				46CD3ADB2886E1C6002C326F /* DelayMonitor.swift in Sources */,
 				C9075D20287E5B7B00B1B61D /* GroupChatView.swift in Sources */,
 				C9A677A7286A3263001BFDC6 /* EditPreferredSportView.swift in Sources */,

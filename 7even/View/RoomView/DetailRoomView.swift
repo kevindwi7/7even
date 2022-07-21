@@ -368,11 +368,10 @@ struct DetailRoomView: View {
                                 Button(action: {
                                     if ( room.participant.count < room.maximumParticipant ){
                                         self.isFilled = false
-//                                        delayMonitor.start()
-//                                        vm.updateRoomMember(room: room, participantID: userID!, command: "join") {  () -> Void in
-    //                                        try? vm.addMemberToChannel(room: room, userID: vm.userID)
+                                        vm.updateRoomMember(room: room, participantID: userID!, command: "join") {  () -> Void in
+                                            try? vm.addMemberToChannel(room: room, userID: vm.userID)
                                             hasJoinedChannel = true
-//                                        }
+                                        }
                                     } else {
                                         self.isFilled = true
                                     }
