@@ -124,7 +124,7 @@ struct MoreDetailsSurveyView: View {
                 }
                 ){
                     HStack {
-                        ForEach(sexes, id: \.self){ item in
+                        ForEach(sexesSurvey, id: \.self){ item in
                             RadioButtonField(
                                 id: item.name,
                                 label: item.name,

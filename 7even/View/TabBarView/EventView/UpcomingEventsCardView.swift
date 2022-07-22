@@ -66,8 +66,8 @@ struct UpcomingEventsCardView: View {
 //            LazyVGrid(columns: roomAdaptiveColumns, alignment: .center, spacing: 5){
        
             ForEach($vm.surveys, id: \.id){ $item in
-              
-                    if(item.userID == self.userID && currentTime < startTime && currentTime < endTime ){
+                ForEach(room.participant, id: \.self){ test in
+                    if(item.userID == self.userID && item.userID == test && currentTime < startTime && currentTime < endTime ){
                         if room.isFinish == false{
                             ListRoomCardView(vm: self.vm, room: $room)
                         }
@@ -75,6 +75,8 @@ struct UpcomingEventsCardView: View {
                     }else{
                         EmptyView()
                     }
+                }
+                   
               
             }
         
