@@ -27,11 +27,12 @@
 		4655D4BC2884F778006B3B2B /* GroupChatViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */; };
 		4655D4BE2884F78E006B3B2B /* GroupChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */; };
 		4655D4C02884F7A7006B3B2B /* GroupChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */; };
-		4655D4C228865DA3006B3B2B /* JoinedRoomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */; };
 		466F9247287D23F8000CF277 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466F9246287D23F8000CF277 /* Extension.swift */; };
 		467ABA8D2864511000FC7631 /* SingleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */; };
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
 		467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */; };
+		46B152002888FCAC007116F4 /* NewChannelNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */; };
+		46B15208288A445A007116F4 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B15207288A445A007116F4 /* user.png */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
@@ -87,11 +88,12 @@
 		4655D4BB2884F778006B3B2B /* GroupChatViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewFactory.swift; sourceTree = "<group>"; };
 		4655D4BD2884F78E006B3B2B /* GroupChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItem.swift; sourceTree = "<group>"; };
 		4655D4BF2884F7A7006B3B2B /* GroupChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatListItemView.swift; sourceTree = "<group>"; };
-		4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedRoomNotificationView.swift; sourceTree = "<group>"; };
 		466F9246287D23F8000CF277 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
 		467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectPreferenceListView.swift; sourceTree = "<group>"; };
+		46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChannelNotificationView.swift; sourceTree = "<group>"; };
+		46B15207288A445A007116F4 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 				467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */,
 				467ABA8C2864511000FC7631 /* SingleSelectPreferenceListView.swift */,
 				467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */,
-				4655D4C128865DA3006B3B2B /* JoinedRoomNotificationView.swift */,
+				46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */,
 			);
 			path = RoomView;
 			sourceTree = "<group>";
@@ -262,6 +264,7 @@
 		C90D4A0328602E5800677561 /* 7even */ = {
 			isa = PBXGroup;
 			children = (
+				46B15207288A445A007116F4 /* user.png */,
 				46BA3FFB2861A89B007A7EBF /* Model */,
 				46BA3FFC2861A8A1007A7EBF /* View */,
 				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
@@ -404,6 +407,7 @@
 			files = (
 				C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */,
 				C90D4A0928602E5900677561 /* Assets.xcassets in Resources */,
+				46B15208288A445A007116F4 /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +450,7 @@
 				C9473E53287F4BEA00B63986 /* Place.swift in Sources */,
 				C9B659442863FCCC0074961A /* FavoriteSportList.swift in Sources */,
 				4655D4B72884F686006B3B2B /* Credential.swift in Sources */,
+				46B152002888FCAC007116F4 /* NewChannelNotificationView.swift in Sources */,
 				C9473E4F287F37A000B63986 /* MapView.swift in Sources */,
 				46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */,
 				4648E4D32861DA8C003AECAC /* Room.swift in Sources */,
@@ -454,7 +459,6 @@
 				C9B659492863FD930074961A /* FavoriteSportSurveyView.swift in Sources */,
 				4648E4D92861EF38003AECAC /* MainViewModel.swift in Sources */,
 				C90D4A0728602E5800677561 /* ContentView.swift in Sources */,
-				4655D4C228865DA3006B3B2B /* JoinedRoomNotificationView.swift in Sources */,
 				C9ED0F9A2865836300B7E6FE /* ProfileView.swift in Sources */,
 				466F9247287D23F8000CF277 /* Extension.swift in Sources */,
 				4648E4F2286419E1003AECAC /* LevelOfPlay.swift in Sources */,
@@ -594,12 +598,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow the app to access your current location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow the app to access your photo library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -609,8 +614,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -625,12 +630,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
-				DEVELOPMENT_TEAM = P66CL8827J;
+				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow the app to access your current location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow the app to access your photo library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -640,8 +646,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MiniChallenge.tetststtss;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "MiniChallenge.inezamanda.-even";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
