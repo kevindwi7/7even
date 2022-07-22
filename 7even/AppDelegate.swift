@@ -49,7 +49,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         chatClient.connectUser(
             userInfo: .init(id: "inez_amanda",
                             name: "\(firstName ?? "") \(lastName ?? "")",
-                            imageURL: URL(string: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg")!),
+                            imageURL: URL(string: "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/1ABC9C/external-users-user-tanah-basah-glyph-tanah-basah-3.png")!),
             token: .development(userId: vm.userID)
             
         ) { error in

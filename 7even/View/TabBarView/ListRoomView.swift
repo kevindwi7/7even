@@ -58,7 +58,7 @@ struct ListRoomView: View {
                         Text("Your Sporting Preference").bold()
                     }
                     .font(.title)
-                    .padding(EdgeInsets(top: -34, leading: 16, bottom: 20, trailing: 0))
+                    .padding(EdgeInsets(top: -84, leading: 16, bottom: 20, trailing: 0))
                     
                     
                     // FILTER

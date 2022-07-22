@@ -490,10 +490,11 @@ final class MainViewModel: ObservableObject {
         let cid = ChannelId(type: .messaging, id: roomID)
         print("CID: \(cid)")
         /// 2: Use the `ChatClient` to create a `ChatChannelController` with the `ChannelId` and a list of user ids
+        
         let controller = try ChatClient.shared.channelController(
             createChannelWithId: cid,
             name: channelName,
-            imageURL: nil,
+            imageURL: URL(string: "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/1ABC9C/external-users-user-tanah-basah-glyph-tanah-basah-3.png")!,
             isCurrentUserMember: true
         )
         

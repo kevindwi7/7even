@@ -32,6 +32,7 @@
 		467ABA91286493BD00FC7631 /* ChecklistSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */; };
 		467ABA952864960300FC7631 /* MultipleSelectPreferenceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */; };
 		46B152002888FCAC007116F4 /* NewChannelNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */; };
+		46B15208288A445A007116F4 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B15207288A445A007116F4 /* user.png */; };
 		46BA40002861A906007A7EBF /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */; };
 		46BA40022861AA89007A7EBF /* SheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40012861AA89007A7EBF /* SheetButtonView.swift */; };
 		46BA40042861AAE1007A7EBF /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BA40032861AAE1007A7EBF /* TextFieldView.swift */; };
@@ -91,6 +92,7 @@
 		467ABA90286493BD00FC7631 /* ChecklistSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistSheetButtonView.swift; sourceTree = "<group>"; };
 		467ABA942864960300FC7631 /* MultipleSelectPreferenceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectPreferenceListView.swift; sourceTree = "<group>"; };
 		46B151FF2888FCAC007116F4 /* NewChannelNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChannelNotificationView.swift; sourceTree = "<group>"; };
+		46B15207288A445A007116F4 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		46BA3FFF2861A906007A7EBF /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		46BA40012861AA89007A7EBF /* SheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonView.swift; sourceTree = "<group>"; };
 		46BA40032861AAE1007A7EBF /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		C90D4A0328602E5800677561 /* 7even */ = {
 			isa = PBXGroup;
 			children = (
+				46B15207288A445A007116F4 /* user.png */,
 				46BA3FFB2861A89B007A7EBF /* Model */,
 				46BA3FFC2861A8A1007A7EBF /* View */,
 				46BA3FFD2861A8A7007A7EBF /* ViewModel */,
@@ -401,6 +404,7 @@
 			files = (
 				C90D4A0C28602E5900677561 /* Preview Assets.xcassets in Resources */,
 				C90D4A0928602E5900677561 /* Assets.xcassets in Resources */,
+				46B15208288A445A007116F4 /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +594,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
 				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;
@@ -622,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = 7even/7even.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"7even/Preview Content\"";
 				DEVELOPMENT_TEAM = NLM7SY7FHH;
 				ENABLE_PREVIEWS = YES;

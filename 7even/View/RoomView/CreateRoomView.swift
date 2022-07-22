@@ -67,17 +67,8 @@ struct CreateRoomView: View {
                             TextFieldView(textLabel: "Room's Name", isText: true, text: $name, inputIsFocused: $inputIsFocused)
                             
                             SheetButtonView(showModalButton: true, type: "sport", textLabel: $sportName)
-                                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                            
-        //                    SheetButtonView(showModalButton: true, type: "region", textLabel: $region)
                             
                             LocationButtonView(showIcon: true, iconName: "mappin", textLabel: $location, region: $region, location: $location, address: $address)
-                            
-        //                    print(location)
-                            
-        //                    if(region != "") {
-        //
-        //                    }
                             
                             HStack {
                                 TextFieldView(textLabel: "Minimum Participant", text: $minimumParticipant, inputIsFocused: $inputIsFocused)
@@ -145,7 +136,7 @@ struct CreateRoomView: View {
                             
                             HStack {
                                 Text("Competitive Level")
-            //                        .padding(.trailing, 30)
+
                                 ForEach(level, id: \.self){ item in
                                     RadioButtonField(
                                         id: item.name,
@@ -197,11 +188,6 @@ struct CreateRoomView: View {
                             vm.createRoom(host: userID!, sport: sportName, location: location, address: address, minimumParticipant: Int(minimumParticipant) ?? 0, maximumParticipant: Int(maximumParticipant) ?? 0, price: Decimal(Int(price) ?? 0), isPrivateRoom: isPrivateRoom, startTime: startTime, endTime: endTime, sex: sex, age: age, levelOfPlay: levelOfPlay, participant: [userID!], roomCode: roomCode, isFinish: isFinish, description: roomDescription, name: name, region: region)
                                 { recentRoomID in
                                 try? vm.createChannel(channelName: name, roomID: vm.recentlyCreatedRoomID)
-                                
-    //                            presentationMode.wrappedValue.dismiss()
-                                
-                                
-                               
                         }
                     })
                   
